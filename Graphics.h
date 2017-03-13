@@ -39,5 +39,9 @@ public:
 		m_pRenderTarget->EndDraw(); 
 	}
 
+	void ClearScreen(D2D1::ColorF color);
+
+	void PutPixel(D2D_POINT_2F point);
+
 };
 

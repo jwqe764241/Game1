@@ -16,17 +16,41 @@
     <Filter Include="소스 파일\Additional">
       <UniqueIdentifier>{403bb6a9-839e-4bae-9789-f2661f15b328}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Debug&amp;Utils">
-      <UniqueIdentifier>{a7dec486-c35f-4da1-acaa-6581d57ff983}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\Additional">
       <UniqueIdentifier>{1462753d-2ae9-46c1-8e0a-d3e4f0b2a795}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Actors">
+    <Filter Include="소스 파일\Renderable">
+      <UniqueIdentifier>{2a2b7e22-82b5-4af5-a5f8-fff1aa80d561}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Renderable">
+      <UniqueIdentifier>{5985fc48-c542-4eb4-84ec-6fe8d73b7516}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Renderable\Levels">
+      <UniqueIdentifier>{1f105d48-f9b3-4335-8407-0b29d5b67bce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Renderable\Levels\CustomLevel">
+      <UniqueIdentifier>{fb1c5ba8-deef-461f-821e-6bec6cc2650e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Renderable\Actors">
+      <UniqueIdentifier>{242b367e-2b77-45a6-914b-acfcfe5d3b9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Renderable\Actors">
       <UniqueIdentifier>{c8f30535-00de-4aae-a906-5fa3142d49f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Actors">
-      <UniqueIdentifier>{242b367e-2b77-45a6-914b-acfcfe5d3b9d}</UniqueIdentifier>
+    <Filter Include="소스 파일\Renderable\Levels">
+      <UniqueIdentifier>{54662430-faf9-4e11-a133-36d2e9de356f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Renderable\Levels\CustomLevel">
+      <UniqueIdentifier>{2baafcbd-a9dd-46f4-b9a7-de703482d967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Renderable\Actors\Actors">
+      <UniqueIdentifier>{4b90048e-d39c-415b-8243-a080aad7002b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Renderable\Actors\Actors">
+      <UniqueIdentifier>{8509614f-b540-4ca8-8a1e-670d4877c568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Trashcan">
+      <UniqueIdentifier>{f1e8983b-bea8-4755-ac77-41187ebcda58}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -43,7 +67,16 @@
       <Filter>소스 파일\Additional</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>소스 파일\Actors</Filter>
+      <Filter>소스 파일\Renderable\Actors\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>소스 파일\Renderable\Actors\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelController.cpp">
+      <Filter>Trashcan</Filter>
+    </ClCompile>
+    <ClCompile Include="TestLevel.cpp">
+      <Filter>Trashcan</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -53,17 +86,32 @@
     <ClInclude Include="Frame.h">
       <Filter>헤더 파일\Additional</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>헤더 파일\Debug&amp;Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>헤더 파일\Additional</Filter>
     </ClInclude>
     <ClInclude Include="Graphics.h">
       <Filter>헤더 파일\Additional</Filter>
     </ClInclude>
+    <ClInclude Include="GameDefine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="IActor.h">
+      <Filter>헤더 파일\Renderable\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>헤더 파일\Renderable\Actors\Actors</Filter>
+    </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>헤더 파일\Actors</Filter>
+      <Filter>헤더 파일\Renderable\Actors\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Trashcan</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelController.h">
+      <Filter>Trashcan</Filter>
+    </ClInclude>
+    <ClInclude Include="TestLevel.h">
+      <Filter>Trashcan</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -73,12 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="..\..\nja1_fr1.gif">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="bitmap1.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

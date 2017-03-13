@@ -24,14 +24,14 @@ public:
 	~Frame();
 
 	HRESULT InitializeFrame(int nCmdShow, char * frameTitle);
-	HRESULT ReleaseFrame();
-	void LoopMessage();
+	HRESULT Release();
+	//void LoopMessage();
 
 	HWND GetHWND();
 	bool IsActive();
 
-	static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-
+	static LRESULT CALLBACK HandleWndProc(HWND, UINT, WPARAM, LPARAM);
+	LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
 
 };
 
