@@ -152,7 +152,6 @@ HWND Frame::GetHWND()
 
 bool Frame::IsActive() 
 {
-
 	if (m_hWnd != NULL) {
 
 		return m_hWnd == GetActiveWindow();
@@ -163,13 +162,12 @@ bool Frame::IsActive()
 	}
 }
 
-
 LRESULT CALLBACK Frame::HandleWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) 
 {
 
 	Frame * localFrame = reinterpret_cast<Frame *>(GetWindowLongPtr(hWnd, 0));
 
-	if (localFrame != NULL) { return localFrame->WndProc(hWnd, msg, wParam, lParam); }
+	if (localFrame)			{ return localFrame->WndProc(hWnd, msg, wParam, lParam); }
 	else                    { return DefWindowProc(hWnd, msg, wParam, lParam);       }
 
 }
