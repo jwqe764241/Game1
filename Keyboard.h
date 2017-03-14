@@ -5,5 +5,7 @@ public:
 	Keyboard();
 	~Keyboard();
 
+	int keyPressState;
+	
 };
 

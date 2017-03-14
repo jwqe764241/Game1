@@ -140,26 +140,14 @@ HRESULT Frame::Release()
 HWND Frame::GetHWND() 
 {
 
-	if (m_hWnd != NULL) {
-
-		return m_hWnd;
-	}
-	else {
-
-		return 0;
-	}
+	if (m_hWnd != NULL) { return m_hWnd; }
+	else				{ return 0; }
 }
 
 bool Frame::IsActive() 
 {
-	if (m_hWnd != NULL) {
-
-		return m_hWnd == GetActiveWindow();
-	}
-	else {
-
-		return 0;
-	}
+	if (m_hWnd != NULL) { return m_hWnd == GetActiveWindow(); }
+	else				{ return false; }
 }
 
 LRESULT CALLBACK Frame::HandleWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) 
