@@ -10,7 +10,6 @@
 #include "GameDefine.h"
 
 //TODO:일단 렌더러블부터 렌더링 해봐;
-
 //TODO:문제시 LevelController 내용 빼기 
 
 class Game 

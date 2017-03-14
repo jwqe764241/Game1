@@ -1,7 +1,5 @@
 #include "Game.h"
 
-#include "GameDefine.h"
-
 //THISBLOCK:테스팅용
 //#define GAME_TEST_OTHERLOOP_1
 //#define GAME_TEST_OTHERLOOP_2

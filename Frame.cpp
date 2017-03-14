@@ -3,9 +3,6 @@
 #include "resource.h"
 #include "Frame.h"
 
-#include <cassert>
-#include <thread>
-
 Frame::Frame(HINSTANCE hInstance, char * wndClassName): 
 	m_hWnd(NULL),
 	m_hInstance (hInstance),

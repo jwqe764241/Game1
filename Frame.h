@@ -1,12 +1,13 @@
 #pragma once
 
 #include <Windows.h>
-
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>
 #include <wchar.h>
 #include <math.h>
+#include <cassert>
+#include <thread>
 
 class Frame
 {

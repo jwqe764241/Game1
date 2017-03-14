@@ -1,13 +1,12 @@
 #pragma once
 
 #include <Windows.h>
-
 #include <d2d1_1.h>
 #include <d2d1_1helper.h>
 #include <dwrite.h>
 #include <wincodec.h>
-
 #include <cassert>
+#include "GameDefine.h"
 
 class Graphics
 {

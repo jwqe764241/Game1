@@ -1,7 +1,5 @@
 #include "Graphics.h"
 
-#include "GameDefine.h"
-
 Graphics::Graphics()
 	:m_pDirect2DFactory(NULL),
 	 m_pRenderTarget(NULL),
