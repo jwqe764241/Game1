@@ -1,7 +1,6 @@
 #include "Keyboard.h"
 
 
-
 Keyboard::Keyboard()
 {
 }
@@ -96,7 +95,7 @@ void Keyboard::OnChar(char charCode)
 	TrimBuffer(charBuffer);
 }
 template <typename T>
-void TrimBuffer(std::queue<T>& buffer)
+void Keyboard::TrimBuffer(std::queue<T>& buffer)
 {
 	while (buffer.size() > bufferSize) {
 		buffer.pop();
