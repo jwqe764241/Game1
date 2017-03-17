@@ -78,8 +78,4 @@ private:
 	std::bitset<nKeys> keyStates;
 	std::queue<char> charBuffer;
 	std::queue<Event> keyBuffer;
-
 };
-
-
-

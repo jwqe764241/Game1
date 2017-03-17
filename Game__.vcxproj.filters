@@ -87,6 +87,9 @@
     <ClCompile Include="Keyboard.cpp">
       <Filter>소스 파일\Input</Filter>
     </ClCompile>
+    <ClCompile Include="DX_Input.cpp">
+      <Filter>소스 파일\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -123,6 +126,9 @@
       <Filter>Trashcan</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard.h">
+      <Filter>헤더 파일\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="DX_Input.h">
       <Filter>헤더 파일\Input</Filter>
     </ClInclude>
   </ItemGroup>
