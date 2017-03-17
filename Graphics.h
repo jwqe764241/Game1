@@ -1,4 +1,5 @@
 #pragma once
+#pragma comment(lib, "Windowscodecs.lib")
 
 #include <Windows.h>
 
@@ -16,7 +17,9 @@ private:
 	ID2D1Factory * m_pDirect2DFactory;
 	ID2D1HwndRenderTarget * m_pRenderTarget;
 
-	bool m_bIsInitialized;
+	IWICImagingFactory* m_pIWICFactory;
+
+	//bool m_bIsInitialized;
 
 private:
 	HRESULT CreateDeviceResource(HWND hWnd);
@@ -30,12 +33,12 @@ public:
 
 	void BeginDraw() {
 
-		assert(m_bIsInitialized == true);
+		//assert(m_bIsInitialized == true);
 		m_pRenderTarget->BeginDraw(); 
 	}
 	void EndDraw() {
 
-		assert(m_bIsInitialized == true);
+		//assert(m_bIsInitialized == true);
 		m_pRenderTarget->EndDraw(); 
 	}
 
@@ -43,5 +46,9 @@ public:
 
 	void PutPixel(D2D_POINT_2F point);
 
+	void OnResize(UINT width, UINT height);
+
+	ID2D1HwndRenderTarget* GetRenderTaget() { return m_pRenderTarget; }
+	IWICImagingFactory* GetImagingFactory() { return m_pIWICFactory; }
 };
 

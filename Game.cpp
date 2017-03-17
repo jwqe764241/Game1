@@ -47,7 +47,7 @@ HRESULT Game::Start(int nCmdShow, char * frameTitle)
 #endif
 
 	//
-	m_RenderList.push_back(new Player(10.0f, 10.0f));
+	m_RenderList.push_back(new Player(10.0f, 10.0f, m_pGraphics));
 
 	return S_OK;
 }
@@ -106,9 +106,9 @@ void Game::StartLooping()
 				DispatchMessage(&msg);
 			}
 
-			Update();
-			Render();
 		}
+		Update();
+		Render();
 	}
 #endif
 
@@ -116,7 +116,9 @@ void Game::StartLooping()
 
 void Game::Update()
 {
-
+	for (std::vector<IActor *>::iterator itor = m_RenderList.begin(); itor < m_RenderList.end(); itor++) {
+		(*itor)->Update();
+	}
 }
 
 
