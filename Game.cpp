@@ -44,8 +44,7 @@ HRESULT Game::Start(int nCmdShow, char * frameTitle)
 
 #endif
 
-	//
-	m_RenderList.push_back(new Player(10.0f, 10.0f));
+	m_RenderList.push_back(new Player(400.0f, 400.0f));
 
 	return S_OK;
 }
@@ -98,15 +97,15 @@ void Game::StartLooping()
 				bIsRunning = false;
 				break;
 			}
-
 			else {
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
-
-			Update();
-			Render();
+			
 		}
+		m_pFrame->input.ReadInput();
+		Update();
+		Render();
 	}
 #endif
 
@@ -114,22 +113,23 @@ void Game::StartLooping()
 
 void Game::Update()
 {
-
+	for (std::vector<IActor *>::iterator itor = m_RenderList.begin(); itor < m_RenderList.end(); itor++) {
+		//(*itor)->Update(m_pFrame->keyboard);
+		(*itor)->Update(m_pFrame->input);
+	}
 }
 
 
 void Game::Render()
 {
-
 	m_pGraphics->BeginDraw();
-	
-	m_pGraphics->ClearScreen(D2D1::ColorF(1, 0, 0));
 
-	//TODO : 힙메모리 유효성 에러
-	for (std::vector<IActor *>::iterator itor = m_RenderList.begin(); itor < m_RenderList.end(); itor++) {
+		m_pGraphics->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
+		//TODO : 힙메모리 유효성 에러
+		for (std::vector<IActor *>::iterator itor = m_RenderList.begin(); itor < m_RenderList.end(); itor++) {
 		
-		(*itor)->Draw(m_pGraphics);
-	}
+			(*itor)->Draw(m_pGraphics);
+		}
 
 	m_pGraphics->EndDraw();
 }

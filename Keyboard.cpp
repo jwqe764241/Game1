@@ -4,11 +4,10 @@
 Keyboard::Keyboard()
 {
 }
-
-
 Keyboard::~Keyboard()
 {
 }
+
 
 bool Keyboard::KeyIsPressed(unsigned char keyCode) const
 {
@@ -62,6 +61,7 @@ char Keyboard::ReadChar()
 		return NULL;
 	}
 }
+
 
 void Keyboard::EnableAutorepeat()
 {

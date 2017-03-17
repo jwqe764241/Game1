@@ -13,9 +13,9 @@ Frame::~Frame()
 {
 }
 
+
 HRESULT Frame::InitializeFrame(int nCmdShow, char * frameTitle)
 {
-
 	//::AllocConsole();
 
 	//-----------------------
@@ -72,12 +72,14 @@ HRESULT Frame::InitializeFrame(int nCmdShow, char * frameTitle)
 	ShowWindow(m_hWnd, nCmdShow);
 	UpdateWindow(m_hWnd);
 
+	if (!input.Initialize(m_hInstance, m_hWnd, rect.right - rect.left, rect.bottom - rect.top)) {
+	}
+
 	return S_OK;
 }
 
 HRESULT Frame::Release() 
 {
-
 	// TODO: 핸들 유효와 클래스이름 유효 검사
 
 	CloseWindow(m_hWnd);
@@ -136,7 +138,6 @@ HRESULT Frame::Release()
 
 HWND Frame::GetHWND() 
 {
-
 	if (m_hWnd != NULL) { return m_hWnd; }
 	else				{ return 0; }
 }
@@ -149,28 +150,32 @@ bool Frame::IsActive()
 
 LRESULT CALLBACK Frame::HandleWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) 
 {
-
 	Frame * localFrame = reinterpret_cast<Frame *>(GetWindowLongPtr(hWnd, 0));
 
 	if (localFrame)			{ return localFrame->WndProc(hWnd, msg, wParam, lParam); }
-	else                    { return DefWindowProc(hWnd, msg, wParam, lParam);       }
-
+	else                    { return DefWindowProc(hWnd, msg, wParam, lParam); }
 }
 
 LRESULT CALLBACK Frame::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-
 	switch (msg) 
 	{
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			break;
 
+		case WM_KEYDOWN:
+			//keyboard.OnKeyPressed(static_cast<unsigned char>(wParam));
+			break;
+
+		case WM_KEYUP:
+			//keyboard.OnKeyReleased(static_cast<unsigned char>(wParam));
+			break;
+
 		case WM_CHAR:
-			MessageBox(hWnd, "Dfsdf", "Dfsdf", MB_OK);
+			//keyboard.OnChar(static_cast<unsigned char>(wParam));
 			break;
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);
-
 }

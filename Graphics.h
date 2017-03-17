@@ -15,6 +15,9 @@ private:
 	ID2D1Factory * m_pDirect2DFactory;
 	ID2D1HwndRenderTarget * m_pRenderTarget;
 
+	//THISLINE:브러쉬 테스트
+	ID2D1SolidColorBrush * brush;
+
 	bool m_bIsInitialized;
 
 private:
