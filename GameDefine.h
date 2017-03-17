@@ -6,7 +6,7 @@ namespace GameUtils{
 
 	template <typename T>
 	void SafeRelease(T ** pTy) {
-		if(pTy) {
+		if((*pTy)) {
 			(*pTy)->Release();
 			(*pTy) = NULL;
 		}
