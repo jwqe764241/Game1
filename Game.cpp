@@ -19,7 +19,7 @@ HRESULT Game::Start(int nCmdShow, char * frameTitle)
 	if (FAILED(m_pFrame->InitializeFrame(nCmdShow, frameTitle)))	  { return S_FALSE; }
 	if (FAILED(m_pGraphics->initialize(m_pFrame->GetHWND())))		  { return S_FALSE; }
 
-	m_RenderList.push_back(new Player(10.0f, 10.0f, m_pGraphics));
+	m_RenderList.push_back(new Player(100.0f, 100.0f, m_pGraphics));
 
 	return S_OK;
 }
@@ -43,7 +43,8 @@ void Game::StartLooping()
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
-    }
+		}
+		m_pFrame->input.ReadInput();
 		Update();
 		Render();
 	}
