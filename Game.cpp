@@ -100,6 +100,12 @@ void Game::StartLooping()
 				bIsRunning = false;
 				break;
 			}
+			else if (msg.message == WM_KEYDOWN) {
+				reinterpret_cast<Player*>(m_RenderList.at(0))->SetFrame(191);
+			}
+			else if (msg.message == WM_KEYUP) {
+				reinterpret_cast<Player*>(m_RenderList.at(0))->SetFrame(0);
+			}
 
 			else {
 				TranslateMessage(&msg);

@@ -31,14 +31,14 @@ Player::~Player()
 
 void Player::Draw(Graphics * gfx) 
 {
-	m_pSpriteSheet->Draw((m_frame/10) % 5, 100, 100);
+	m_pSpriteSheet->Draw((m_frame / 10 / 19) * 19 + ((m_frame / 10) % 5), 100, 100);
 	//gfx->PutPixel(m_ObjectPoint);
 }
 
 void Player::Update()
 {
 	m_frame++;
-	if (m_frame == 50) m_frame = 0;
+	if (m_frame % 190 == 0 && m_frame > 0) m_frame -= 190;
 }
 
 void Player::Update(D2D1_POINT_2F point) 
@@ -51,4 +51,11 @@ void Player::Update(float x, float y)
 {
 	m_ObjectPoint.x += x;
 	m_ObjectPoint.y += y;
+}
+
+void Player::SetFrame(UINT frame)
+{
+	if (m_frame/190 != frame/190) {
+		m_frame = frame;
+	}
 }

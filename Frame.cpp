@@ -183,8 +183,13 @@ LRESULT CALLBACK Frame::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 			PostQuitMessage(0);
 			break;
 
-		case WM_CHAR:
-			MessageBox(hWnd, "Dfsdf", "Dfsdf", MB_OK);
+		case WM_KEYUP:
+			//MessageBox(hWnd, "asdf", "aSDf", MB_OK);
+
+			break;
+
+		case WM_KEYDOWN:
+			//MessageBox(hWnd, "Dfsdf", "Dfsdf", MB_OK);
 			break;
 	}
 
