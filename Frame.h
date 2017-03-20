@@ -1,23 +1,21 @@
 #pragma once
 
 #include <Windows.h>
-
-#include <stdlib.h>
-#include <malloc.h>
-#include <memory.h>
-#include <wchar.h>
-#include <math.h>
+#include <cassert>
+#include <thread>
+#include "Keyboard.h"
+#include "DX_Input.h"
 
 class Frame
 {
-
 private:
 	HWND m_hWnd;
 	HINSTANCE m_hInstance;
 	char * m_lpcWndClassName;
 
 public:
-	
+	Keyboard keyboard;
+	DX_Input input;
 //ÀÛ¾÷
 public:
 	Frame(HINSTANCE hInstance, char * wndClassName);
@@ -32,6 +30,5 @@ public:
 
 	static LRESULT CALLBACK HandleWndProc(HWND, UINT, WPARAM, LPARAM);
 	LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
-
 };
 

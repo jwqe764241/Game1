@@ -1,5 +1,7 @@
 #pragma once
-class Enemy
+#include "IActor.h"
+
+class Enemy : public IActor
 {
 public:
 	Enemy();

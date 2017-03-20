@@ -3,9 +3,6 @@
 #include "resource.h"
 #include "Frame.h"
 
-#include <cassert>
-#include <thread>
-
 Frame::Frame(HINSTANCE hInstance, char * wndClassName): 
 	m_hWnd(NULL),
 	m_hInstance (hInstance),
@@ -18,13 +15,6 @@ Frame::~Frame()
 
 HRESULT Frame::InitializeFrame(int nCmdShow, char * frameTitle)
 {
-
-	//::AllocConsole();
-
-	//-----------------------
-	assert(m_hInstance != NULL);
-	//-----------------------
-
 	WNDCLASSEX wndClass;	ZeroMemory(&wndClass, sizeof(WNDCLASSEX));
 		wndClass.cbSize = sizeof(WNDCLASSEX);
 		wndClass.style = CS_HREDRAW | CS_VREDRAW;
@@ -58,141 +48,53 @@ HRESULT Frame::InitializeFrame(int nCmdShow, char * frameTitle)
 		m_hInstance,
 		this);
 
-	/*m_hWnd = CreateWindow(m_lpcWndClassName,
-		frameTitle,
-		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT,
-		CW_USEDEFAULT,
-		rect.right - rect.left,
-		rect.bottom - rect.top,
-		NULL,
-		NULL,
-		m_hInstance,
-		this);*/
-
 	SetWindowLongPtr(m_hWnd, 0, reinterpret_cast<LONG_PTR>(this));
 
 	ShowWindow(m_hWnd, nCmdShow);
 	UpdateWindow(m_hWnd);
+
+	if (!input.Initialize(m_hInstance, m_hWnd, rect.right - rect.left, rect.bottom - rect.top)) {
+	}
 
 	return S_OK;
 }
 
 HRESULT Frame::Release() 
 {
-
-	// TODO: 핸들 유효와 클래스이름 유효 검사
-
 	CloseWindow(m_hWnd);
 	delete m_lpcWndClassName;
 
 	return S_OK;
 }
-//
-//void Frame::LoopMessage() {
-//
-//	bool bIsRunning = true;
-//	
-//	/*
-//	std::thread thLoopBody([&bIsRunning](){
-//
-//		MSG msg;
-//
-//		while (bIsRunning)
-//		{
-//			while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
-//			{
-//				TranslateMessage(&msg);
-//				DispatchMessage(&msg);
-//			}
-//
-//			if (msg.message == WM_QUIT) {
-//				bIsRunning = false;
-//			}
-//		}
-//
-//	});
-//	*/
-//
-//	MSG msg;
-//
-//	while (bIsRunning)
-//	{
-//		while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
-//		{
-//
-//			if (msg.message == WM_QUIT) {
-//				bIsRunning = false;
-//			}
-//			else {
-//				TranslateMessage(&msg);
-//				DispatchMessage(&msg);
-//			}
-//
-//		}
-//
-//	}
-//
-//	
-//
-//}
 
 HWND Frame::GetHWND() 
 {
-
-	if (m_hWnd != NULL) {
-
-		return m_hWnd;
-	}
-	else {
-
-		return 0;
-	}
+	if (m_hWnd != NULL) { return m_hWnd; }
+	else				{ return 0; }
 }
 
 bool Frame::IsActive() 
 {
-
-	if (m_hWnd != NULL) {
-
-		return m_hWnd == GetActiveWindow();
-	}
-	else {
-
-		return 0;
-	}
+	if (m_hWnd != NULL) { return m_hWnd == GetActiveWindow(); }
+	else				{ return false; }
 }
-
 
 LRESULT CALLBACK Frame::HandleWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) 
 {
-
 	Frame * localFrame = reinterpret_cast<Frame *>(GetWindowLongPtr(hWnd, 0));
 
-	if (localFrame != NULL) { return localFrame->WndProc(hWnd, msg, wParam, lParam); }
-	else                    { return DefWindowProc(hWnd, msg, wParam, lParam);       }
-
+	if (localFrame)			{ return localFrame->WndProc(hWnd, msg, wParam, lParam); }
+	else                    { return DefWindowProc(hWnd, msg, wParam, lParam); }
 }
 
 LRESULT CALLBACK Frame::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-
 	switch (msg) 
 	{
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			break;
-
-		case WM_KEYUP:
-			//MessageBox(hWnd, "asdf", "aSDf", MB_OK);
-
-			break;
-
-		case WM_KEYDOWN:
-			//MessageBox(hWnd, "Dfsdf", "Dfsdf", MB_OK);
-			break;
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);
-
 }

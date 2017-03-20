@@ -1,13 +1,5 @@
 #include "Player.h"
 
-
-
-//Player::Player()
-//{
-//	m_ObjectPoint.x = 0;
-//	m_ObjectPoint.y = 0;
-//}
-
 Player::Player(Graphics * gfx) : m_frame(0)
 {
 	m_pSpriteSheet = new SpriteSheet(L"Image/Sprite.png", gfx, 64, 64);
@@ -32,25 +24,22 @@ Player::~Player()
 void Player::Draw(Graphics * gfx) 
 {
 	m_pSpriteSheet->Draw((m_frame / 10 / 19) * 19 + ((m_frame / 10) % 5), 100, 100);
-	//gfx->PutPixel(m_ObjectPoint);
 }
 
-void Player::Update()
+void Player::Update(DX_Input & input) 
 {
-	m_frame++;
-	if (m_frame % 190 == 0 && m_frame > 0) m_frame -= 190;
-}
-
-void Player::Update(D2D1_POINT_2F point) 
-{
-	m_ObjectPoint.x += point.x;
-	m_ObjectPoint.y += point.y;
-}
-
-void Player::Update(float x, float y)
-{
-	m_ObjectPoint.x += x;
-	m_ObjectPoint.y += y;
+	if (input.m_KeyboardState[DIK_D]) {
+		m_ObjectPoint.x += 5;
+	}
+	if (input.m_KeyboardState[DIK_A]) {
+		m_ObjectPoint.x -= 5;
+	}
+	if (input.m_KeyboardState[DIK_W]) {
+		m_ObjectPoint.y -= 5;
+	}
+	if (input.m_KeyboardState[DIK_S]) {
+		m_ObjectPoint.y += 5;
+	}
 }
 
 void Player::SetFrame(UINT frame)

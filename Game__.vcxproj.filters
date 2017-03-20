@@ -57,6 +57,11 @@
     </Filter>
     <Filter Include="소스 파일\Renderable\SpriteHandler">
       <UniqueIdentifier>{fa3e40a2-0372-4e01-886d-e495694201de}</UniqueIdentifier>
+    <Filter Include="소스 파일\Input">
+      <UniqueIdentifier>{61809122-230f-47d0-82c3-df17a500ebb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Input">
+      <UniqueIdentifier>{0e87e4ac-8299-4526-9ccb-ec35f53b7459}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +91,11 @@
     </ClCompile>
     <ClCompile Include="SpriteSheet.cpp">
       <Filter>소스 파일\Renderable\SpriteHandler</Filter>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>소스 파일\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="DX_Input.cpp">
+      <Filter>소스 파일\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +134,11 @@
     </ClInclude>
     <ClInclude Include="SpriteSheet.h">
       <Filter>헤더 파일\Renderable\SpriteHandler</Filter>
+    <ClInclude Include="Keyboard.h">
+      <Filter>헤더 파일\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="DX_Input.h">
+      <Filter>헤더 파일\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
