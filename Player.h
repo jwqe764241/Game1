@@ -25,8 +25,6 @@ public:
 
 	//void Update(Keyboard & keyboard) override;
 	void Update(DX_Input & input) override;
-	void Update(D2D1_POINT_2F point) override;
-	void Update(float x, float y) override;
 
 	void SetFrame(UINT frame);
 };
