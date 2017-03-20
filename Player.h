@@ -2,16 +2,22 @@
 
 #include "Graphics.h"
 #include "IActor.h"
+#include "SpriteSheet.h"
 
 class Player : public IActor
 {
 private:
 	D2D1_POINT_2F m_ObjectPoint;
+	SpriteSheet* m_pSpriteSheet;
+
+	UINT m_frame;
+
 public:
 
-	Player();
-	Player(D2D1_POINT_2F point);
-	Player(float x, float y);
+	Player() = delete;
+	Player(Graphics* gfx);
+	Player(D2D1_POINT_2F point, Graphics* gfx);
+	Player(float x, float y, Graphics* gfx);
 
 	~Player() override;
 
@@ -21,5 +27,7 @@ public:
 	void Update(DX_Input & input) override;
 	void Update(D2D1_POINT_2F point) override;
 	void Update(float x, float y) override;
+
+	void SetFrame(UINT frame);
 };
 

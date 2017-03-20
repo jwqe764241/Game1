@@ -13,15 +13,8 @@ Frame::~Frame()
 {
 }
 
-
 HRESULT Frame::InitializeFrame(int nCmdShow, char * frameTitle)
 {
-	//::AllocConsole();
-
-	//-----------------------
-	assert(m_hInstance != NULL);
-	//-----------------------
-
 	WNDCLASSEX wndClass;	ZeroMemory(&wndClass, sizeof(WNDCLASSEX));
 		wndClass.cbSize = sizeof(WNDCLASSEX);
 		wndClass.style = CS_HREDRAW | CS_VREDRAW;
@@ -55,18 +48,6 @@ HRESULT Frame::InitializeFrame(int nCmdShow, char * frameTitle)
 		m_hInstance,
 		this);
 
-	/*m_hWnd = CreateWindow(m_lpcWndClassName,
-		frameTitle,
-		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT,
-		CW_USEDEFAULT,
-		rect.right - rect.left,
-		rect.bottom - rect.top,
-		NULL,
-		NULL,
-		m_hInstance,
-		this);*/
-
 	SetWindowLongPtr(m_hWnd, 0, reinterpret_cast<LONG_PTR>(this));
 
 	ShowWindow(m_hWnd, nCmdShow);
@@ -80,61 +61,11 @@ HRESULT Frame::InitializeFrame(int nCmdShow, char * frameTitle)
 
 HRESULT Frame::Release() 
 {
-	// TODO: 핸들 유효와 클래스이름 유효 검사
-
 	CloseWindow(m_hWnd);
 	delete m_lpcWndClassName;
 
 	return S_OK;
 }
-//
-//void Frame::LoopMessage() {
-//
-//	bool bIsRunning = true;
-//	
-//	/*
-//	std::thread thLoopBody([&bIsRunning](){
-//
-//		MSG msg;
-//
-//		while (bIsRunning)
-//		{
-//			while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
-//			{
-//				TranslateMessage(&msg);
-//				DispatchMessage(&msg);
-//			}
-//
-//			if (msg.message == WM_QUIT) {
-//				bIsRunning = false;
-//			}
-//		}
-//
-//	});
-//	*/
-//
-//	MSG msg;
-//
-//	while (bIsRunning)
-//	{
-//		while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
-//		{
-//
-//			if (msg.message == WM_QUIT) {
-//				bIsRunning = false;
-//			}
-//			else {
-//				TranslateMessage(&msg);
-//				DispatchMessage(&msg);
-//			}
-//
-//		}
-//
-//	}
-//
-//	
-//
-//}
 
 HWND Frame::GetHWND() 
 {
@@ -162,18 +93,6 @@ LRESULT CALLBACK Frame::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 	{
 		case WM_DESTROY:
 			PostQuitMessage(0);
-			break;
-
-		case WM_KEYDOWN:
-			//keyboard.OnKeyPressed(static_cast<unsigned char>(wParam));
-			break;
-
-		case WM_KEYUP:
-			//keyboard.OnKeyReleased(static_cast<unsigned char>(wParam));
-			break;
-
-		case WM_CHAR:
-			//keyboard.OnChar(static_cast<unsigned char>(wParam));
 			break;
 	}
 
