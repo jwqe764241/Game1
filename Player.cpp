@@ -23,7 +23,7 @@ Player::~Player()
 
 void Player::Draw(Graphics * gfx) 
 {
-	m_pSpriteSheet->Draw((m_frame / 10 / 19) * 19 + ((m_frame / 10) % 5), 100, 100);
+	m_pSpriteSheet->Draw((m_frame / 10 / 19) * 19 + ((m_frame / 10) % 5), m_ObjectPoint.x, m_ObjectPoint.y);
 }
 
 void Player::Update(DX_Input & input) 
