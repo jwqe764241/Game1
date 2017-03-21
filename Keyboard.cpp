@@ -1,6 +1,8 @@
 #include "Keyboard.h"
 
+//프로젝트에서 제외됨
 
+/*
 Keyboard::Keyboard()
 {
 }
@@ -101,3 +103,4 @@ void Keyboard::TrimBuffer(std::queue<T>& buffer)
 		buffer.pop();
 	}
 }
+*/

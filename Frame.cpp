@@ -1,7 +1,8 @@
-#pragma comment(lib, "d2d1")
-
-#include "resource.h"
 #include "Frame.h"
+
+//프로젝트에서 제외됨
+
+/*
 
 Frame::Frame(HINSTANCE hInstance, char * wndClassName): 
 	m_hWnd(NULL),
@@ -98,3 +99,4 @@ LRESULT CALLBACK Frame::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);
 }
+*/
