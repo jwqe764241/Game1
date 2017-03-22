@@ -18,7 +18,7 @@ public:
 	~SpriteSheet();
 
 	void Draw();
-	void Draw(UINT index, UINT x, UINT y);
+	void Draw(UINT index, FLOAT x, FLOAT y);
 
 private:
 	HRESULT LoadBitmapFromFile(PCWSTR resourceName, ID2D1Bitmap ** ppBitmap);

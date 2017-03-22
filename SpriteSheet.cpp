@@ -40,7 +40,7 @@ void SpriteSheet::Draw()
 	);
 }
 
-void SpriteSheet::Draw(UINT index, UINT x, UINT y)
+void SpriteSheet::Draw(UINT index, FLOAT x, FLOAT y)
 {
 	D2D1_RECT_F src = D2D1::RectF(
 		(FLOAT)((index % m_spriteAcross) * m_spriteWidth),
