@@ -1,4 +1,8 @@
 #pragma once
+
+//프로젝트에서 제외됨
+
+/*
 #include <queue>
 #include <bitset>
 
@@ -79,3 +83,4 @@ private:
 	std::queue<char> charBuffer;
 	std::queue<Event> keyBuffer;
 };
+*/

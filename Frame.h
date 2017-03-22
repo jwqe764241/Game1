@@ -1,9 +1,11 @@
 #pragma once
 
+//프로젝트에서 제외됨
+
+/*
 #include <Windows.h>
 #include <cassert>
 #include <thread>
-#include "Keyboard.h"
 #include "DX_Input.h"
 
 class Frame
@@ -32,3 +34,4 @@ public:
 	LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
 };
 
+*/
