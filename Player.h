@@ -26,6 +26,7 @@ public:
 	//void Update(Keyboard & keyboard) override;
 	void Update(DX_Input & input) override;
 
+	void UpdateFrame();
 	void SetFrame(UINT frame);
 };
 

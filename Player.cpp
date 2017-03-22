@@ -28,18 +28,49 @@ void Player::Draw(Graphics * gfx)
 
 void Player::Update(DX_Input & input) 
 {
-	if (input.m_KeyboardState[DIK_D]) {
-		m_ObjectPoint.x += 5;
-	}
-	if (input.m_KeyboardState[DIK_A]) {
-		m_ObjectPoint.x -= 5;
-	}
-	if (input.m_KeyboardState[DIK_W]) {
-		m_ObjectPoint.y -= 5;
-	}
+	m_frame++;
+
+	int moveDirectionCount = 0;
+	float x = 0.f, y = 0.f;
+	float speed = 3.f;
+
 	if (input.m_KeyboardState[DIK_S]) {
-		m_ObjectPoint.y += 5;
+		moveDirectionCount = 1;
+		y += 5;
 	}
+	else if (input.m_KeyboardState[DIK_W]) {
+		moveDirectionCount = 2;
+		y -= 5;
+	}
+	if (input.m_KeyboardState[DIK_D]) {
+		moveDirectionCount = 3;
+		x += 5;
+	}
+	else if (input.m_KeyboardState[DIK_A]) {
+		moveDirectionCount = 4;
+		x -= 5;
+	}
+
+	if (input.m_KeyboardState[DIK_LSHIFT]) {
+		speed *= 1.5f;
+	}
+
+	float length = sqrt(pow(x, 2) + pow(y, 2));
+
+	if (length > 0) {
+		x *= speed / length;
+		y *= speed / length;
+		m_ObjectPoint.x += x;
+		m_ObjectPoint.y += y;
+	}
+
+	SetFrame(moveDirectionCount * 190 + 1);
+}
+
+void Player::UpdateFrame()
+{
+	m_frame++;
+	if (m_frame > 0 && m_frame % 190 == 0) m_frame -= 190;
 }
 
 void Player::SetFrame(UINT frame)
