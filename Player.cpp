@@ -1,5 +1,7 @@
 #include "Player.h"
 
+#include <iostream>
+
 Player::Player(Graphics * gfx) : m_frame(0)
 {
 	m_pSpriteSheet = new SpriteSheet(L"Image/Sprite.png", gfx, 64, 64);
@@ -19,6 +21,7 @@ Player::Player(float x, float y, Graphics* gfx) : Player(gfx)
 
 Player::~Player()
 {
+	delete m_pSpriteSheet;
 }
 
 void Player::Draw(Graphics * gfx) 

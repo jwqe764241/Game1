@@ -157,6 +157,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="TestLevel.cpp" />
+    <ClCompile Include="TestLevel2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DX_Input.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="TestLevel.h" />
+    <ClInclude Include="TestLevel2.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />

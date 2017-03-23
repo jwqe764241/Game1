@@ -2,7 +2,7 @@
 
 #include "Level.h"
 
-class TestLevel : public Level
+class TestLevel2 : public Level
 {
 private:
 	Graphics			  * m_pGraphics;
@@ -16,9 +16,9 @@ private:
 	wchar_t * m_lpszFilePath;
 	bool m_bIsInitialized;
 public:
-	TestLevel(Graphics * gfx);
-	~TestLevel();
-	
+	TestLevel2(Graphics * gfx);
+	~TestLevel2();
+
 	void Load()   override;
 	void Unload() override;
 	void Render() override;

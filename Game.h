@@ -3,11 +3,14 @@
 #include <Windows.h>
 #include <memory>
 #include <vector>
+#include <thread>
 #include "Graphics.h"
 #include "Player.h"
 #include "IActor.h"
+#include "TestLevel.h"
+#include "TestLevel2.h"
+#include "LevelController.h"
 #include "GameDefine.h"
-
 
 class Game 
 {
@@ -37,7 +40,9 @@ class Game
 	}m_Frame;
 
 private:
-	Graphics * m_pGraphics;
+	Graphics  * m_pGraphics;
+	LevelController levelController;
+	
 
 	std::vector<IActor *> m_RenderList;
 

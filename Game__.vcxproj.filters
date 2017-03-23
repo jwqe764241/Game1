@@ -34,6 +34,9 @@
     <ClCompile Include="TestLevel.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="TestLevel2.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestLevel.h">
@@ -76,6 +79,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="DX_Input.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestLevel2.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

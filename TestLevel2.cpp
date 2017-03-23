@@ -1,19 +1,20 @@
-#include "TestLevel.h"
+#include "TestLevel2.h"
 
 
 
-TestLevel::TestLevel(Graphics * gfx)
+TestLevel2::TestLevel2(Graphics * gfx)
 	:m_pGraphics(gfx),
 	 m_bIsInitialized(true),
-	 m_lpszFilePath(L"Level_Background1.jpg")
+	 m_lpszFilePath(L"Level_Background2.jpg")
 {
 }
 
-TestLevel::~TestLevel()
+
+TestLevel2::~TestLevel2()
 {
 }
 
-void TestLevel::Load() 
+void TestLevel2::Load()
 {
 	assert(m_bIsInitialized == true);
 
@@ -45,7 +46,7 @@ void TestLevel::Load()
 
 }
 
-void TestLevel::Unload() 
+void TestLevel2::Unload()
 {
 	GameUtils::SafeRelease(&m_pDecoder);
 	GameUtils::SafeRelease(&m_pFrameDecode);
@@ -53,7 +54,7 @@ void TestLevel::Unload()
 	GameUtils::SafeRelease(&m_pBitmap);
 }
 
-void TestLevel::Render() 
+void TestLevel2::Render()
 {
 	assert(m_bIsInitialized == true);
 
@@ -63,14 +64,14 @@ void TestLevel::Render()
 
 	D2D1_RECT_F rect;
 	rect.bottom = size.height;
-	rect.left   = 0;
-	rect.right  = size.width;
-	rect.top    = 0;
-		
-	m_pGraphics->GetRenderTaget()->DrawBitmap(m_pBitmap, rect);
+	rect.left = 0;
+	rect.right = size.width;
+	rect.top = 0;
+
+	m_pGraphics->GetRenderTaget()->DrawBitmap(m_pBitmap, rect, 1.0, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, rect);;
 }
 
-void TestLevel::Update()
+void TestLevel2::Update()
 {
 
 }
