@@ -96,6 +96,18 @@
     <Image Include="bitmap1.bmp">
       <Filter>Resources\Images</Filter>
     </Image>
+    <Image Include="Image\Level_BackTile.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Image\Level_Backtile2.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Image\Level_Backtile3.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Image\Level_Backtile4.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="__1.txt" />

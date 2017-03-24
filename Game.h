@@ -33,6 +33,7 @@ class Game
 
 			HWND GetHWND();
 			bool IsActive();
+			DX_Input * GetInput() { return &input; }
 
 			static LRESULT CALLBACK HandleWndProc(HWND, UINT, WPARAM, LPARAM);
 			LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
@@ -42,9 +43,6 @@ class Game
 private:
 	Graphics  * m_pGraphics;
 	LevelController levelController;
-	
-
-	std::vector<IActor *> m_RenderList;
 
 public:
 	Game(HINSTANCE hInstance, char * wndClassName);

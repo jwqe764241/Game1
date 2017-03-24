@@ -30,13 +30,15 @@ HRESULT Game::Frame::InitializeFrame(int nCmdShow, char * frameTitle, Graphics *
 		wndClass.hInstance = m_hInstance;
 		wndClass.hIcon = (HICON)LoadImage(m_hInstance, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 32, 32, 0);
 		wndClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
-		wndClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+		//wndClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 		wndClass.lpszMenuName = nullptr;
 		wndClass.lpszClassName = m_lpcWndClassName;
 		wndClass.hIconSm = (HICON)LoadImage(m_hInstance, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 16, 16, 0);
 	RegisterClassEx(&wndClass);
 
-	RECT rect = { 0, 0, 1280, 720 };
+	RECT rect;
+	
+	::GetWindowRect(GetDesktopWindow(), &rect);
 
 	AdjustWindowRectEx(&rect, WS_OVERLAPPEDWINDOW, false, WS_EX_OVERLAPPEDWINDOW);
 
@@ -44,7 +46,7 @@ HRESULT Game::Frame::InitializeFrame(int nCmdShow, char * frameTitle, Graphics *
 		NULL,
 		m_lpcWndClassName,
 		frameTitle,
-		WS_OVERLAPPEDWINDOW,
+		WS_EX_TOPMOST | WS_POPUP,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
 		rect.right - rect.left,
@@ -99,6 +101,7 @@ LRESULT CALLBACK Game::Frame::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM
 	switch (msg)
 	{
 	case WM_DESTROY:
+	case WM_QUIT:
 		PostQuitMessage(0);
 		break;
 	case WM_SIZE:
@@ -133,9 +136,7 @@ HRESULT Game::Start(int nCmdShow, char * frameTitle)
 	if (FAILED(m_Frame.InitializeFrame(nCmdShow, frameTitle, m_pGraphics)))	  { return S_FALSE; }
 	if (FAILED(m_pGraphics->initialize(m_Frame.GetHWND())))	  { return S_FALSE; }
 
-	levelController.LoadLevel(new TestLevel(m_pGraphics));
-
-	m_RenderList.push_back(new Player(100.0f, 100.0f, m_pGraphics));
+	levelController.LoadLevel(new TestLevel(m_pGraphics, m_Frame.GetInput()));
 
 	return S_OK;
 }
@@ -169,9 +170,6 @@ void Game::StartLooping()
 
 void Game::Update()
 {
-	for (std::vector<IActor *>::iterator itor = m_RenderList.begin(); itor < m_RenderList.end(); itor++) {
-		(*itor)->Update(m_Frame.input);
-	}
 
 	levelController.Update();
 
@@ -185,10 +183,6 @@ void Game::Render()
 		m_pGraphics->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
   
 		levelController.Render();
-
-		for (std::vector<IActor *>::iterator itor = m_RenderList.begin(); itor < m_RenderList.end(); itor++) {
-			(*itor)->Draw(m_pGraphics);
-		}
 
 	m_pGraphics->EndDraw();
 }

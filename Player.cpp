@@ -40,6 +40,7 @@ void Player::Update(DX_Input & input)
 	if (input.m_KeyboardState[DIK_S]) {
 		moveDirectionCount = 1;
 		y += 5;
+
 	}
 	else if (input.m_KeyboardState[DIK_W]) {
 		moveDirectionCount = 2;

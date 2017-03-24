@@ -1,6 +1,9 @@
 #pragma once
 
+#include <vector>
 #include "Level.h"
+#include "Player.h"
+#include "IActor.h"
 
 class TestLevel : public Level
 {
@@ -13,10 +16,19 @@ private:
 	D2D1_RENDER_TARGET_PROPERTIES m_renderProperties;
 	ID2D1Bitmap	* m_pBitmap;
 
+	DX_Input * m_pInput;
+
 	wchar_t * m_lpszFilePath;
 	bool m_bIsInitialized;
+
+	//·»´õ ¸®½ºÆ®
+	Player * m_pPlayer;
+	std::vector<IActor *> m_RenderEnemy;
+	std::vector<IActor *> m_RenderEnvir;
+
 public:
-	TestLevel(Graphics * gfx);
+	TestLevel(Graphics * gfx, DX_Input * pInput);
+	TestLevel(Graphics * gfx, Player * player, DX_Input * pInput);
 	~TestLevel();
 	
 	void Load()   override;

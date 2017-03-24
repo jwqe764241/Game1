@@ -27,7 +27,7 @@ SpriteSheet::~SpriteSheet()
 
 void SpriteSheet::Draw()
 {
-	gfx->GetRenderTaget()->DrawBitmap(
+	gfx->GetRenderTarget()->DrawBitmap(
 		m_pBitmap,
 		D2D1::RectF(0.f, 0.f,
 			m_pBitmap->GetSize().width,
@@ -54,7 +54,7 @@ void SpriteSheet::Draw(UINT index, FLOAT x, FLOAT y)
 		x + m_spriteWidth, y + m_spriteHeight
 	);
 
-	gfx->GetRenderTaget()->DrawBitmap(
+	gfx->GetRenderTarget()->DrawBitmap(
 		m_pBitmap,
 		dest,
 		1.0f,
@@ -106,7 +106,7 @@ HRESULT SpriteSheet::LoadBitmapFromFile(
 
 	if (SUCCEEDED(hr))
 	{
-		hr = gfx->GetRenderTaget()->CreateBitmapFromWicBitmap(
+		hr = gfx->GetRenderTarget()->CreateBitmapFromWicBitmap(
 			pConverter,
 			NULL,
 			ppBitmap
