@@ -3,6 +3,7 @@
 #include "Graphics.h"
 #include "IActor.h"
 #include "SpriteSheet.h"
+#include "Weapon.h"
 
 class Player : public IActor
 {
@@ -11,6 +12,13 @@ private:
 	SpriteSheet* m_pSpriteSheet;
 
 	UINT m_frame;
+
+	// weapon
+	SpriteSheet* m_pArrowSpriteSheet;
+	std::vector<Weapon> m_arrowList;
+	float m_arrowCoolDown;
+	float m_arrowCurCoolDown;
+	bool m_isArrowFired;
 
 public:
 
@@ -24,9 +32,16 @@ public:
 	void Draw(Graphics * gfx) override;
 
 	//void Update(Keyboard & keyboard) override;
-	void Update(DX_Input & input) override;
+	void Update(DX_Input & input, float dt) override;
+	void UpdateWeapon(std::vector<Weapon>& pWeapon);
 
+private:
+	// Animation Frame.
 	void UpdateFrame();
 	void SetFrame(UINT frame);
+
+	// Combat System.
+	void GetAttackKey(DX_Input & input, float dt);
+	void Attack();
 };
 

@@ -28,6 +28,9 @@ public:
 	bool IsKeyPressed(DWORD keyCode);
 public:
 	unsigned char m_KeyboardState[256];
+
+	//DIMOUSESTATE2?는 rgbButton의 요소 갯수가 4개 더 많음;?
+	DIMOUSESTATE  m_MouseState;
 private:
 	bool ReadKeyboard();
 	bool ReadMouse();
@@ -37,9 +40,6 @@ private:
 	IDirectInput8		* m_pDirectInput;
 	IDirectInputDevice8 * m_pKeyboardDevice;
 	IDirectInputDevice8 * m_pMouseDevice;
-
-	//DIMOUSESTATE2?는 rgbButton의 요소 갯수가 4개 더 많음;?
-	DIMOUSESTATE  m_MouseState;
 
 	SCREENSIZE m_ScreenSize;
 	MOUSEPOINT m_MousePoint;

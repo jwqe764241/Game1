@@ -114,6 +114,7 @@ Game::Game(HINSTANCE hInstance, char * wndClassName)
 	: m_pGraphics(new Graphics()),
 	  m_Frame(hInstance, wndClassName)
 {
+	m_pTimer = GameTimer();
 }
 
 Game::~Game()
@@ -127,6 +128,8 @@ HRESULT Game::Start(int nCmdShow, char * frameTitle)
 	if (FAILED(m_pGraphics->initialize(m_Frame.GetHWND())))	  { return S_FALSE; }
 
 	m_RenderList.push_back(new Player(100.0f, 100.0f, m_pGraphics));
+
+	m_pTimer.Initialize();
 
 	return S_OK;
 }
@@ -160,8 +163,9 @@ void Game::StartLooping()
 
 void Game::Update()
 {
+	m_pTimer.Frame();
 	for (std::vector<IActor *>::iterator itor = m_RenderList.begin(); itor < m_RenderList.end(); itor++) {
-		(*itor)->Update(m_Frame.input);
+		(*itor)->Update(m_Frame.input, m_pTimer.GetTime());
 	}
 }
 

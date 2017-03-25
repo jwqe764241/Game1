@@ -45,8 +45,8 @@ void SpriteSheet::Draw(UINT index, FLOAT x, FLOAT y)
 	D2D1_RECT_F src = D2D1::RectF(
 		(FLOAT)((index % m_spriteAcross) * m_spriteWidth),
 		(FLOAT)((index / m_spriteAcross) * m_spriteHeight),
-		(FLOAT)((index % m_spriteAcross) * m_spriteWidth) + m_spriteWidth,
-		(FLOAT)((index / m_spriteAcross) * m_spriteHeight) + m_spriteHeight
+		(FLOAT)((index % m_spriteAcross) * m_spriteWidth) + m_spriteWidth-1,
+		(FLOAT)((index / m_spriteAcross) * m_spriteHeight) + m_spriteHeight-1
 	);
 
 	D2D1_RECT_F dest = D2D1::RectF(

@@ -6,6 +6,7 @@
 #include "Graphics.h"
 #include "Player.h"
 #include "IActor.h"
+#include "GameTimer.h"
 #include "GameDefine.h"
 
 
@@ -40,6 +41,8 @@ private:
 	Graphics * m_pGraphics;
 
 	std::vector<IActor *> m_RenderList;
+public:
+	GameTimer m_pTimer;
 
 public:
 	Game(HINSTANCE hInstance, char * wndClassName);
