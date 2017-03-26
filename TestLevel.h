@@ -13,8 +13,9 @@ private:
 	IWICBitmapDecoder	  * m_pDecoder;
 	IWICBitmapFrameDecode * m_pFrameDecode;
 	IWICFormatConverter	  * m_pConvertedBitmap;
+	ID2D1Bitmap			  * m_pBitmap;
+
 	D2D1_RENDER_TARGET_PROPERTIES m_renderProperties;
-	ID2D1Bitmap	* m_pBitmap;
 
 	DX_Input * m_pInput;
 

@@ -67,11 +67,11 @@ HRESULT SpriteSheet::LoadBitmapFromFile(
 	PCWSTR resourceName,
 	ID2D1Bitmap** ppBitmap)
 {
-	IWICBitmapDecoder *pDecoder = NULL;
-	IWICBitmapFrameDecode *pSource = NULL;
-	IWICStream *pStream = NULL;
-	IWICFormatConverter *pConverter = NULL;
-	IWICBitmapScaler *pScaler = NULL;
+	IWICBitmapDecoder *pDecoder		= nullptr;
+	IWICBitmapFrameDecode *pSource	= nullptr;
+	IWICStream *pStream				= nullptr;
+	IWICFormatConverter *pConverter = nullptr;
+	IWICBitmapScaler *pScaler		= nullptr;
 
 	DWORD imageFileSize = 0;
 

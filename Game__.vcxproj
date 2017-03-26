@@ -180,7 +180,6 @@
     <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="bitmap1.bmp" />
     <Image Include="icon1.ico" />
     <Image Include="Image\Level_BackTile.png" />
     <Image Include="Image\Level_Backtile2.png" />

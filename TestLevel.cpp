@@ -94,7 +94,6 @@ void TestLevel::Render()
 	}
 
 	m_pPlayer->Draw(m_pGraphics);
-
 }
 
 void TestLevel::Update()
@@ -104,8 +103,8 @@ void TestLevel::Update()
 	if (m_pPlayer->GetPoint().x + 400 > 4000) {
 		m_pGraphics->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation((4000 * -1) + 800, 0));
 	}
-	else if (m_pPlayer->GetPoint().x > 400) {
-		m_pGraphics->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((m_pPlayer->GetPoint().x) * -1) + 400, 0));
+	else if (m_pPlayer->GetPoint().x > 800) {
+		m_pGraphics->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((m_pPlayer->GetPoint().x) * -1) + 800, 0));
 	}
 	else if (m_pPlayer->GetPoint().x < 400) {
 		m_pGraphics->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(0, 0));

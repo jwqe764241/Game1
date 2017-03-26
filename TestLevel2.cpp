@@ -42,8 +42,6 @@ void TestLevel2::Load()
 	m_renderProperties = D2D1::RenderTargetProperties();
 	m_pGraphics->GetD2DFactory()->GetDesktopDpi(&m_renderProperties.dpiX, &m_renderProperties.dpiY);
 	m_pGraphics->GetRenderTarget()->CreateBitmapFromWicBitmap(m_pConvertedBitmap, NULL, &m_pBitmap);
-
-
 }
 
 void TestLevel2::Unload()
@@ -61,14 +59,9 @@ void TestLevel2::Render()
 	//RECT rect; GetWindowRect(m_pGraphics->GetRenderTaget()->GetHwnd(), &rect);
 
 	D2D1_SIZE_F size = m_pGraphics->GetRenderTarget()->GetSize();
+	D2D1_RECT_F rect = {0 ,0, size.width, size.height};
 
-	D2D1_RECT_F rect;
-	rect.bottom = size.height;
-	rect.left = 0;
-	rect.right = size.width;
-	rect.top = 0;
-
-	m_pGraphics->GetRenderTarget()->DrawBitmap(m_pBitmap, rect, 1.0, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, rect);;
+	m_pGraphics->GetRenderTarget()->DrawBitmap(m_pBitmap, rect, 1.0, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, rect);
 }
 
 void TestLevel2::Update()

@@ -93,9 +93,6 @@
     <Image Include="Image\Sprite.png">
       <Filter>Resources\Images</Filter>
     </Image>
-    <Image Include="bitmap1.bmp">
-      <Filter>Resources\Images</Filter>
-    </Image>
     <Image Include="Image\Level_BackTile.png">
       <Filter>Resources\Images</Filter>
     </Image>

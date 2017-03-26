@@ -40,7 +40,6 @@ void Player::Update(DX_Input & input)
 	if (input.m_KeyboardState[DIK_S]) {
 		moveDirectionCount = 1;
 		y += 5;
-
 	}
 	else if (input.m_KeyboardState[DIK_W]) {
 		moveDirectionCount = 2;
@@ -74,12 +73,10 @@ void Player::Update(DX_Input & input)
 void Player::UpdateFrame()
 {
 	m_frame++;
-	if (m_frame > 0 && m_frame % 190 == 0) m_frame -= 190;
+	if (m_frame > 0 && m_frame % 190 == 0) { m_frame -= 190; }
 }
 
 void Player::SetFrame(UINT frame)
 {
-	if (m_frame/190 != frame/190) {
-		m_frame = frame;
-	}
+	if (m_frame/190 != frame/190) { m_frame = frame; }
 }
