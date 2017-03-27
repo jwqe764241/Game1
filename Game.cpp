@@ -3,6 +3,8 @@
 #include "Game.h"
 #include "resource.h"
 
+#include <string>
+
 Game::Frame::Frame(HINSTANCE hInstance, char * wndClassName) 
 	:m_hWnd(NULL),
 	 m_hInstance(hInstance),
@@ -11,29 +13,36 @@ Game::Frame::Frame(HINSTANCE hInstance, char * wndClassName)
 }
 Game::Frame::~Frame()
 {
+	CloseHandle(m_hWnd);
+	CloseHandle(m_hInstance);
+	delete m_lpcWndClassName;
+	delete m_pGraphics;
 }
 
 HRESULT Game::Frame::InitializeFrame(int nCmdShow, char * frameTitle, Graphics * pGraphics)
 {
 	WNDCLASSEX wndClass;	ZeroMemory(&wndClass, sizeof(WNDCLASSEX));
-	wndClass.cbSize = sizeof(WNDCLASSEX);
-	wndClass.style = CS_HREDRAW | CS_VREDRAW;
-	wndClass.lpfnWndProc = &Frame::HandleWndProc;
-	wndClass.cbClsExtra = 0;
-	wndClass.cbWndExtra = sizeof(Frame*);
-	wndClass.hInstance = m_hInstance;
-	wndClass.hIcon = (HICON)LoadImage(m_hInstance, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 32, 32, 0);
-	wndClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
-	wndClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-	wndClass.lpszMenuName = nullptr;
-	wndClass.lpszClassName = m_lpcWndClassName;
-	wndClass.hIconSm = (HICON)LoadImage(m_hInstance, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 16, 16, 0);
+		wndClass.cbSize = sizeof(WNDCLASSEX);
+		wndClass.style = CS_HREDRAW | CS_VREDRAW;
+		wndClass.lpfnWndProc = &Frame::HandleWndProc;
+		wndClass.cbClsExtra = 0;
+		wndClass.cbWndExtra = sizeof(Frame*);
+		wndClass.hInstance = m_hInstance;
+		wndClass.hIcon = (HICON)LoadImage(m_hInstance, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 32, 32, 0);
+		wndClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
+		//wndClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+		wndClass.lpszMenuName = nullptr;
+		wndClass.lpszClassName = m_lpcWndClassName;
+		wndClass.hIconSm = (HICON)LoadImage(m_hInstance, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 16, 16, 0);
 	RegisterClassEx(&wndClass);
 
-	RECT rect = { 0, 0, 800, 600 };
+	RECT rect = {0, 0, 800, 600};
+	
+	//::GetWindowRect(GetDesktopWindow(), &rect);
 
 	AdjustWindowRectEx(&rect, WS_OVERLAPPEDWINDOW, false, WS_EX_OVERLAPPEDWINDOW);
 
+	//WS_EX_TOPMOST | WS_POPUP
 	m_hWnd = CreateWindowEx(
 		NULL,
 		m_lpcWndClassName,
@@ -93,14 +102,16 @@ LRESULT CALLBACK Game::Frame::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM
 	switch (msg)
 	{
 	case WM_DESTROY:
+	case WM_QUIT:
 		PostQuitMessage(0);
 		break;
 	case WM_SIZE:
 		if (m_pGraphics != nullptr) {
 			RECT rect;	GetWindowRect(m_hWnd, &rect);
-			m_pGraphics->OnResize( (rect.right - rect.left) , (rect.bottom - rect.top) );
+			m_pGraphics->OnResize((rect.right - rect.left), (rect.bottom - rect.top));
 		}
 		break;
+
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);
@@ -126,7 +137,7 @@ HRESULT Game::Start(int nCmdShow, char * frameTitle)
 	if (FAILED(m_Frame.InitializeFrame(nCmdShow, frameTitle, m_pGraphics)))	  { return S_FALSE; }
 	if (FAILED(m_pGraphics->initialize(m_Frame.GetHWND())))	  { return S_FALSE; }
 
-	m_RenderList.push_back(new Player(100.0f, 100.0f, m_pGraphics));
+	levelController.LoadLevel(new TestLevel(m_pGraphics, m_Frame.GetInput()));
 
 	return S_OK;
 }
@@ -160,9 +171,9 @@ void Game::StartLooping()
 
 void Game::Update()
 {
-	for (std::vector<IActor *>::iterator itor = m_RenderList.begin(); itor < m_RenderList.end(); itor++) {
-		(*itor)->Update(m_Frame.input);
-	}
+
+	levelController.Update();
+
 }
 
 
@@ -172,9 +183,7 @@ void Game::Render()
 
 		m_pGraphics->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
   
-		for (std::vector<IActor *>::iterator itor = m_RenderList.begin(); itor < m_RenderList.end(); itor++) {
-			(*itor)->Draw(m_pGraphics);
-		}
+		levelController.Render();
 
 	m_pGraphics->EndDraw();
 }

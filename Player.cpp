@@ -1,5 +1,7 @@
 #include "Player.h"
 
+#include <iostream>
+
 Player::Player(Graphics * gfx) : m_frame(0)
 {
 	m_pSpriteSheet = new SpriteSheet(L"Image/Sprite.png", gfx, 64, 64);
@@ -19,6 +21,7 @@ Player::Player(float x, float y, Graphics* gfx) : Player(gfx)
 
 Player::~Player()
 {
+	delete m_pSpriteSheet;
 }
 
 void Player::Draw(Graphics * gfx) 
@@ -70,12 +73,10 @@ void Player::Update(DX_Input & input)
 void Player::UpdateFrame()
 {
 	m_frame++;
-	if (m_frame > 0 && m_frame % 190 == 0) m_frame -= 190;
+	if (m_frame > 0 && m_frame % 190 == 0) { m_frame -= 190; }
 }
 
 void Player::SetFrame(UINT frame)
 {
-	if (m_frame/190 != frame/190) {
-		m_frame = frame;
-	}
+	if (m_frame/190 != frame/190) { m_frame = frame; }
 }

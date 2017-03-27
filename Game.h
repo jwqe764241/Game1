@@ -3,11 +3,14 @@
 #include <Windows.h>
 #include <memory>
 #include <vector>
+#include <thread>
 #include "Graphics.h"
 #include "Player.h"
 #include "IActor.h"
+#include "TestLevel.h"
+#include "TestLevel2.h"
+#include "LevelController.h"
 #include "GameDefine.h"
-
 
 class Game 
 {
@@ -30,6 +33,7 @@ class Game
 
 			HWND GetHWND();
 			bool IsActive();
+			DX_Input * GetInput() { return &input; }
 
 			static LRESULT CALLBACK HandleWndProc(HWND, UINT, WPARAM, LPARAM);
 			LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
@@ -37,9 +41,8 @@ class Game
 	}m_Frame;
 
 private:
-	Graphics * m_pGraphics;
-
-	std::vector<IActor *> m_RenderList;
+	Graphics  * m_pGraphics;
+	LevelController levelController;
 
 public:
 	Game(HINSTANCE hInstance, char * wndClassName);

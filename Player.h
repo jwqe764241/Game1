@@ -13,7 +13,6 @@ private:
 	UINT m_frame;
 
 public:
-
 	Player() = delete;
 	Player(Graphics* gfx);
 	Player(D2D1_POINT_2F point, Graphics* gfx);
@@ -28,5 +27,7 @@ public:
 
 	void UpdateFrame();
 	void SetFrame(UINT frame);
+
+	D2D1_POINT_2F GetPoint() { return m_ObjectPoint; }
 };
 
