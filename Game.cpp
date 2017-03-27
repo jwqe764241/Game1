@@ -36,17 +36,18 @@ HRESULT Game::Frame::InitializeFrame(int nCmdShow, char * frameTitle, Graphics *
 		wndClass.hIconSm = (HICON)LoadImage(m_hInstance, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 16, 16, 0);
 	RegisterClassEx(&wndClass);
 
-	RECT rect;
+	RECT rect = {0, 0, 800, 600};
 	
-	::GetWindowRect(GetDesktopWindow(), &rect);
+	//::GetWindowRect(GetDesktopWindow(), &rect);
 
 	AdjustWindowRectEx(&rect, WS_OVERLAPPEDWINDOW, false, WS_EX_OVERLAPPEDWINDOW);
 
+	//WS_EX_TOPMOST | WS_POPUP
 	m_hWnd = CreateWindowEx(
 		NULL,
 		m_lpcWndClassName,
 		frameTitle,
-		WS_EX_TOPMOST | WS_POPUP,
+		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
 		rect.right - rect.left,
