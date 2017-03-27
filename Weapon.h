@@ -5,7 +5,7 @@
 class Weapon
 {
 public:
-	Weapon(SpriteSheet* pSpriteSheet, D2D1_POINT_2F offset);
+	Weapon(SpriteSheet* pSpriteSheet, D2D1_POINT_2F offset, float range);
 	~Weapon();
 
 	void Shoot(float speed);
@@ -18,4 +18,5 @@ private:
 	SpriteSheet* m_pSpriteSheet;
 	D2D1_POINT_2F m_offset;
 	float m_xOffset;
+	float m_range;
 };

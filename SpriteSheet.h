@@ -9,6 +9,8 @@ private:
 
 	ID2D1Bitmap* m_pBitmap;
 	ID2D1BitmapBrush* m_pBitmapBrush;
+
+public:
 	UINT m_spriteWidth, m_spriteHeight;
 	UINT m_spriteAcross;
 

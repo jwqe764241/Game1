@@ -1,8 +1,8 @@
 #include "Player.h"
 
 Player::Player(Graphics * gfx)
-	: m_frame(0), m_isArrowFired(false),
-	m_arrowCoolDown(20.f)
+	: m_pGfx(gfx), m_frame(0), m_isArrowFired(false),
+	m_arrowCoolDown(15.f)
 {
 	m_pSpriteSheet = new SpriteSheet(L"Image/Sprite.png", gfx, 64, 64);
 	m_pArrowSpriteSheet = new SpriteSheet(L"Image/Arrow.png", gfx, 64, 64);
@@ -32,7 +32,7 @@ void Player::Draw(Graphics * gfx)
 
 void Player::Update(DX_Input & input, float dt) 
 {
-	m_frame++;
+	UpdateFrame();
 
 	int moveDirectionCount = 0;
 	float x = 0.f, y = 0.f;
@@ -69,6 +69,15 @@ void Player::Update(DX_Input & input, float dt)
 		m_ObjectPoint.x += x;
 		m_ObjectPoint.y += y;
 	}
+	if (ClampPosition() && !(moveDirectionCount > 2 && m_ObjectPoint.x > 0)) {
+		UINT height = m_pGfx->GetRenderTaget()->GetSize().height - m_pSpriteSheet->m_spriteHeight;
+		if (y != 0 && m_ObjectPoint.x == 0 && (m_ObjectPoint.y > 0 && m_ObjectPoint.y < height) && moveDirectionCount == 4) {
+			moveDirectionCount = y > 0 ? 1 : 2;
+		}
+		else if ((moveDirectionCount < 3) || (moveDirectionCount == 4 && m_ObjectPoint.x == 0)) {
+			moveDirectionCount = 0;
+		}
+	}
 
 	SetFrame(moveDirectionCount * 190 + 1);
 }
@@ -98,4 +107,25 @@ void Player::SetFrame(UINT frame)
 	if (m_frame/190 != frame/190) {
 		m_frame = frame;
 	}
+}
+
+bool Player::ClampPosition()
+{
+	UINT height = m_pGfx->GetRenderTaget()->GetSize().height;
+	bool isValid = false;
+
+	if (m_ObjectPoint.x < 0) {
+		m_ObjectPoint.x = 0;
+		isValid |= true;
+	}
+	if (m_ObjectPoint.y < 0) {
+		m_ObjectPoint.y = 0;
+		isValid |= true;
+	}
+	if (m_ObjectPoint.y > height - m_pSpriteSheet->m_spriteHeight) {
+		m_ObjectPoint.y = height - m_pSpriteSheet->m_spriteHeight;
+		isValid |= true;
+	}
+
+	return isValid;
 }

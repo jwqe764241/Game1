@@ -8,6 +8,8 @@
 class Player : public IActor
 {
 private:
+	Graphics* m_pGfx;
+
 	D2D1_POINT_2F m_ObjectPoint;
 	SpriteSheet* m_pSpriteSheet;
 
@@ -39,6 +41,8 @@ private:
 	// Animation Frame.
 	void UpdateFrame();
 	void SetFrame(UINT frame);
+
+	bool ClampPosition();
 
 	// Combat System.
 	void GetAttackKey(DX_Input & input, float dt);

@@ -174,11 +174,15 @@ void Game::Render()
 {
 	m_pGraphics->BeginDraw();
 
-		m_pGraphics->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
+	m_pGraphics->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
   
-		for (std::vector<IActor *>::iterator itor = m_RenderList.begin(); itor < m_RenderList.end(); itor++) {
-			(*itor)->Draw(m_pGraphics);
-		}
+	for (std::vector<IActor *>::iterator itor = m_RenderList.begin(); itor < m_RenderList.end(); itor++) {
+		(*itor)->Draw(m_pGraphics);
+	}
 
-	m_pGraphics->EndDraw();
+	HRESULT hr = m_pGraphics->EndDraw();
+	if (hr == D2DERR_RECREATE_TARGET)
+	{
+		m_pGraphics->ReleaseDeviceResource();
+	}
 }

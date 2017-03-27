@@ -17,11 +17,9 @@ private:
 
 	IWICImagingFactory    * m_pIWICFactory;
 
-	bool m_bIsInitialized;
+	HWND m_hwnd;
 
-private:
-	HRESULT CreateDeviceResource(HWND hWnd);
-	void ReleaseDeviceResource();
+	bool m_bIsInitialized;
 
 public:
 	Graphics();
@@ -29,13 +27,16 @@ public:
 
 	HRESULT initialize(HWND targetHWND);
 
+	HRESULT CreateDeviceResource(HWND hWnd);
+	void ReleaseDeviceResource();
+
 	void BeginDraw() {
 		assert(m_bIsInitialized == true);
 		m_pRenderTarget->BeginDraw(); 
 	}
-	void EndDraw() {
+	HRESULT EndDraw() {
 		assert(m_bIsInitialized == true);
-		m_pRenderTarget->EndDraw(); 
+		return m_pRenderTarget->EndDraw(); 
 	}
 
 	void ClearScreen(D2D1::ColorF color);
