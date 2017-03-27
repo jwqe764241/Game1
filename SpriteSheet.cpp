@@ -27,7 +27,7 @@ SpriteSheet::~SpriteSheet()
 
 void SpriteSheet::Draw()
 {
-	gfx->GetRenderTaget()->DrawBitmap(
+	gfx->GetRenderTarget()->DrawBitmap(
 		m_pBitmap,
 		D2D1::RectF(0.f, 0.f,
 			m_pBitmap->GetSize().width,
@@ -40,7 +40,7 @@ void SpriteSheet::Draw()
 	);
 }
 
-void SpriteSheet::Draw(UINT index, UINT x, UINT y)
+void SpriteSheet::Draw(UINT index, FLOAT x, FLOAT y)
 {
 	D2D1_RECT_F src = D2D1::RectF(
 		(FLOAT)((index % m_spriteAcross) * m_spriteWidth),
@@ -54,7 +54,7 @@ void SpriteSheet::Draw(UINT index, UINT x, UINT y)
 		x + m_spriteWidth, y + m_spriteHeight
 	);
 
-	gfx->GetRenderTaget()->DrawBitmap(
+	gfx->GetRenderTarget()->DrawBitmap(
 		m_pBitmap,
 		dest,
 		1.0f,
@@ -67,11 +67,11 @@ HRESULT SpriteSheet::LoadBitmapFromFile(
 	PCWSTR resourceName,
 	ID2D1Bitmap** ppBitmap)
 {
-	IWICBitmapDecoder *pDecoder = NULL;
-	IWICBitmapFrameDecode *pSource = NULL;
-	IWICStream *pStream = NULL;
-	IWICFormatConverter *pConverter = NULL;
-	IWICBitmapScaler *pScaler = NULL;
+	IWICBitmapDecoder *pDecoder		= nullptr;
+	IWICBitmapFrameDecode *pSource	= nullptr;
+	IWICStream *pStream				= nullptr;
+	IWICFormatConverter *pConverter = nullptr;
+	IWICBitmapScaler *pScaler		= nullptr;
 
 	DWORD imageFileSize = 0;
 
@@ -106,7 +106,7 @@ HRESULT SpriteSheet::LoadBitmapFromFile(
 
 	if (SUCCEEDED(hr))
 	{
-		hr = gfx->GetRenderTaget()->CreateBitmapFromWicBitmap(
+		hr = gfx->GetRenderTarget()->CreateBitmapFromWicBitmap(
 			pConverter,
 			NULL,
 			ppBitmap

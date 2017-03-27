@@ -34,6 +34,9 @@
     <ClCompile Include="TestLevel.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="TestLevel2.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestLevel.h">
@@ -78,6 +81,9 @@
     <ClInclude Include="DX_Input.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="TestLevel2.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
@@ -87,7 +93,16 @@
     <Image Include="Image\Sprite.png">
       <Filter>Resources\Images</Filter>
     </Image>
-    <Image Include="bitmap1.bmp">
+    <Image Include="Image\Level_BackTile.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Image\Level_Backtile2.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Image\Level_Backtile3.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Image\Level_Backtile4.png">
       <Filter>Resources\Images</Filter>
     </Image>
   </ItemGroup>
