@@ -74,8 +74,8 @@ void TestLevel::Render()
 	D2D1_RECT_F renderRect = {0, 0, m_LevelSize.width, m_LevelSize.height};
 	D2D1_RECT_F imageRect = { 0, 0, 300, 300 };
 	
-	int curWidth = 0;
-	int curHeight = 0;
+	float curWidth  = 0;
+	float curHeight = 0;
 
 	while (curHeight < m_LevelSize.height) {
 

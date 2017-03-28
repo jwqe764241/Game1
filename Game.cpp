@@ -3,30 +3,26 @@
 #include "Game.h"
 #include "resource.h"
 
-#include <string>
-
-Game::Frame::Frame(HINSTANCE hInstance, char * wndClassName) 
-	:m_hWnd(NULL),
+Game::Game(HINSTANCE hInstance, char * wndClassName)
+	:m_pGraphics(new Graphics()),
 	 m_hInstance(hInstance),
 	 m_lpcWndClassName(wndClassName)
 {
 }
-Game::Frame::~Frame()
+Game::~Game()
 {
-	CloseHandle(m_hWnd);
-	CloseHandle(m_hInstance);
-	delete m_lpcWndClassName;
 	delete m_pGraphics;
 }
 
-HRESULT Game::Frame::InitializeFrame(int nCmdShow, char * frameTitle, Graphics * pGraphics)
+
+HRESULT Game::InitializeFrame(int nCmdShow, char * frameTitle)
 {
 	WNDCLASSEX wndClass;	ZeroMemory(&wndClass, sizeof(WNDCLASSEX));
 		wndClass.cbSize = sizeof(WNDCLASSEX);
 		wndClass.style = CS_HREDRAW | CS_VREDRAW;
-		wndClass.lpfnWndProc = &Frame::HandleWndProc;
+		wndClass.lpfnWndProc = Game::HandleWndProc;
 		wndClass.cbClsExtra = 0;
-		wndClass.cbWndExtra = sizeof(Frame*);
+		wndClass.cbWndExtra = sizeof(Game*);
 		wndClass.hInstance = m_hInstance;
 		wndClass.hIcon = (HICON)LoadImage(m_hInstance, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 32, 32, 0);
 		wndClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
@@ -62,42 +58,37 @@ HRESULT Game::Frame::InitializeFrame(int nCmdShow, char * frameTitle, Graphics *
 	ShowWindow(m_hWnd, nCmdShow);
 	UpdateWindow(m_hWnd);
 
-	m_pGraphics = pGraphics;
-
 	if (!input.Initialize(m_hInstance, m_hWnd, rect.right - rect.left, rect.bottom - rect.top)) { return S_FALSE; }
 
 	return S_OK;
 }
 
-HRESULT Game::Frame::Release()
+HRESULT Game::Release()
 {
 	CloseWindow(m_hWnd);
 	delete m_lpcWndClassName;
 
 	return S_OK;
 }
-
-HWND Game::Frame::GetHWND()
+HWND Game::GetHWND()
 {
 	if (m_hWnd != NULL) { return m_hWnd; }
 	else { return 0; }
 }
-
-bool Game::Frame::IsActive()
+bool Game::IsActive()
 {
 	if (m_hWnd != NULL) { return m_hWnd == GetActiveWindow(); }
 	else { return false; }
 }
 
-LRESULT CALLBACK Game::Frame::HandleWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK Game::HandleWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	Frame * localFrame = reinterpret_cast<Frame *>(GetWindowLongPtr(hWnd, 0));
+	Game * localFrame = reinterpret_cast<Game *>(GetWindowLongPtr(hWnd, 0));
 
 	if (localFrame) { return localFrame->WndProc(hWnd, msg, wParam, lParam); }
 	else { return DefWindowProc(hWnd, msg, wParam, lParam); }
 }
-
-LRESULT CALLBACK Game::Frame::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
 	{
@@ -121,28 +112,17 @@ LRESULT CALLBACK Game::Frame::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM
 //---------------------------------------------------------------------------------------------//
 
 
-Game::Game(HINSTANCE hInstance, char * wndClassName)
-	: m_pGraphics(new Graphics()),
-	  m_Frame(hInstance, wndClassName)
-{
-}
-
-Game::~Game()
-{
-	delete m_pGraphics;
-}
-
 HRESULT Game::Start(int nCmdShow, char * frameTitle)
 {
-	if (FAILED(m_Frame.InitializeFrame(nCmdShow, frameTitle, m_pGraphics)))	  { return S_FALSE; }
-	if (FAILED(m_pGraphics->initialize(m_Frame.GetHWND())))	  { return S_FALSE; }
+	if (FAILED(InitializeFrame(nCmdShow, frameTitle)))				  { return S_FALSE; }
+	if (FAILED(m_pGraphics->initialize(GetHWND())))					  { return S_FALSE; }
 
-	levelController.LoadLevel(new TestLevel(m_pGraphics, m_Frame.GetInput()));
+	levelController.LoadLevel(new TestLevel(m_pGraphics, &input));
 
 	return S_OK;
 }
 
-void Game::StartLooping()
+void Game::Looping()
 {
 	MSG msg;
 
@@ -162,7 +142,7 @@ void Game::StartLooping()
 				DispatchMessage(&msg);
 			}
 		}
-		m_Frame.input.ReadInput();
+		input.ReadInput();
 		Update();
 		Render();
 	}

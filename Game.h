@@ -14,31 +14,28 @@
 
 class Game 
 {
-	class Frame{
-		private:
-			HWND m_hWnd;
-			HINSTANCE m_hInstance;
-			char * m_lpcWndClassName;
-			Graphics * m_pGraphics;
+	//Frame 클래스 내용
 
-		public:
-			DX_Input input;
+private:
+	HWND m_hWnd;
+	HINSTANCE m_hInstance;
+	char * m_lpcWndClassName;
 
-		public:
-			Frame(HINSTANCE hInstance, char * wndClassName);
-			~Frame();
+public:
+	DX_Input input;
 
-			HRESULT InitializeFrame(int nCmdShow, char * frameTitle, Graphics * pGraphics);
-			HRESULT Release();
+public:
+	HRESULT InitializeFrame(int nCmdShow, char * frameTitle);
+	HRESULT Release();
 
-			HWND GetHWND();
-			bool IsActive();
-			DX_Input * GetInput() { return &input; }
+	HWND GetHWND();
+	bool IsActive();
+	DX_Input * GetInput() { return &input; }
 
-			static LRESULT CALLBACK HandleWndProc(HWND, UINT, WPARAM, LPARAM);
-			LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
+	static LRESULT CALLBACK HandleWndProc(HWND, UINT, WPARAM, LPARAM);
+	LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
+	//Frame 클래스 끝
 
-	}m_Frame;
 
 private:
 	Graphics  * m_pGraphics;
@@ -54,6 +51,6 @@ public:
 	void Update();
 	void Render();
 
-	void StartLooping();
+	void Looping();
 };
 
