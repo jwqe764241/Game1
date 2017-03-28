@@ -7,6 +7,7 @@
 #include "Graphics.h"
 #include "Player.h"
 #include "IActor.h"
+#include "GameTimer.h"
 #include "TestLevel.h"
 #include "TestLevel2.h"
 #include "LevelController.h"
@@ -14,7 +15,7 @@
 
 class Game 
 {
-	//Frame Å¬·¡½º ³»¿ë
+	//Frame Ã…Â¬Â·Â¡Â½Âº Â³Â»Â¿Ã«
 
 private:
 	HWND m_hWnd;
@@ -34,10 +35,12 @@ public:
 
 	static LRESULT CALLBACK HandleWndProc(HWND, UINT, WPARAM, LPARAM);
 	LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
-	//Frame Å¬·¡½º ³¡
+	//Frame Ã…Â¬Â·Â¡Â½Âº Â³Â¡
 
 
 private:
+public:
+	GameTimer m_pTimer;
 	Graphics  * m_pGraphics;
 	LevelController levelController;
 

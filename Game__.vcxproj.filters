@@ -34,6 +34,15 @@
     <ClCompile Include="TestLevel.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerAttack.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTimer.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
     <ClCompile Include="TestLevel2.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
@@ -79,6 +88,12 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="DX_Input.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTimer.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="TestLevel2.h">
