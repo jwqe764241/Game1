@@ -71,7 +71,7 @@ void Player::Update(DX_Input & input, float dt)
 		m_ObjectPoint.y += y;
 	}
 	if (ClampPosition() && !(moveDirectionCount > 2 && m_ObjectPoint.x > 0)) {
-		UINT height = m_pGfx->GetRenderTaget()->GetSize().height - m_pSpriteSheet->m_spriteHeight;
+		UINT height = m_pGfx->GetRenderTarget()->GetSize().height - m_pSpriteSheet->m_spriteHeight;
 		if (y != 0 && m_ObjectPoint.x == 0 && (m_ObjectPoint.y > 0 && m_ObjectPoint.y < height) && moveDirectionCount == 4) {
 			moveDirectionCount = y > 0 ? 1 : 2;
 		}
@@ -110,7 +110,7 @@ void Player::SetFrame(UINT frame)
 
 bool Player::ClampPosition()
 {
-	UINT height = m_pGfx->GetRenderTaget()->GetSize().height;
+	UINT height = m_pGfx->GetRenderTarget()->GetSize().height;
 	bool isValid = false;
 
 	if (m_ObjectPoint.x < 0) {

@@ -36,6 +36,8 @@ public:
 	void Update(DX_Input & input, float dt) override;
 	void UpdateWeapon(std::vector<Weapon>& pWeapon);
 
+	D2D1_POINT_2F GetPoint() { return m_ObjectPoint; }
+
 private:
 	// Animation Frame.
 	void UpdateFrame();
@@ -46,7 +48,5 @@ private:
 	// Combat System.
 	void GetAttackKey(DX_Input & input, float dt);
 	void Attack();
-  
-	D2D1_POINT_2F GetPoint() { return m_ObjectPoint; }
 };
 

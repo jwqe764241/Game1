@@ -93,9 +93,9 @@ void TestLevel::Render()
 	m_pPlayer->Draw(m_pGraphics);
 }
 
-void TestLevel::Update()
+void TestLevel::Update(float dt)
 {
-	m_pPlayer->Update(*m_pInput);
+	m_pPlayer->Update(*m_pInput, dt);
 
 	/*
 	if (m_pPlayer->GetPoint().x + 400 > 4000) {

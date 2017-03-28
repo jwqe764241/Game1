@@ -22,6 +22,6 @@ public:
 	void Load()   override;
 	void Unload() override;
 	void Render() override;
-	void Update() override;
+	void Update(float dt) override;
 };
 

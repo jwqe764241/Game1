@@ -155,7 +155,7 @@ void Game::Update()
 {
 	m_pTimer.Frame();
 
-	levelController.Update();
+	levelController.Update(m_pTimer.GetTime());
 }
 
 

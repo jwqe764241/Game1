@@ -17,7 +17,10 @@ void Player::GetAttackKey(DX_Input & input, float dt)
 void Player::Attack()
 {
 	if (m_isArrowFired) {
-		m_arrowList.push_back(Weapon(m_pArrowSpriteSheet, m_ObjectPoint, 700));
+		D2D1_POINT_2F offset = D2D1::Point2F(
+			m_ObjectPoint.x + m_pArrowSpriteSheet->m_spriteWidth,
+			m_ObjectPoint.y);
+		m_arrowList.push_back(Weapon(m_pArrowSpriteSheet, offset, 700));
 		m_isArrowFired = false;
 	}
 }
