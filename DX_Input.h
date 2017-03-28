@@ -3,7 +3,7 @@
 #include <dinput.h>
 
 
-//TODO:³ªÁß¿£ GameDefine¿¡ À§Ä¡ÇÏ¿© ÀÖÀ»°Í
+//TODO:ë‚˜ì¤‘ì—” GameDefineì— ìœ„ì¹˜í•˜ì—¬ ìˆì„ê²ƒ
 typedef struct _SCREENSIZE {
 	int width;
 	int height;
@@ -28,9 +28,9 @@ public:
 	bool IsKeyPressed(DWORD keyCode);
 public:
 	unsigned char m_KeyboardState[256];
-
-	//DIMOUSESTATE2?´Â rgbButtonÀÇ ¿ä¼Ò °¹¼ö°¡ 4°³ ´õ ¸¹À½;?
 	DIMOUSESTATE  m_MouseState;
+	MOUSEPOINT m_MousePoint;
+  
 private:
 	bool ReadKeyboard();
 	bool ReadMouse();
@@ -42,7 +42,6 @@ private:
 	IDirectInputDevice8 * m_pMouseDevice;
 
 	SCREENSIZE m_ScreenSize;
-	MOUSEPOINT m_MousePoint;
 
 	bool m_bIsInitialized;
 };

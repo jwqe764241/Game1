@@ -3,46 +3,46 @@
 #include <Windows.h>
 #include <memory>
 #include <vector>
+#include <thread>
 #include "Graphics.h"
 #include "Player.h"
 #include "IActor.h"
 #include "GameTimer.h"
+#include "TestLevel.h"
+#include "TestLevel2.h"
+#include "LevelController.h"
 #include "GameDefine.h"
-
 
 class Game 
 {
-	class Frame{
-		private:
-			HWND m_hWnd;
-			HINSTANCE m_hInstance;
-			char * m_lpcWndClassName;
-			Graphics * m_pGraphics;
-
-		public:
-			DX_Input input;
-
-		public:
-			Frame(HINSTANCE hInstance, char * wndClassName);
-			~Frame();
-
-			HRESULT InitializeFrame(int nCmdShow, char * frameTitle, Graphics * pGraphics);
-			HRESULT Release();
-
-			HWND GetHWND();
-			bool IsActive();
-
-			static LRESULT CALLBACK HandleWndProc(HWND, UINT, WPARAM, LPARAM);
-			LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
-
-	}m_Frame;
+	//Frame Å¬·¡½º ³»¿ë
 
 private:
-	Graphics * m_pGraphics;
+	HWND m_hWnd;
+	HINSTANCE m_hInstance;
+	char * m_lpcWndClassName;
 
-	std::vector<IActor *> m_RenderList;
+public:
+	DX_Input input;
+
+public:
+	HRESULT InitializeFrame(int nCmdShow, char * frameTitle);
+	HRESULT Release();
+
+	HWND GetHWND();
+	bool IsActive();
+	DX_Input * GetInput() { return &input; }
+
+	static LRESULT CALLBACK HandleWndProc(HWND, UINT, WPARAM, LPARAM);
+	LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
+	//Frame Å¬·¡½º ³¡
+
+
+private:
 public:
 	GameTimer m_pTimer;
+	Graphics  * m_pGraphics;
+	LevelController levelController;
 
 public:
 	Game(HINSTANCE hInstance, char * wndClassName);
@@ -54,6 +54,6 @@ public:
 	void Update();
 	void Render();
 
-	void StartLooping();
+	void Looping();
 };
 

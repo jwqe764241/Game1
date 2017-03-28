@@ -23,7 +23,6 @@ private:
 	bool m_isArrowFired;
 
 public:
-
 	Player() = delete;
 	Player(Graphics* gfx);
 	Player(D2D1_POINT_2F point, Graphics* gfx);
@@ -47,5 +46,7 @@ private:
 	// Combat System.
 	void GetAttackKey(DX_Input & input, float dt);
 	void Attack();
+  
+	D2D1_POINT_2F GetPoint() { return m_ObjectPoint; }
 };
 

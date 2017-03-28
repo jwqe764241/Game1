@@ -55,7 +55,8 @@ HRESULT Graphics::initialize(HWND TargetHWND)
 		CLSCTX_INPROC_SERVER,
 		IID_IWICImagingFactory,
 		(LPVOID*)&m_pIWICFactory)) { return S_FALSE; }
-	if (CreateDeviceResource(TargetHWND) != S_OK)										   { return S_FALSE; }
+
+	if (CreateDeviceResource(TargetHWND) != S_OK) { return S_FALSE; }
 
 	m_bIsInitialized = true;
 

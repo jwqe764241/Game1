@@ -43,7 +43,8 @@ public:
 
 	void OnResize(UINT width, UINT height);
 
-	ID2D1HwndRenderTarget* GetRenderTaget() { return m_pRenderTarget; }
-	IWICImagingFactory* GetImagingFactory() { return m_pIWICFactory; }
+	ID2D1HwndRenderTarget * GetRenderTarget() { return m_pRenderTarget; }
+	IWICImagingFactory* GetImagingFactory()  { return m_pIWICFactory; }
+	ID2D1Factory* GetD2DFactory()			 { return m_pDirect2DFactory; }
 };
 
