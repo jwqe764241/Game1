@@ -14,7 +14,7 @@ public:
 	void LoadLevel(Level * level);
 	void ChangeLevel(Level * level);
 
-	void Update();
+	void Update(float dt);
 	void Render();
 
 };

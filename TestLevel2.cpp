@@ -64,7 +64,7 @@ void TestLevel2::Render()
 	m_pGraphics->GetRenderTarget()->DrawBitmap(m_pBitmap, rect, 1.0, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, rect);
 }
 
-void TestLevel2::Update()
+void TestLevel2::Update(float dt)
 {
 
 }

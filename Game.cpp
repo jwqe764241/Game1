@@ -8,6 +8,7 @@ Game::Game(HINSTANCE hInstance, char * wndClassName)
 	 m_hInstance(hInstance),
 	 m_lpcWndClassName(wndClassName)
 {
+	m_pTimer = GameTimer();
 }
 Game::~Game()
 {
@@ -111,13 +112,14 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 
 //---------------------------------------------------------------------------------------------//
 
-
 HRESULT Game::Start(int nCmdShow, char * frameTitle)
 {
 	if (FAILED(InitializeFrame(nCmdShow, frameTitle)))				  { return S_FALSE; }
 	if (FAILED(m_pGraphics->initialize(GetHWND())))					  { return S_FALSE; }
 
 	levelController.LoadLevel(new TestLevel(m_pGraphics, &input));
+
+	m_pTimer.Initialize();
 
 	return S_OK;
 }
@@ -151,9 +153,9 @@ void Game::Looping()
 
 void Game::Update()
 {
+	m_pTimer.Frame();
 
-	levelController.Update();
-
+	levelController.Update(m_pTimer.GetTime());
 }
 
 
@@ -161,9 +163,13 @@ void Game::Render()
 {
 	m_pGraphics->BeginDraw();
 
-		m_pGraphics->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
+	m_pGraphics->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
   
-		levelController.Render();
-
-	m_pGraphics->EndDraw();
+	levelController.Render();
+  
+  HRESULT hr = m_pGraphics->EndDraw();
+	if (hr == D2DERR_RECREATE_TARGET)
+	{
+		m_pGraphics->ReleaseDeviceResource();
+	}
 }

@@ -27,9 +27,9 @@ void LevelController::ChangeLevel(Level * level)
 	m_pCurrentLevel = level;
 }
 
-void LevelController::Update()
+void LevelController::Update(float dt)
 {
-	m_pCurrentLevel->Update();
+	m_pCurrentLevel->Update(dt);
 }
 
 void LevelController::Render()

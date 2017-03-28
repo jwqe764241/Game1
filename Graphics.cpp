@@ -18,19 +18,24 @@ HRESULT Graphics::CreateDeviceResource(HWND targetHWND)
 {
 	assert(targetHWND);
 
-	RECT rect;
-	GetClientRect(targetHWND, &rect);
+	HRESULT hr = S_OK;
 
-	HRESULT hr = m_pDirect2DFactory->CreateHwndRenderTarget(
-		D2D1::RenderTargetProperties(),
-		D2D1::HwndRenderTargetProperties(
-			targetHWND,
-			D2D1::SizeU(
-				rect.right,
-				rect.bottom)
-		),
-		&m_pRenderTarget
-	);
+	if (!m_pRenderTarget)
+	{
+		RECT rect;
+		GetClientRect(targetHWND, &rect);
+
+		D2D1_SIZE_U size = D2D1::SizeU(
+			rect.right - rect.left,
+			rect.bottom - rect.top
+		);
+
+		hr = m_pDirect2DFactory->CreateHwndRenderTarget(
+			D2D1::RenderTargetProperties(),
+			D2D1::HwndRenderTargetProperties(targetHWND, size),
+			&m_pRenderTarget
+		);
+	}
 
 	return hr;
 }
@@ -42,6 +47,7 @@ void Graphics::ReleaseDeviceResource()
 
 HRESULT Graphics::initialize(HWND TargetHWND)
 {
+	m_hwnd = TargetHWND;
 	if (D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &m_pDirect2DFactory) != S_OK) { return S_FALSE; }
 	if (CoCreateInstance(
 		CLSID_WICImagingFactory,

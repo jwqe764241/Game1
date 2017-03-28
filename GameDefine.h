@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Windows.h>
+#include <math.h>
 
 //#ifndef HINST_THISCOMPONENT
 //EXTERN_C IMAGE_DOS_HEADER __ImageBase;
