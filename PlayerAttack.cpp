@@ -24,3 +24,11 @@ void Player::Attack()
 		m_isArrowFired = false;
 	}
 }
+
+void Player::UpdateCollision(std::vector<Enemy *>& refList)
+{
+
+	for (Enemy * enemy : refList) {
+	}
+
+}

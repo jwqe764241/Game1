@@ -22,6 +22,9 @@ public:
 	void Draw();
 	void Draw(UINT index, FLOAT x, FLOAT y);
 
+	D2D1_SIZE_F GetSize() { return D2D1_SIZE_F{ static_cast<float>(m_spriteWidth), static_cast<float>(m_spriteHeight) }; }
+
 private:
 	HRESULT LoadBitmapFromFile(PCWSTR resourceName, ID2D1Bitmap ** ppBitmap);
+
 };

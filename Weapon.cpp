@@ -22,3 +22,11 @@ void Weapon::Destroy()
 {
 	m_isDestroyed = true;
 }
+
+D2D1_RECT_F Weapon::GetRect()
+{
+	D2D1_SIZE_F objectSize = m_pSpriteSheet->GetSize();
+
+	return D2D1_RECT_F{ m_offset.x, m_offset.y, 
+		m_offset.x + objectSize.width, m_offset.y + objectSize.height };
+}

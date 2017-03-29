@@ -5,7 +5,7 @@
 TestLevel::TestLevel(Graphics * gfx, DX_Input * pInput)
 	:m_pGraphics(gfx),
 	 m_bIsInitialized(true),
-	 m_lpszFilePath(L"Image/Level_BackTile4.png"),
+	 m_lpszFilePath(L"Image/LevelTile.png"),
 	 m_pPlayer(new Player(100, 100, gfx)),
 	 m_pInput(pInput),
 	 m_LevelSize(D2D1_SIZE_F{ 4400, m_pGraphics->GetRenderTarget()->GetSize().height })
@@ -14,7 +14,7 @@ TestLevel::TestLevel(Graphics * gfx, DX_Input * pInput)
 TestLevel::TestLevel(Graphics * gfx, Player * player, DX_Input * pInput)
 	:m_pGraphics(gfx),
 	 m_bIsInitialized(true),
-	 m_lpszFilePath(L"Image/Level_BackTile4.png"),
+	 m_lpszFilePath(L"Image/LevelTile.png"),
 	 m_pPlayer(player),
 	 m_pInput(pInput),
 	 m_LevelSize(D2D1_SIZE_F{ 4400, m_pGraphics->GetRenderTarget()->GetSize().height })
@@ -72,8 +72,9 @@ void TestLevel::Render()
 	D2D1_POINT_2F playerPoint = m_pPlayer->GetPoint();
 	
 	D2D1_RECT_F renderRect = {0, 0, m_LevelSize.width, m_LevelSize.height};
-	D2D1_RECT_F imageRect = { 0, 0, 300, 300 };
+	D2D1_RECT_F imageRect = { 0, 0, 5000, 2000 };
 	
+	/*
 	float curWidth  = 0;
 	float curHeight = 0;
 
@@ -89,6 +90,10 @@ void TestLevel::Render()
 		curWidth = 0;
 		curHeight += 300;
 	}
+	*/
+
+	//m_pGraphics->GetRenderTarget()->DrawBitmap(m_pBitmap, imageRect, 1.0f, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, imageRect);
+	m_pGraphics->GetRenderTarget()->DrawBitmap(m_pBitmap, renderRect);
 
 	m_pPlayer->Draw(m_pGraphics);
 }

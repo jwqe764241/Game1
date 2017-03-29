@@ -120,6 +120,9 @@
     <Image Include="Image\Level_Backtile4.png">
       <Filter>Resources\Images</Filter>
     </Image>
+    <Image Include="Image\LevelTile.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="__1.txt" />

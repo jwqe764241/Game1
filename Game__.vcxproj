@@ -186,6 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico" />
+    <Image Include="Image\LevelTile.png" />
     <Image Include="Image\Level_BackTile.png" />
     <Image Include="Image\Level_Backtile2.png" />
     <Image Include="Image\Level_Backtile3.png" />

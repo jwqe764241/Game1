@@ -3,6 +3,7 @@
 #include <vector>
 #include "Level.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "IActor.h"
 
 class TestLevel : public Level
@@ -26,10 +27,11 @@ private:
 
 	//·»´õ ¸®½ºÆ®
 	Player * m_pPlayer;
-	std::vector<IActor *> m_RenderEnemy;
+	std::vector<Enemy *> m_RenderEnemy;
 	std::vector<IActor *> m_RenderEnvir;
 
 public:
+	TestLevel() = delete;
 	TestLevel(Graphics * gfx, DX_Input * pInput);
 	TestLevel(Graphics * gfx, Player * player, DX_Input * pInput);
 	~TestLevel();
