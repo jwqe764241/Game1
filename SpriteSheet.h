@@ -2,6 +2,7 @@
 #include "Graphics.h"
 #include "GameDefine.h"
 
+
 class SpriteSheet
 {
 private:
@@ -11,7 +12,7 @@ private:
 	ID2D1BitmapBrush* m_pBitmapBrush;
 
 public:
-	UINT m_spriteWidth, m_spriteHeight;
+	float m_spriteWidth, m_spriteHeight;
 	UINT m_spriteAcross;
 
 public:

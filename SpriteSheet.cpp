@@ -7,7 +7,7 @@ SpriteSheet::SpriteSheet(wchar_t* fileName, Graphics * gfx)
 {
 	LoadBitmapFromFile(fileName, &m_pBitmap);
 	m_spriteWidth = m_pBitmap->GetSize().width;
-	m_spriteWidth = m_pBitmap->GetSize().height;
+	m_spriteHeight = m_pBitmap->GetSize().height;
 	m_spriteAcross = 1;
 }
 

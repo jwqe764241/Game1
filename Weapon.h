@@ -5,11 +5,14 @@
 class Weapon
 {
 public:
+	Weapon() = delete;
 	Weapon(SpriteSheet* pSpriteSheet, D2D1_POINT_2F offset, float range);
 	~Weapon();
 
 	void Shoot(float speed);
 	void Destroy();
+
+	D2D1_RECT_F GetRect();
 
 public:
 	bool m_isDestroyed;
