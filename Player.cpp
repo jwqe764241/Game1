@@ -128,3 +128,11 @@ bool Player::ClampPosition()
 
 	return isValid;
 }
+
+D2D1_RECT_F Player::GetRect() 
+{
+	D2D1_SIZE_F objectSize = m_pSpriteSheet->GetSize();
+
+	return D2D1_RECT_F{ m_ObjectPoint.x, m_ObjectPoint.y, 
+			m_ObjectPoint.x + objectSize.width, m_ObjectPoint.y + objectSize.height };
+}

@@ -45,6 +45,7 @@ public:
 	LevelController levelController;
 
 public:
+	Game() = delete;
 	Game(HINSTANCE hInstance, char * wndClassName);
 	~Game();
 

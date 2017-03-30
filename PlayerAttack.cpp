@@ -23,4 +23,26 @@ void Player::Attack()
 		m_arrowList.push_back(Weapon(m_pArrowSpriteSheet, offset, 700));
 		m_isArrowFired = false;
 	}
+
+}
+
+void Player::UpdateCollision(std::vector<Enemy>& refList)
+{
+
+	for (Enemy enemy : refList) {
+		D2D_RECT_F enemyRect = enemy.GetRect();
+
+		for (Weapon& weapon : m_arrowList) {
+			D2D_RECT_F weaponRect = weapon.GetRect();
+
+			if ((weaponRect.right > enemyRect.left) &&
+				(weaponRect.left < enemyRect.right)) {
+				if ((weaponRect.bottom > enemyRect.top) &&
+					(weaponRect.top < enemyRect.bottom)) {
+					weapon.Destroy();
+				}
+			}
+
+		}
+	}
 }
