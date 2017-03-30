@@ -8,8 +8,6 @@
 class TestLevel : public Level
 {
 private:
-	Graphics			  * m_pGraphics;
-
 	IWICBitmapDecoder	  * m_pDecoder;
 	IWICBitmapFrameDecode * m_pFrameDecode;
 	IWICFormatConverter	  * m_pConvertedBitmap;
@@ -30,8 +28,8 @@ private:
 	std::vector<IActor *> m_RenderEnvir;
 
 public:
-	TestLevel(Graphics * gfx, DX_Input * pInput);
-	TestLevel(Graphics * gfx, Player * player, DX_Input * pInput);
+	TestLevel(DX_Input * pInput);
+	TestLevel(Player * player, DX_Input * pInput);
 	~TestLevel();
 	
 	void Load()   override;

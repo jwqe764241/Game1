@@ -146,9 +146,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="DX_Input.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameTimer.cpp" />
+    <ClCompile Include="Gauge.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -159,14 +161,18 @@
     <ClCompile Include="PlayerAttack.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="TestLevel.cpp" />
+    <ClCompile Include="TextWriter.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="TestLevel2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
     <ClInclude Include="DX_Input.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameDefine.h" />
     <ClInclude Include="GameTimer.h" />
+    <ClInclude Include="Gauge.h" />
+    <ClInclude Include="IDrawable.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Graphics.h" />
@@ -178,6 +184,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="TestLevel.h" />
+    <ClInclude Include="TextWriter.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="TestLevel2.h" />
   </ItemGroup>
@@ -186,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico" />
+    <Image Include="Image\Arrow.png" />
     <Image Include="Image\Level_BackTile.png" />
     <Image Include="Image\Level_Backtile2.png" />
     <Image Include="Image\Level_Backtile3.png" />

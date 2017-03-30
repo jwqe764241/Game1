@@ -8,7 +8,7 @@
 class Player : public IActor
 {
 private:
-	Graphics* m_pGfx;
+	D2D1_SIZE_F m_levelSize;
 
 	D2D1_POINT_2F m_ObjectPoint;
 	SpriteSheet* m_pSpriteSheet;
@@ -23,14 +23,13 @@ private:
 	bool m_isArrowFired;
 
 public:
-	Player() = delete;
-	Player(Graphics* gfx);
-	Player(D2D1_POINT_2F point, Graphics* gfx);
-	Player(float x, float y, Graphics* gfx);
+	Player();
+	Player(D2D1_POINT_2F point, D2D1_SIZE_F levelSize);
+	Player(float x, float y, float levelWidth, float levelHeight);
 
 	~Player() override;
 
-	void Draw(Graphics * gfx) override;
+	void Draw() override;
 
 	//void Update(Keyboard & keyboard) override;
 	void Update(DX_Input & input, float dt) override;

@@ -1,11 +1,12 @@
 #pragma once
 #include "Graphics.h"
+#include "IDrawable.h"
 #include "GameDefine.h"
 
-class SpriteSheet
+class SpriteSheet : public IDrawable
 {
 private:
-	Graphics* gfx;
+	const wchar_t* m_fileName;
 
 	ID2D1Bitmap* m_pBitmap;
 	ID2D1BitmapBrush* m_pBitmapBrush;
@@ -15,12 +16,15 @@ public:
 	UINT m_spriteAcross;
 
 public:
-	SpriteSheet(wchar_t* fileName, Graphics* gfx);
-	SpriteSheet(wchar_t* fileName, Graphics* gfx, UINT spriteWidth, UINT spriteHeight);
+	SpriteSheet(const wchar_t* fileName);
+	SpriteSheet(const wchar_t* fileName, UINT spriteWidth, UINT spriteHeight);
 	~SpriteSheet();
 
-	void Draw();
-	void Draw(UINT index, FLOAT x, FLOAT y);
+	virtual void CreateDeviceResources();
+	virtual void ReleaseDeviceResources();
+	virtual void Draw();
+			void Draw(UINT index, float x, float y); // overloaded.
+			void Draw(float x, float y, float width, float height); // overloaded.
 
 private:
 	HRESULT LoadBitmapFromFile(PCWSTR resourceName, ID2D1Bitmap ** ppBitmap);

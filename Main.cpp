@@ -6,6 +6,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 	if (SUCCEEDED(CoInitialize(NULL))) {
 
 		{
+			Graphics::GetInstance();
 			Game game = Game(hInstance, "#CustomGame");
 
 			//TODO:게임안에 Frame 빼고 포인터로 담을 수 있도록 하기

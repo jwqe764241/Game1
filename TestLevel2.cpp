@@ -2,8 +2,7 @@
 
 
 
-TestLevel2::TestLevel2(Graphics * gfx)
-	:m_pGraphics(gfx),
+TestLevel2::TestLevel2():
 	 m_bIsInitialized(true),
 	 m_lpszFilePath(L"Level_Background2.jpg")
 {
@@ -18,7 +17,7 @@ void TestLevel2::Load()
 {
 	assert(m_bIsInitialized == true);
 
-	m_pGraphics->GetImagingFactory()->CreateDecoderFromFilename(
+	Graphics::GetInstance()->GetImagingFactory()->CreateDecoderFromFilename(
 		m_lpszFilePath,
 		NULL,
 		GENERIC_READ,
@@ -28,7 +27,7 @@ void TestLevel2::Load()
 
 	m_pDecoder->GetFrame(0, &m_pFrameDecode);
 
-	m_pGraphics->GetImagingFactory()->CreateFormatConverter(&m_pConvertedBitmap);
+	Graphics::GetInstance()->GetImagingFactory()->CreateFormatConverter(&m_pConvertedBitmap);
 
 	m_pConvertedBitmap->Initialize(
 		m_pFrameDecode,
@@ -40,8 +39,8 @@ void TestLevel2::Load()
 	);
 
 	m_renderProperties = D2D1::RenderTargetProperties();
-	m_pGraphics->GetD2DFactory()->GetDesktopDpi(&m_renderProperties.dpiX, &m_renderProperties.dpiY);
-	m_pGraphics->GetRenderTarget()->CreateBitmapFromWicBitmap(m_pConvertedBitmap, NULL, &m_pBitmap);
+	Graphics::GetInstance()->GetD2DFactory()->GetDesktopDpi(&m_renderProperties.dpiX, &m_renderProperties.dpiY);
+	Graphics::GetInstance()->GetRenderTarget()->CreateBitmapFromWicBitmap(m_pConvertedBitmap, NULL, &m_pBitmap);
 }
 
 void TestLevel2::Unload()
@@ -58,10 +57,10 @@ void TestLevel2::Render()
 
 	//RECT rect; GetWindowRect(m_pGraphics->GetRenderTaget()->GetHwnd(), &rect);
 
-	D2D1_SIZE_F size = m_pGraphics->GetRenderTarget()->GetSize();
+	D2D1_SIZE_F size = Graphics::GetInstance()->GetRenderTarget()->GetSize();
 	D2D1_RECT_F rect = {0 ,0, size.width, size.height};
 
-	m_pGraphics->GetRenderTarget()->DrawBitmap(m_pBitmap, rect, 1.0, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, rect);
+	Graphics::GetInstance()->GetRenderTarget()->DrawBitmap(m_pBitmap, rect, 1.0, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, rect);
 }
 
 void TestLevel2::Update(float dt)

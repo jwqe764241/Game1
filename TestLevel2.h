@@ -5,8 +5,6 @@
 class TestLevel2 : public Level
 {
 private:
-	Graphics			  * m_pGraphics;
-
 	IWICBitmapDecoder	  * m_pDecoder;
 	IWICBitmapFrameDecode * m_pFrameDecode;
 	IWICFormatConverter	  * m_pConvertedBitmap;
@@ -16,7 +14,7 @@ private:
 	wchar_t * m_lpszFilePath;
 	bool m_bIsInitialized;
 public:
-	TestLevel2(Graphics * gfx);
+	TestLevel2();
 	~TestLevel2();
 
 	void Load()   override;

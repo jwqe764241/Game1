@@ -9,7 +9,6 @@ LevelController::LevelController()
 
 LevelController::~LevelController()
 {
-	m_pCurrentLevel->Unload();
 	delete m_pCurrentLevel;
 }
 
@@ -17,6 +16,16 @@ void LevelController::LoadLevel(Level * level)
 {
 	level->Load();
 	m_pCurrentLevel = level;
+}
+
+void LevelController::CreateLevelDeviceResources()
+{
+	m_pCurrentLevel->Load();
+}
+
+void LevelController::ReleaseLevelDeviceResources()
+{
+	m_pCurrentLevel->Unload();
 }
 
 void LevelController::ChangeLevel(Level * level)

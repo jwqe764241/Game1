@@ -2,34 +2,33 @@
 
 
 
-TestLevel::TestLevel(Graphics * gfx, DX_Input * pInput)
-	:m_pGraphics(gfx),
+TestLevel::TestLevel(DX_Input * pInput):
 	 m_bIsInitialized(true),
 	 m_lpszFilePath(L"Image/Level_BackTile4.png"),
-	 m_pPlayer(new Player(100, 100, gfx)),
 	 m_pInput(pInput),
-	 m_LevelSize(D2D1_SIZE_F{ 4400, m_pGraphics->GetRenderTarget()->GetSize().height })
+	 m_LevelSize(D2D1_SIZE_F{ 4400, Graphics::GetInstance()->GetRenderTarget()->GetSize().height })
 {
+	m_pPlayer = new Player(100, 100, m_LevelSize.width, m_LevelSize.height);
 }
-TestLevel::TestLevel(Graphics * gfx, Player * player, DX_Input * pInput)
-	:m_pGraphics(gfx),
+TestLevel::TestLevel(Player * player, DX_Input * pInput):
 	 m_bIsInitialized(true),
 	 m_lpszFilePath(L"Image/Level_BackTile4.png"),
 	 m_pPlayer(player),
 	 m_pInput(pInput),
-	 m_LevelSize(D2D1_SIZE_F{ 4400, m_pGraphics->GetRenderTarget()->GetSize().height })
+	 m_LevelSize(D2D1_SIZE_F{ 4400, Graphics::GetInstance()->GetRenderTarget()->GetSize().height })
 {
 }
 
 TestLevel::~TestLevel()
 {
+	Unload();
 }
 
 void TestLevel::Load() 
 {
 	assert(m_bIsInitialized == true);
 
-	m_pGraphics->GetImagingFactory()->CreateDecoderFromFilename(
+	Graphics::GetInstance()->GetImagingFactory()->CreateDecoderFromFilename(
 		m_lpszFilePath,
 		NULL,
 		GENERIC_READ,
@@ -39,7 +38,7 @@ void TestLevel::Load()
 
 	m_pDecoder->GetFrame(0, &m_pFrameDecode);
 
-	m_pGraphics->GetImagingFactory()->CreateFormatConverter(&m_pConvertedBitmap);
+	Graphics::GetInstance()->GetImagingFactory()->CreateFormatConverter(&m_pConvertedBitmap);
 
 	m_pConvertedBitmap->Initialize(
 		m_pFrameDecode,
@@ -51,15 +50,16 @@ void TestLevel::Load()
 	);
 
 	m_renderProperties = D2D1::RenderTargetProperties();
-	m_pGraphics->GetD2DFactory()->GetDesktopDpi(&m_renderProperties.dpiX, &m_renderProperties.dpiY);
-	m_pGraphics->GetRenderTarget()->CreateBitmapFromWicBitmap(m_pConvertedBitmap, NULL, &m_pBitmap);
+	Graphics::GetInstance()->GetD2DFactory()->GetDesktopDpi(&m_renderProperties.dpiX, &m_renderProperties.dpiY);
+	Graphics::GetInstance()->GetRenderTarget()->CreateBitmapFromWicBitmap(m_pConvertedBitmap, NULL, &m_pBitmap);
+
+	GameUtils::SafeRelease(&m_pDecoder);
+	GameUtils::SafeRelease(&m_pFrameDecode);
+	GameUtils::SafeRelease(&m_pConvertedBitmap);
 }
 
 void TestLevel::Unload() 
 {
-	GameUtils::SafeRelease(&m_pDecoder);
-	GameUtils::SafeRelease(&m_pFrameDecode);
-	GameUtils::SafeRelease(&m_pConvertedBitmap);
 	GameUtils::SafeRelease(&m_pBitmap);
 }
 
@@ -81,7 +81,7 @@ void TestLevel::Render()
 
 		while (curWidth < m_LevelSize.width) {
 			D2D1_RECT_F imageRect = { curWidth, curHeight, 300 + curWidth, 300 + curHeight };
-			m_pGraphics->GetRenderTarget()->DrawBitmap(m_pBitmap, imageRect, 1.0f, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, renderRect);
+			Graphics::GetInstance()->GetRenderTarget()->DrawBitmap(m_pBitmap, imageRect, 1.0f, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, renderRect);
 
 			curWidth += 300;
 		}
@@ -90,7 +90,7 @@ void TestLevel::Render()
 		curHeight += 300;
 	}
 
-	m_pPlayer->Draw(m_pGraphics);
+	m_pPlayer->Draw();
 }
 
 void TestLevel::Update(float dt)
@@ -109,18 +109,18 @@ void TestLevel::Update(float dt)
 	}
 	*/
 
-	RECT rect; ::GetWindowRect(m_pGraphics->GetRenderTarget()->GetHwnd(), &rect);
+	RECT rect; ::GetWindowRect(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), &rect);
 
 	int blockSize = rect.right / 3;
 
 	if (m_pPlayer->GetPoint().x + blockSize > m_LevelSize.width - 400) {
-		m_pGraphics->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((m_LevelSize.width - 400) * -1) + (blockSize * 2), 0));
+		Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((m_LevelSize.width - 400) * -1) + (blockSize * 2), 0));
 	}
 	else if (m_pPlayer->GetPoint().x > blockSize) {
-		m_pGraphics->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((m_pPlayer->GetPoint().x) * -1) + blockSize, 0));
+		Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((m_pPlayer->GetPoint().x) * -1) + blockSize, 0));
 	}
 	else if (m_pPlayer->GetPoint().x < blockSize) {
-		m_pGraphics->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(0, 0));
+		Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(0, 0));
 	}
 
 }

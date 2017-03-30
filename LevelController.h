@@ -14,6 +14,9 @@ public:
 	void LoadLevel(Level * level);
 	void ChangeLevel(Level * level);
 
+	void CreateLevelDeviceResources();
+	void ReleaseLevelDeviceResources();
+
 	void Update(float dt);
 	void Render();
 

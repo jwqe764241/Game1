@@ -1,23 +1,26 @@
 #include "Player.h"
 
-Player::Player(Graphics * gfx)
-	: m_pGfx(gfx), m_frame(0), m_isArrowFired(false),
-	m_arrowCoolDown(15.f)
+Player::Player()
+	: m_frame(0), m_isArrowFired(false),
+	m_arrowCoolDown(15.f), m_ObjectPoint(D2D1::Point2F())
 {
-	m_pSpriteSheet = new SpriteSheet(L"Image/Sprite.png", gfx, 64, 64);
-	m_pArrowSpriteSheet = new SpriteSheet(L"Image/Arrow.png", gfx, 64, 64);
+	m_levelSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
+	m_pSpriteSheet = new SpriteSheet(L"Image/Sprite.png", 64, 64);
+	m_pArrowSpriteSheet = new SpriteSheet(L"Image/Arrow.png", 64, 64);
 }
 
-Player::Player(D2D1_POINT_2F point, Graphics* gfx) : Player(gfx)
+Player::Player(D2D1_POINT_2F point, D2D1_SIZE_F levelSize) : Player()
 {
-	m_ObjectPoint.x = point.x;
-	m_ObjectPoint.y = point.y;
+	m_ObjectPoint = point;
+	m_levelSize = levelSize;
 }
 
-Player::Player(float x, float y, Graphics* gfx) : Player(gfx)
+Player::Player(float x, float y, float levelWidth, float levelHeight) : Player()
 {
 	m_ObjectPoint.x = x;
 	m_ObjectPoint.y = y;
+	m_levelSize.width = levelWidth;
+	m_levelSize.height = levelHeight;
 }
 
 Player::~Player()
@@ -25,7 +28,7 @@ Player::~Player()
 	delete m_pSpriteSheet;
 }
 
-void Player::Draw(Graphics * gfx) 
+void Player::Draw() 
 {
 	m_pSpriteSheet->Draw((m_frame / 10 / 19) * 19 + ((m_frame / 10) % 5), m_ObjectPoint.x, m_ObjectPoint.y);
 	UpdateWeapon(m_arrowList);
@@ -71,11 +74,14 @@ void Player::Update(DX_Input & input, float dt)
 		m_ObjectPoint.y += y;
 	}
 	if (ClampPosition() && !(moveDirectionCount > 2 && m_ObjectPoint.x > 0)) {
-		UINT height = m_pGfx->GetRenderTarget()->GetSize().height - m_pSpriteSheet->m_spriteHeight;
+		UINT height = m_levelSize.height - m_pSpriteSheet->m_spriteHeight;
+		UINT width = m_levelSize.width - m_pSpriteSheet->m_spriteWidth;
 		if (y != 0 && m_ObjectPoint.x == 0 && (m_ObjectPoint.y > 0 && m_ObjectPoint.y < height) && moveDirectionCount == 4) {
 			moveDirectionCount = y > 0 ? 1 : 2;
 		}
-		else if ((moveDirectionCount < 3) || (moveDirectionCount == 4 && m_ObjectPoint.x == 0)) {
+		else if ((moveDirectionCount < 3) ||
+			(moveDirectionCount == 4 && m_ObjectPoint.x == 0) ||
+			(moveDirectionCount == 3 && m_ObjectPoint.x == width)) {
 			moveDirectionCount = 0;
 		}
 	}
@@ -110,7 +116,8 @@ void Player::SetFrame(UINT frame)
 
 bool Player::ClampPosition()
 {
-	UINT height = m_pGfx->GetRenderTarget()->GetSize().height;
+	UINT height = m_levelSize.height - m_pSpriteSheet->m_spriteHeight;
+	UINT width = m_levelSize.width - m_pSpriteSheet->m_spriteWidth;
 	bool isValid = false;
 
 	if (m_ObjectPoint.x < 0) {
@@ -121,8 +128,12 @@ bool Player::ClampPosition()
 		m_ObjectPoint.y = 0;
 		isValid |= true;
 	}
-	if (m_ObjectPoint.y > height - m_pSpriteSheet->m_spriteHeight) {
-		m_ObjectPoint.y = height - m_pSpriteSheet->m_spriteHeight;
+	if (m_ObjectPoint.y > height) {
+		m_ObjectPoint.y = height;
+		isValid |= true;
+	}
+	if (m_ObjectPoint.x > width) {
+		m_ObjectPoint.x = width;
 		isValid |= true;
 	}
 

@@ -46,6 +46,15 @@
     <ClCompile Include="TestLevel2.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gauge.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextWriter.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestLevel.h">
@@ -63,13 +72,7 @@
     <ClInclude Include="LevelController.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="Keyboard.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="IActor.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="Graphics.h">
@@ -99,6 +102,24 @@
     <ClInclude Include="TestLevel2.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gauge.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextWriter.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="IActor.h">
+      <Filter>Header files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawable.h">
+      <Filter>Header files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header files\Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
@@ -120,6 +141,9 @@
     <Image Include="Image\Level_Backtile4.png">
       <Filter>Resources\Images</Filter>
     </Image>
+    <Image Include="Image\Arrow.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="__1.txt" />
@@ -136,6 +160,9 @@
     </Filter>
     <Filter Include="Resources\Images">
       <UniqueIdentifier>{3597a776-9b25-4418-8cb9-ac29c3f2890a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Interface">
+      <UniqueIdentifier>{2ac89a7d-6fe3-45a3-97c6-77e4d7ca5f4c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
