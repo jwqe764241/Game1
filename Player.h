@@ -7,9 +7,10 @@
 
 class Player : public IActor
 {
-private:
+public:
 	D2D1_SIZE_F m_levelSize;
 
+private:
 	D2D1_POINT_2F m_ObjectPoint;
 	SpriteSheet* m_pSpriteSheet;
 

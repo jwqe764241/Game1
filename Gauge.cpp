@@ -30,7 +30,12 @@ void Gauge::CreateDeviceResources()
 		D2D1::ColorF(D2D1::ColorF::Black), &m_pGaugeBorderBrush
 	);
 	Graphics::GetInstance()->GetD2DFactory()->CreateRectangleGeometry(
-		D2D1::RectF(m_offset.x, m_offset.y, m_size.width, m_size.height), &m_pGaugeRectangleGeometry);
+		D2D1::RectF(
+			m_offset.x,
+			m_offset.y,
+			m_offset.x + m_size.width,
+			m_offset.y + m_size.height),
+		&m_pGaugeRectangleGeometry);
 }
 
 void Gauge::ReleaseDeviceResources()
@@ -42,7 +47,7 @@ void Gauge::ReleaseDeviceResources()
 
 void Gauge::Draw()
 {
-	int currentWidth = m_size.width * (float)(m_value / m_max);
+	int currentWidth = m_size.width * ((float)m_value / m_max);
 	if (currentWidth > m_size.width) currentWidth = m_size.width;
 	else if (currentWidth < 0) currentWidth = 0;
 	m_pSpriteSheet->Draw(m_offset.x, m_offset.y, currentWidth, m_size.height);

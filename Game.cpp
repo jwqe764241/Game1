@@ -99,6 +99,7 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		if (Graphics::GetInstance() != nullptr) {
 			RECT rect;	GetWindowRect(m_hWnd, &rect);
 			Graphics::GetInstance()->OnResize((rect.right - rect.left), (rect.bottom - rect.top));
+			levelController.OnResize();
 		}
 		break;
 

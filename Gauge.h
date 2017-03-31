@@ -15,13 +15,17 @@ public:
 	virtual void CreateDeviceResources();
 	virtual void ReleaseDeviceResources();
 	virtual void Draw();
-private:
+
+public:
 	int m_max, m_min;
 	int m_value;
 
-	const wchar_t* m_fileName;
 	D2D1_POINT_2F m_offset;
 	D2D1_SIZE_F m_size;
+
+private:
+
+	const wchar_t* m_fileName;
 
 	SpriteSheet* m_pSpriteSheet;
 	ID2D1SolidColorBrush* m_pGaugeBorderBrush;

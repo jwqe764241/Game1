@@ -20,5 +20,7 @@ public:
 	void Update(float dt);
 	void Render();
 
+	void OnResize();
+
 };
 

@@ -8,16 +8,13 @@
 class TestLevel : public Level
 {
 private:
-	IWICBitmapDecoder	  * m_pDecoder;
-	IWICBitmapFrameDecode * m_pFrameDecode;
-	IWICFormatConverter	  * m_pConvertedBitmap;
-	ID2D1Bitmap			  * m_pBitmap;
+	SpriteSheet* m_pSpriteSheet;
 
 	D2D1_RENDER_TARGET_PROPERTIES m_renderProperties;
 
 	DX_Input * m_pInput;
 
-	wchar_t * m_lpszFilePath;
+	//wchar_t * m_lpszFilePath;
 	bool m_bIsInitialized;
 
 	D2D1_SIZE_F m_LevelSize;
@@ -27,14 +24,22 @@ private:
 	std::vector<IActor *> m_RenderEnemy;
 	std::vector<IActor *> m_RenderEnvir;
 
+	// player Health gui.
+	ID2D1RectangleGeometry* m_pHealthPanel;
+	ID2D1SolidColorBrush* m_pHealthPanelBrush;
+	Gauge*		 m_pHealthGauge;
+	TextWriter*	 m_pHealthTextWriter;
+
 public:
 	TestLevel(DX_Input * pInput);
 	TestLevel(Player * player, DX_Input * pInput);
 	~TestLevel();
 	
-	void Load()   override;
-	void Unload() override;
-	void Render() override;
-	void Update(float dt) override;
+	virtual void Load()   override;
+	virtual void Unload() override;
+	virtual void Render() override;
+	virtual void Update(float dt) override;
+
+	virtual void OnResize() override;
 };
 

@@ -16,7 +16,7 @@ public:
 	virtual void CreateDeviceResources();
 	virtual void ReleaseDeviceResources();
 
-	virtual void Draw() = 0;
+	virtual void Draw() {};
 	virtual void Draw(const wchar_t* text);
 
 private:

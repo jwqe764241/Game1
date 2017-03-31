@@ -20,28 +20,51 @@ void LevelController::LoadLevel(Level * level)
 
 void LevelController::CreateLevelDeviceResources()
 {
-	m_pCurrentLevel->Load();
+	if (m_pCurrentLevel != nullptr)
+	{
+		m_pCurrentLevel->Load();
+	}
 }
 
 void LevelController::ReleaseLevelDeviceResources()
 {
-	m_pCurrentLevel->Unload();
+	if (m_pCurrentLevel != nullptr)
+	{
+		m_pCurrentLevel->Unload();
+	}
 }
 
 void LevelController::ChangeLevel(Level * level)
 {
-	m_pCurrentLevel->Unload();
-	level->Load();
-	delete m_pCurrentLevel;
-	m_pCurrentLevel = level;
+	if (m_pCurrentLevel != nullptr)
+	{
+		m_pCurrentLevel->Unload();
+		level->Load();
+		delete m_pCurrentLevel;
+		m_pCurrentLevel = level;
+	}
 }
 
 void LevelController::Update(float dt)
 {
-	m_pCurrentLevel->Update(dt);
+	if (m_pCurrentLevel != nullptr)
+	{
+		m_pCurrentLevel->Update(dt);
+	}
 }
 
 void LevelController::Render()
 {
-	m_pCurrentLevel->Render();
+	if (m_pCurrentLevel != nullptr)
+	{
+		m_pCurrentLevel->Render();
+	}
+}
+
+void LevelController::OnResize()
+{
+	if (m_pCurrentLevel != nullptr)
+	{
+		m_pCurrentLevel->OnResize();
+	}
 }
