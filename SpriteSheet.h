@@ -26,6 +26,7 @@ public:
 			void Draw(UINT index, float x, float y); // overloaded.
 			void Draw(float x, float y, float width, float height); // overloaded.
 
+	D2D1_SIZE_F GetSize() { return D2D1_SIZE_F{ static_cast<float>(m_spriteWidth), static_cast<float>(m_spriteHeight) }; }
 private:
 	HRESULT LoadBitmapFromFile(PCWSTR resourceName, ID2D1Bitmap ** ppBitmap);
 };
