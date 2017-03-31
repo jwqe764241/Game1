@@ -6,6 +6,7 @@ SpriteSheet::SpriteSheet(const wchar_t* fileName):
 	m_pBitmapBrush(NULL)
 {
 	CreateDeviceResources();
+	m_spriteAcross = 1;
 }
 
 SpriteSheet::SpriteSheet(const wchar_t * fileName, UINT spriteWidth, UINT spriteHeight)
@@ -26,7 +27,6 @@ void SpriteSheet::CreateDeviceResources()
 	LoadBitmapFromFile(m_fileName, &m_pBitmap);
 	m_spriteWidth = m_pBitmap->GetSize().width;
 	m_spriteHeight = m_pBitmap->GetSize().height;
-	m_spriteAcross = 1;
 }
 
 void SpriteSheet::ReleaseDeviceResources()

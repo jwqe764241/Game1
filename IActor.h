@@ -15,5 +15,7 @@ public:
 
 	virtual void Update(DX_Input & input, float dt) = 0;
 
+	virtual D2D1_RECT_F GetRect() = 0;
+
 };
 

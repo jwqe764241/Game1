@@ -3,6 +3,7 @@
 #include <vector>
 #include "Level.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "IActor.h"
 #include "PlayerHealthUI.h"
 
@@ -15,15 +16,12 @@ private:
 
 	DX_Input * m_pInput;
 
-	//wchar_t * m_lpszFilePath;
 	bool m_bIsInitialized;
 
-	//D2D1_SIZE_F m_LevelSize;
-
-	//·»´õ ¸®½ºÆ®
+	//Â·Â»Â´Ãµ Â¸Â®Â½ÂºÃ†Â®
 	Player * m_pPlayer;
-	std::vector<IActor *> m_RenderEnemy;
-	std::vector<IActor *> m_RenderEnvir;
+	std::vector<Enemy> m_RenderEnemy;
+	std::vector<IActor> m_RenderEnvir;
 
 	// player Health gui.
 	PlayerHealthUI m_playerHealthUI;

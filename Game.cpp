@@ -138,7 +138,8 @@ void Game::Looping()
 				bIsRunning = false;
 				break;
 			}
-			else {
+			
+			{
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}

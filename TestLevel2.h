@@ -2,6 +2,8 @@
 
 #include "Level.h"
 
+
+//수정필요
 class TestLevel2 : public Level
 {
 private:
