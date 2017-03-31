@@ -1,23 +1,20 @@
 #include "Enemy.h"
 
-Enemy::Enemy(Graphics * gfx)
-	:m_pGfx(gfx),
+Enemy::Enemy():
 	 m_ObjectPoint(D2D1_POINT_2F{0, 0}),
-	 m_pSpriteSheet(new SpriteSheet(L"Images/Enemy_Basic1.png", gfx))
+	 m_pSpriteSheet(new SpriteSheet(L"Images/Enemy_Basic1.png"))
 {
 }
 
-Enemy::Enemy(D2D1_POINT_2F point, Graphics * gfx)
-	:m_pGfx(gfx),
+Enemy::Enemy(D2D1_POINT_2F point):
 	 m_ObjectPoint(point),
-	 m_pSpriteSheet(new SpriteSheet(L"Images/Enemy_Basic1.png", gfx))
+	 m_pSpriteSheet(new SpriteSheet(L"Images/Enemy_Basic1.png"))
 {
 }
 
-Enemy::Enemy(float x, float y, Graphics * gfx)
-	:m_pGfx(gfx),
+Enemy::Enemy(float x, float y):
 	 m_ObjectPoint(D2D1_POINT_2F{x, y}),
-	 m_pSpriteSheet(new SpriteSheet(L"Image/Enemy_Basic1.png", gfx))
+	 m_pSpriteSheet(new SpriteSheet(L"Image/Enemy_Basic1.png"))
 {
 }
 
@@ -26,7 +23,7 @@ Enemy::~Enemy()
 }
 
 
-void Enemy::Draw(Graphics * gfx)
+void Enemy::Draw()
 {
 	m_pSpriteSheet->Draw(0, m_ObjectPoint.x, m_ObjectPoint.y);
 
@@ -44,7 +41,7 @@ void Enemy::SetFrame(UINT frame)
 
 bool Enemy::ClampPosition()
 {
-	INT height = m_pGfx->GetRenderTarget()->GetSize().height;
+	INT height = Graphics::GetInstance()->GetRenderTarget()->GetSize().height;
 	bool isValid = false;
 
 	if (m_ObjectPoint.x < 0) {

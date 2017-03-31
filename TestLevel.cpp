@@ -7,7 +7,10 @@ TestLevel::TestLevel(DX_Input * pInput):
 	 m_pInput(pInput),
 	 m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
 {
-	m_pPlayer = new Player(100, 100, 4400, Graphics::GetInstance()->GetRenderTarget()->GetSize().height);
+	m_pPlayer = new Player(
+		100, 100,
+		m_SpriteSheet.GetSize().width,
+		Graphics::GetInstance()->GetRenderTarget()->GetSize().height);
 	Load();
 }
 TestLevel::TestLevel(Player * player, DX_Input * pInput):
@@ -26,9 +29,9 @@ TestLevel::~TestLevel()
 
 void TestLevel::Load() 
 {
-	m_RenderEnemy.push_back(Enemy(400, 100, m_pGraphics));
-	m_RenderEnemy.push_back(Enemy(1000, 200, m_pGraphics));
-	m_RenderEnemy.push_back(Enemy(3000, 200, m_pGraphics));
+	m_RenderEnemy.push_back(Enemy(400, 100));
+	m_RenderEnemy.push_back(Enemy(1000, 200));
+	m_RenderEnemy.push_back(Enemy(3000, 200));
 }
 
 void TestLevel::Unload() 
@@ -45,19 +48,21 @@ void TestLevel::Render()
 
 	for (Enemy enemy : m_RenderEnemy)
 	{
-		enemy.Draw(m_pGraphics);
+		enemy.Draw();
 	}
 }
 
 void TestLevel::Update(float dt)
 {
 	m_pPlayer->Update(*m_pInput, dt);
+	
+	m_pPlayer->UpdateCollision(m_RenderEnemy);
   
 	RECT rect; ::GetWindowRect(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), &rect);
   
 	D2D1_SIZE_F levelSize = m_SpriteSheet.GetSize();
 
-	int blockSize = rect.right / 3;
+	float blockSize = (rect.right - rect.left) / 3.f;
 
 	if (m_pPlayer->GetPoint().x + blockSize > levelSize.width - blockSize) {
 		Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((levelSize.width - blockSize) * -1) + (blockSize * 2), 0));
@@ -73,6 +78,4 @@ void TestLevel::Update(float dt)
 void TestLevel::OnResize()
 {
 	m_pPlayer->m_levelSize.height = Graphics::GetInstance()->GetRenderTarget()->GetSize().height;
-
-	m_pPlayer->UpdateCollision(m_RenderEnemy);
 }

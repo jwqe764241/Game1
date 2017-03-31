@@ -73,10 +73,14 @@ void Player::Update(DX_Input & input, float dt)
 		m_ObjectPoint.x += x;
 		m_ObjectPoint.y += y;
 	}
-	if (ClampPosition() && !(moveDirectionCount > 2 && m_ObjectPoint.x > 0)) {
-		UINT height = m_levelSize.height - m_pSpriteSheet->m_spriteHeight;
-		UINT width = m_levelSize.width - m_pSpriteSheet->m_spriteWidth;
-		if (y != 0 && m_ObjectPoint.x == 0 && (m_ObjectPoint.y > 0 && m_ObjectPoint.y < height) && moveDirectionCount == 4) {
+
+	UINT height = m_levelSize.height - m_pSpriteSheet->m_spriteHeight;
+	UINT width = m_levelSize.width - m_pSpriteSheet->m_spriteWidth;
+	if (ClampPosition() && !(moveDirectionCount > 2 && m_ObjectPoint.x > 0 && m_ObjectPoint.x < width)) {
+		if (y != 0 &&
+			(m_ObjectPoint.x == 0 || m_ObjectPoint.x == width) && 
+			(m_ObjectPoint.y > 0 && m_ObjectPoint.y < height) && 
+			(moveDirectionCount == 3 || moveDirectionCount == 4)) {
 			moveDirectionCount = y > 0 ? 1 : 2;
 		}
 		else if ((moveDirectionCount < 3) ||
