@@ -3,7 +3,8 @@
 Enemy::Enemy(Graphics * gfx)
 	:m_pGfx(gfx),
 	 m_ObjectPoint(D2D1_POINT_2F{0, 0}),
-	 m_pSpriteSheet(new SpriteSheet(L"Images/Enemy_Basic1.png", gfx))
+	 m_pSpriteSheet(new SpriteSheet(L"Images/Enemy_Basic1.png", gfx)),
+	 m_iHealth(100)
 {
 }
 
@@ -23,13 +24,13 @@ Enemy::Enemy(float x, float y, Graphics * gfx)
 
 Enemy::~Enemy()
 {
+	m_pGfx = nullptr;
 }
 
 
 void Enemy::Draw(Graphics * gfx)
 {
 	m_pSpriteSheet->Draw(0, m_ObjectPoint.x, m_ObjectPoint.y);
-
 }
 void Enemy::Update(DX_Input & input, float dt)
 {
@@ -69,4 +70,15 @@ D2D1_RECT_F Enemy::GetRect()
 
 	return D2D1_RECT_F{ m_ObjectPoint.x, m_ObjectPoint.y,
 		m_ObjectPoint.x + objectSize.width, m_ObjectPoint.y + objectSize.height };
+}
+
+GameUtils::Type::State Enemy::OnDamage(int damage)
+{
+	if (0 > m_iHealth - damage) {
+		return GameUtils::Constant::Enemy::STATE_DIED;
+	}
+	else {
+		m_iHealth - damage;
+		return GameUtils::Constant::Enemy::STATE_ALiVE;
+	}
 }

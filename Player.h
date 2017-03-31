@@ -5,6 +5,7 @@
 #include "SpriteSheet.h"
 #include "Weapon.h"
 #include "Enemy.h"
+#include "GameDefine.h"
 
 class Player : public IActor
 {

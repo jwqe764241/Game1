@@ -29,7 +29,8 @@ void Player::Attack()
 void Player::UpdateCollision(std::vector<Enemy>& refList)
 {
 
-	for (Enemy enemy : refList) {
+	/*
+	for (Enemy& enemy : refList) {
 		D2D_RECT_F enemyRect = enemy.GetRect();
 
 		for (Weapon& weapon : m_arrowList) {
@@ -39,10 +40,17 @@ void Player::UpdateCollision(std::vector<Enemy>& refList)
 				(weaponRect.left < enemyRect.right)) {
 				if ((weaponRect.bottom > enemyRect.top) &&
 					(weaponRect.top < enemyRect.bottom)) {
+
 					weapon.Destroy();
+					if (enemy.OnDamage(weapon.weaponDamage) == GameUtils::Constant::Enemy::STATE_DIED) {
+
+					}
 				}
 			}
 
 		}
-	}
+	}*/
+
+
+	
 }

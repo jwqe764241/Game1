@@ -2,6 +2,7 @@
 
 #include "IActor.h"
 #include "SpriteSheet.h"
+#include "GameDefine.h"
 
 class Enemy : public IActor
 {
@@ -13,6 +14,9 @@ private:
 	SpriteSheet* m_pSpriteSheet;
 
 	UINT m_frame;
+
+	int m_iHealth;
+
 public:
 	Enemy() = delete;
 	Enemy(Graphics * gfx);
@@ -26,6 +30,8 @@ public:
 
 	D2D1_POINT_2F GetPoint() { return m_ObjectPoint; }
 	D2D1_RECT_F GetRect() override;
+
+	GameUtils::Type::State OnDamage(int damage);
 private:
 	void UpdateFrame();
 	void SetFrame(UINT frame);
