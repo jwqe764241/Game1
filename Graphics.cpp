@@ -1,7 +1,19 @@
 #include "Graphics.h"
 
+Graphics* Graphics::m_pInstance = NULL;
+
+Graphics* Graphics::GetInstance()
+{
+	if (m_pInstance == NULL)
+	{
+		m_pInstance = new Graphics;
+	}
+
+	return m_pInstance;
+}
+
 Graphics::Graphics()
-	:m_pDirect2DFactory(NULL),
+	:m_pDirect2DFactory(NULL), m_pIWICFactory(NULL), m_pDWriteFactory(NULL),
 	 m_pRenderTarget(NULL),
 	 m_bIsInitialized(false)
 {
@@ -11,6 +23,7 @@ Graphics::~Graphics()
 {
 	GameUtils::SafeRelease(&m_pDirect2DFactory);
 	GameUtils::SafeRelease(&m_pIWICFactory);
+	GameUtils::SafeRelease(&m_pDWriteFactory);
 	GameUtils::SafeRelease(&m_pRenderTarget);
 }
 
@@ -55,7 +68,10 @@ HRESULT Graphics::initialize(HWND TargetHWND)
 		CLSCTX_INPROC_SERVER,
 		IID_IWICImagingFactory,
 		(LPVOID*)&m_pIWICFactory)) { return S_FALSE; }
-
+	if (DWriteCreateFactory(
+		DWRITE_FACTORY_TYPE_SHARED,
+		__uuidof(IDWriteFactory),
+		reinterpret_cast<IUnknown**>(&m_pDWriteFactory))){ return S_FALSE; }
 	if (CreateDeviceResource(TargetHWND) != S_OK) { return S_FALSE; }
 
 	m_bIsInitialized = true;

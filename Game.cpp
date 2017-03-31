@@ -3,8 +3,7 @@
 #include "Game.h"
 #include "resource.h"
 
-Game::Game(HINSTANCE hInstance, char * wndClassName)
-	:m_pGraphics(new Graphics()),
+Game::Game(HINSTANCE hInstance, char * wndClassName) :
 	 m_hInstance(hInstance),
 	 m_lpcWndClassName(wndClassName)
 {
@@ -12,7 +11,6 @@ Game::Game(HINSTANCE hInstance, char * wndClassName)
 }
 Game::~Game()
 {
-	delete m_pGraphics;
 }
 
 
@@ -98,9 +96,10 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		PostQuitMessage(0);
 		break;
 	case WM_SIZE:
-		if (m_pGraphics != nullptr) {
+		if (Graphics::GetInstance() != nullptr) {
 			RECT rect;	GetWindowRect(m_hWnd, &rect);
-			m_pGraphics->OnResize((rect.right - rect.left), (rect.bottom - rect.top));
+			Graphics::GetInstance()->OnResize((rect.right - rect.left), (rect.bottom - rect.top));
+			levelController.OnResize();
 		}
 		break;
 
@@ -115,9 +114,9 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 HRESULT Game::Start(int nCmdShow, char * frameTitle)
 {
 	if (FAILED(InitializeFrame(nCmdShow, frameTitle)))				  { return S_FALSE; }
-	if (FAILED(m_pGraphics->initialize(GetHWND())))					  { return S_FALSE; }
+	if (FAILED(Graphics::GetInstance()->initialize(GetHWND())))					  { return S_FALSE; }
 
-	levelController.LoadLevel(new TestLevel(m_pGraphics, &input));
+	levelController.LoadLevel(new TestLevel(&input));
 
 	m_pTimer.Initialize();
 
@@ -162,15 +161,24 @@ void Game::Update()
 
 void Game::Render()
 {
-	m_pGraphics->BeginDraw();
+	if (!Graphics::GetInstance()->GetRenderTarget()) {
+		Graphics::GetInstance()->CreateDeviceResource(m_hWnd);
+		levelController.CreateLevelDeviceResources();
+	}
 
-	m_pGraphics->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
+	RECT rect;
+	GetClientRect(m_hWnd, &rect);
+
+	Graphics::GetInstance()->BeginDraw();
+
+	Graphics::GetInstance()->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
   
 	levelController.Render();
   
-  HRESULT hr = m_pGraphics->EndDraw();
+  HRESULT hr = Graphics::GetInstance()->EndDraw();
 	if (hr == D2DERR_RECREATE_TARGET)
 	{
-		m_pGraphics->ReleaseDeviceResource();
+		Graphics::GetInstance()->ReleaseDeviceResource();
+		levelController.ReleaseLevelDeviceResources();
 	}
 }
