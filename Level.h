@@ -4,7 +4,6 @@
 #include "GameDefine.h"
 #include "Gauge.h"
 #include "TextWriter.h"
-#include <sstream>
 
 class Level
 {

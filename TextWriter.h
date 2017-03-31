@@ -3,6 +3,7 @@
 #include "Graphics.h"
 #include "GameDefine.h"
 #include "IDrawable.h"
+#include <sstream>
 
 class TextWriter : public IDrawable
 {

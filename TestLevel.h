@@ -4,11 +4,12 @@
 #include "Level.h"
 #include "Player.h"
 #include "IActor.h"
+#include "PlayerHealthUI.h"
 
 class TestLevel : public Level
 {
 private:
-	SpriteSheet* m_pSpriteSheet;
+	SpriteSheet m_SpriteSheet;
 
 	D2D1_RENDER_TARGET_PROPERTIES m_renderProperties;
 
@@ -25,10 +26,7 @@ private:
 	std::vector<IActor *> m_RenderEnvir;
 
 	// player Health gui.
-	ID2D1RectangleGeometry* m_pHealthPanel;
-	ID2D1SolidColorBrush* m_pHealthPanelBrush;
-	Gauge*		 m_pHealthGauge;
-	TextWriter*	 m_pHealthTextWriter;
+	PlayerHealthUI m_playerHealthUI;
 
 public:
 	TestLevel(DX_Input * pInput);

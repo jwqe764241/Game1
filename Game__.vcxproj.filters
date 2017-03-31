@@ -55,6 +55,9 @@
     <ClCompile Include="TextWriter.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerHealthUI.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestLevel.h">
@@ -119,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>Header files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHealthUI.h">
+      <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
