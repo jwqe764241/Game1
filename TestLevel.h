@@ -18,7 +18,7 @@ private:
 	//wchar_t * m_lpszFilePath;
 	bool m_bIsInitialized;
 
-	D2D1_SIZE_F m_LevelSize;
+	//D2D1_SIZE_F m_LevelSize;
 
 	//·»´õ ¸®½ºÆ®
 	Player * m_pPlayer;
