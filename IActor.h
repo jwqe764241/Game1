@@ -11,7 +11,7 @@ public:
 
 	virtual ~IActor() {};
 
-	virtual void Draw(Graphics * gfx) = 0;
+	virtual void Draw() = 0;
 
 	virtual void Update(DX_Input & input, float dt) = 0;
 

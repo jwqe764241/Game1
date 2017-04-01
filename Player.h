@@ -5,12 +5,14 @@
 #include "SpriteSheet.h"
 #include "Weapon.h"
 #include "Enemy.h"
+#include "GameDefine.h"
 
 class Player : public IActor
 {
-private:
-	Graphics* m_pGfx;
+public:
+	D2D1_SIZE_F m_levelSize;
 
+private:
 	D2D1_POINT_2F m_ObjectPoint;
 	SpriteSheet* m_pSpriteSheet;
 
@@ -24,14 +26,13 @@ private:
 	bool m_isArrowFired;
 
 public:
-	Player() = delete;
-	Player(Graphics* gfx);
-	Player(D2D1_POINT_2F point, Graphics* gfx);
-	Player(float x, float y, Graphics* gfx);
+	Player();
+	Player(D2D1_POINT_2F point, D2D1_SIZE_F levelSize);
+	Player(float x, float y, float levelWidth, float levelHeight);
 
 	~Player() override;
 
-	void Draw(Graphics * gfx) override;
+	void Draw() override;
 
 	//void Update(Keyboard & keyboard) override;
 	void Update(DX_Input & input, float dt) override;
@@ -40,7 +41,7 @@ public:
 	D2D1_POINT_2F GetPoint() { return m_ObjectPoint; }
 
 	//Update Data with collision
-	void UpdateCollision(std::vector<Enemy>& refList);
+	void UpdateCollision(std::vector<Enemy> * refList);
 	D2D1_RECT_F GetRect() override;
 private:
 	// Animation Frame.
