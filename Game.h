@@ -37,11 +37,8 @@ public:
 	LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
 	//Frame Å¬·¡½º ³¡
 
-
-private:
 public:
 	GameTimer m_pTimer;
-	Graphics  * m_pGraphics;
 	LevelController levelController;
 
 public:
@@ -50,7 +47,7 @@ public:
 	~Game();
 
 	HRESULT Start(int nCmdShow, char * frameTitle);
-	HRESULT ClearScreen(D2D1::ColorF color){ m_pGraphics->ClearScreen(color); }
+	HRESULT ClearScreen(D2D1::ColorF color){ Graphics::GetInstance()->ClearScreen(color); }
 
 	void Update();
 	void Render();

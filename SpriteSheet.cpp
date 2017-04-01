@@ -1,18 +1,16 @@
 #include "SpriteSheet.h"
 
-SpriteSheet::SpriteSheet(wchar_t* fileName, Graphics * gfx)
-	: gfx(gfx),
+SpriteSheet::SpriteSheet(const wchar_t* fileName):
+	m_fileName(fileName),
 	m_pBitmap(NULL),
 	m_pBitmapBrush(NULL)
 {
-	LoadBitmapFromFile(fileName, &m_pBitmap);
-	m_spriteWidth = m_pBitmap->GetSize().width;
-	m_spriteHeight = m_pBitmap->GetSize().height;
+	CreateDeviceResources();
 	m_spriteAcross = 1;
 }
 
-SpriteSheet::SpriteSheet(wchar_t * fileName, Graphics * gfx, UINT spriteWidth, UINT spriteHeight)
-	: SpriteSheet(fileName, gfx)
+SpriteSheet::SpriteSheet(const wchar_t * fileName, UINT spriteWidth, UINT spriteHeight)
+	: SpriteSheet(fileName)
 {
 	m_spriteWidth = spriteWidth;
 	m_spriteHeight = spriteHeight;
@@ -21,13 +19,25 @@ SpriteSheet::SpriteSheet(wchar_t * fileName, Graphics * gfx, UINT spriteWidth, U
 
 SpriteSheet::~SpriteSheet()
 {
+	ReleaseDeviceResources();
+}
+
+void SpriteSheet::CreateDeviceResources()
+{
+	LoadBitmapFromFile(m_fileName, &m_pBitmap);
+	m_spriteWidth = m_pBitmap->GetSize().width;
+	m_spriteHeight = m_pBitmap->GetSize().height;
+}
+
+void SpriteSheet::ReleaseDeviceResources()
+{
 	GameUtils::SafeRelease(&m_pBitmap);
 	GameUtils::SafeRelease(&m_pBitmapBrush);
 }
 
 void SpriteSheet::Draw()
 {
-	gfx->GetRenderTarget()->DrawBitmap(
+	Graphics::GetInstance()->GetRenderTarget()->DrawBitmap(
 		m_pBitmap,
 		D2D1::RectF(0.f, 0.f,
 			m_pBitmap->GetSize().width,
@@ -40,7 +50,7 @@ void SpriteSheet::Draw()
 	);
 }
 
-void SpriteSheet::Draw(UINT index, FLOAT x, FLOAT y)
+void SpriteSheet::Draw(UINT index, float x, float y)
 {
 	D2D1_RECT_F src = D2D1::RectF(
 		(FLOAT)((index % m_spriteAcross) * m_spriteWidth),
@@ -54,12 +64,24 @@ void SpriteSheet::Draw(UINT index, FLOAT x, FLOAT y)
 		x + m_spriteWidth, y + m_spriteHeight
 	);
 
-	gfx->GetRenderTarget()->DrawBitmap(
+	Graphics::GetInstance()->GetRenderTarget()->DrawBitmap(
 		m_pBitmap,
 		dest,
 		1.0f,
 		D2D1_BITMAP_INTERPOLATION_MODE::D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR,
 		src
+	);
+}
+
+void SpriteSheet::Draw(float x, float y, float width, float height)
+{
+	D2D1_RECT_F dest = D2D1::RectF(x, y, x + width, y + height);
+	Graphics::GetInstance()->GetRenderTarget()->DrawBitmap(
+		m_pBitmap,
+		dest,
+		1.0f,
+		D2D1_BITMAP_INTERPOLATION_MODE::D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR,
+		D2D1::RectF(0.f, 0.f, m_spriteWidth, m_spriteHeight)
 	);
 }
 
@@ -75,7 +97,7 @@ HRESULT SpriteSheet::LoadBitmapFromFile(
 
 	DWORD imageFileSize = 0;
 
-	HRESULT hr = gfx->GetImagingFactory()->CreateDecoderFromFilename(
+	HRESULT hr = Graphics::GetInstance()->GetImagingFactory()->CreateDecoderFromFilename(
 		resourceName,
 		NULL,
 		GENERIC_READ,
@@ -89,7 +111,7 @@ HRESULT SpriteSheet::LoadBitmapFromFile(
 
 	if (SUCCEEDED(hr))
 	{
-		hr = gfx->GetImagingFactory()->CreateFormatConverter(&pConverter);
+		hr = Graphics::GetInstance()->GetImagingFactory()->CreateFormatConverter(&pConverter);
 	}
 
 	if (SUCCEEDED(hr))
@@ -106,7 +128,7 @@ HRESULT SpriteSheet::LoadBitmapFromFile(
 
 	if (SUCCEEDED(hr))
 	{
-		hr = gfx->GetRenderTarget()->CreateBitmapFromWicBitmap(
+		hr = Graphics::GetInstance()->GetRenderTarget()->CreateBitmapFromWicBitmap(
 			pConverter,
 			NULL,
 			ppBitmap

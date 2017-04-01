@@ -28,8 +28,6 @@ void Player::Attack()
 
 void Player::UpdateCollision(std::vector<Enemy>& refList)
 {
-
-	/*
 	for (Enemy& enemy : refList) {
 		D2D_RECT_F enemyRect = enemy.GetRect();
 
@@ -49,8 +47,5 @@ void Player::UpdateCollision(std::vector<Enemy>& refList)
 			}
 
 		}
-	}*/
-
-
-	
+	}
 }
