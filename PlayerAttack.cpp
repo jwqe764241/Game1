@@ -26,13 +26,13 @@ void Player::Attack()
 
 }
 
-void Player::UpdateCollision(std::vector<Enemy>& refList)
+void Player::UpdateCollision(std::vector<Enemy> * refList)
 {
-	for (Enemy& enemy : refList) {
-		D2D_RECT_F enemyRect = enemy.GetRect();
+	for (std::vector<Enemy>::iterator itor = refList->begin(); itor < refList->end();) {
+		D2D1_RECT_F enemyRect = itor->GetRect();
 
 		for (Weapon& weapon : m_arrowList) {
-			D2D_RECT_F weaponRect = weapon.GetRect();
+			D2D1_RECT_F weaponRect = weapon.GetRect();
 
 			if ((weaponRect.right > enemyRect.left) &&
 				(weaponRect.left < enemyRect.right)) {
@@ -40,12 +40,14 @@ void Player::UpdateCollision(std::vector<Enemy>& refList)
 					(weaponRect.top < enemyRect.bottom)) {
 
 					weapon.Destroy();
-					if (enemy.OnDamage(weapon.weaponDamage) == GameUtils::Constant::Enemy::STATE_DIED) {
-
+					if (itor->OnDamage(weapon.weaponDamage) == GameUtils::Constant::Enemy::STATE_DIED) {
+						itor = refList->erase(itor);
 					}
+					//TODO:뭔가 조금 찝찝한디...? 일단 이거 99% 수정인데 시간이 없다.
+					return;
 				}
 			}
-
 		}
+		itor++;
 	}
 }

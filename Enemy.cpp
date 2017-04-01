@@ -9,13 +9,15 @@ Enemy::Enemy():
 
 Enemy::Enemy(D2D1_POINT_2F point):
 	 m_ObjectPoint(point),
-	 m_pSpriteSheet(new SpriteSheet(L"Images/Enemy_Basic1.png"))
+	 m_pSpriteSheet(new SpriteSheet(L"Images/Enemy_Basic1.png")),
+	 m_iHealth(100)
 {
 }
 
 Enemy::Enemy(float x, float y):
 	 m_ObjectPoint(D2D1_POINT_2F{x, y}),
-	 m_pSpriteSheet(new SpriteSheet(L"Image/Enemy_Basic1.png"))
+	 m_pSpriteSheet(new SpriteSheet(L"Image/Enemy_Basic1.png")),
+	 m_iHealth(100)
 {
 }
 
@@ -70,7 +72,7 @@ D2D1_RECT_F Enemy::GetRect()
 
 GameUtils::Type::State Enemy::OnDamage(int damage)
 {
-	if (0 > m_iHealth - damage) {
+	if (0 >= m_iHealth - damage) {
 		return GameUtils::Constant::Enemy::STATE_DIED;
 	}
 	else {
