@@ -40,26 +40,8 @@ void TestLevel::Unload()
 
 void TestLevel::Render() 
 {
-	m_SpriteSheet.Draw();
-
-	m_pPlayer->Draw();
-
-	m_playerHealthUI.Draw();
-
-	for (Enemy enemy : m_RenderEnemy)
-	{
-		enemy.Draw();
-	}
-}
-
-void TestLevel::Update(float dt)
-{
-	m_pPlayer->Update(*m_pInput, dt);
-	
-	m_pPlayer->UpdateCollision(m_RenderEnemy);
-  
 	RECT rect; ::GetWindowRect(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), &rect);
-  
+
 	D2D1_SIZE_F levelSize = m_SpriteSheet.GetSize();
 
 	float blockSize = (rect.right - rect.left) / 3.f;
@@ -73,6 +55,27 @@ void TestLevel::Update(float dt)
 	else if (m_pPlayer->GetPoint().x < blockSize) {
 		Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(0, 0));
 	}
+
+	m_SpriteSheet.Draw();
+
+	m_pPlayer->Draw();
+
+	for (Enemy enemy : m_RenderEnemy)
+	{
+		enemy.Draw();
+	}
+
+	// Draw UI component after 69 line.
+	Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
+
+	m_playerHealthUI.Draw();
+}
+
+void TestLevel::Update(float dt)
+{
+	m_pPlayer->Update(*m_pInput, dt);
+	
+	m_pPlayer->UpdateCollision(m_RenderEnemy);
 }
 
 void TestLevel::OnResize()
