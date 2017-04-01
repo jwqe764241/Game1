@@ -45,9 +45,11 @@ void TestLevel::Render()
 {
 	RECT rect; ::GetWindowRect(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), &rect);
 
+	D2D1_SIZE_F windowSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
+
 	D2D1_SIZE_F levelSize = m_SpriteSheet.GetSize();
 
-	float blockSize = (rect.right - rect.left) / 3.f;
+	float blockSize = windowSize.width / 3.f;
 
 	if (m_pPlayer->GetPoint().x + blockSize > levelSize.width - blockSize) {
 		Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((levelSize.width - blockSize) * -1) + (blockSize * 2), 0));
