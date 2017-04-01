@@ -5,6 +5,7 @@
 #include "SpriteSheet.h"
 #include "Weapon.h"
 #include "Enemy.h"
+#include "GameDefine.h"
 
 class Player : public IActor
 {
@@ -40,7 +41,7 @@ public:
 	D2D1_POINT_2F GetPoint() { return m_ObjectPoint; }
 
 	//Update Data with collision
-	void UpdateCollision(std::vector<Enemy>& refList);
+	void UpdateCollision(std::vector<Enemy> * refList);
 	D2D1_RECT_F GetRect() override;
 private:
 	// Animation Frame.

@@ -11,7 +11,6 @@ TestLevel::TestLevel(DX_Input * pInput):
 		100, 100,
 		m_SpriteSheet.GetSize().width,
 		Graphics::GetInstance()->GetRenderTarget()->GetSize().height);
-	Load();
 }
 TestLevel::TestLevel(Player * player, DX_Input * pInput):
 	 m_bIsInitialized(true),
@@ -19,7 +18,6 @@ TestLevel::TestLevel(Player * player, DX_Input * pInput):
 	 m_pInput(pInput),
 	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
 {
-	Load();
 }
 
 TestLevel::~TestLevel()
@@ -31,7 +29,12 @@ void TestLevel::Load()
 {
 	m_RenderEnemy.push_back(Enemy(400, 100));
 	m_RenderEnemy.push_back(Enemy(1000, 200));
-	m_RenderEnemy.push_back(Enemy(3000, 200));
+	m_RenderEnemy.push_back(Enemy(3000, 700));
+
+	m_RenderEnemy.push_back(Enemy(1000, 500));
+	m_RenderEnemy.push_back(Enemy(2000, 800));
+	m_RenderEnemy.push_back(Enemy(3500, 600));
+
 }
 
 void TestLevel::Unload() 
@@ -75,7 +78,7 @@ void TestLevel::Update(float dt)
 {
 	m_pPlayer->Update(*m_pInput, dt);
 	
-	m_pPlayer->UpdateCollision(m_RenderEnemy);
+	m_pPlayer->UpdateCollision(&m_RenderEnemy);
 }
 
 void TestLevel::OnResize()
