@@ -33,16 +33,16 @@ public:
 	~Player() override;
 
 	void Draw() override;
-
-	//void Update(Keyboard & keyboard) override;
 	void Update(DX_Input & input, float dt) override;
 	void UpdateWeapon(std::vector<Weapon>& pWeapon);
 
-	D2D1_POINT_2F GetPoint() { return m_ObjectPoint; }
-
 	//Update Data with collision
 	void UpdateCollision(std::vector<Enemy> * refList);
+
+	D2D1_POINT_2F GetPoint() { return m_ObjectPoint; }
 	D2D1_RECT_F GetRect() override;
+
+	void OnDamage();
 private:
 	// Animation Frame.
 	void UpdateFrame();

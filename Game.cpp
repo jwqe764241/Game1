@@ -102,6 +102,9 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			levelController.OnResize();
 		}
 		break;
+	case WM_USER + 1:
+		MessageBox(m_hWnd, "End!", "Yeah!", MB_OK);
+		break;
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);
@@ -155,6 +158,11 @@ void Game::Update()
 	m_pTimer.Frame();
 
 	levelController.Update(m_pTimer.GetTime());
+
+	if (levelController.IsEnd()){
+		levelController.ChangeLevel(new TestLevel2(&input));
+	}
+
 }
 
 

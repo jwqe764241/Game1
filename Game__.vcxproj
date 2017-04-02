@@ -155,6 +155,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="LevelController.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainLevel.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerAttack.cpp" />
     <ClCompile Include="PlayerHealthUI.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="IActor.h" />
     <ClInclude Include="LevelController.h" />
+    <ClInclude Include="MainLevel.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerHealthUI.h" />
     <ClInclude Include="resource.h" />

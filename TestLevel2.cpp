@@ -73,6 +73,11 @@ void TestLevel2::Render()
 
 void TestLevel2::Update(float dt)
 {
+	if (m_RenderEnemy.size() == 0) {
+		SendMessage(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), WM_USER + 1, NULL, NULL);
+		m_bIsEnd = true;
+	}
+
 	m_pPlayer->Update(*m_pInput, dt);
 	m_pPlayer->UpdateCollision(&m_RenderEnemy);
 }
@@ -80,4 +85,9 @@ void TestLevel2::Update(float dt)
 void TestLevel2::OnResize()
 {
 	m_pPlayer->m_levelSize.height = Graphics::GetInstance()->GetRenderTarget()->GetSize().height;
+}
+
+bool TestLevel2::IsEnd()
+{
+	return m_bIsEnd;
 }

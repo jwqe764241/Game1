@@ -52,6 +52,9 @@
     <ClCompile Include="Weapon.cpp">
       <Filter>Source files\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="MainLevel.cpp">
+      <Filter>Source files\Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -113,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="Weapon.h">
       <Filter>Header files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MainLevel.h">
+      <Filter>Header files\Level</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

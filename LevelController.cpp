@@ -68,3 +68,8 @@ void LevelController::OnResize()
 		m_pCurrentLevel->OnResize();
 	}
 }
+
+bool LevelController::IsEnd()
+{
+	return m_pCurrentLevel->IsEnd();
+}

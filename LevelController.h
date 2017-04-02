@@ -21,6 +21,6 @@ public:
 	void Render();
 
 	void OnResize();
-
+	bool IsEnd();
 };
 
