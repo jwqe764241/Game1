@@ -165,17 +165,14 @@ void Game::Render()
 		levelController.CreateLevelDeviceResources();
 	}
 
-	RECT rect;
-	GetClientRect(m_hWnd, &rect);
+	RECT rect; ::GetClientRect(m_hWnd, &rect);
 
 	Graphics::GetInstance()->BeginDraw();
 
-	Graphics::GetInstance()->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
-  
+	//Graphics::GetInstance()->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
 	levelController.Render();
   
-  HRESULT hr = Graphics::GetInstance()->EndDraw();
-	if (hr == D2DERR_RECREATE_TARGET)
+	if (Graphics::GetInstance()->EndDraw() == D2DERR_RECREATE_TARGET)
 	{
 		Graphics::GetInstance()->ReleaseDeviceResource();
 		levelController.ReleaseLevelDeviceResources();
