@@ -152,9 +152,7 @@
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="Gauge.cpp" />
     <ClCompile Include="Graphics.cpp" />
-    <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="LevelController.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -174,10 +172,8 @@
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="Gauge.h" />
     <ClInclude Include="IDrawable.h" />
-    <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Graphics.h" />
-    <ClInclude Include="Frame.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="IActor.h" />
     <ClInclude Include="LevelController.h" />

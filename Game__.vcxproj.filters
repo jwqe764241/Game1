@@ -4,49 +4,19 @@
     <ClCompile Include="DX_Input.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Frame.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="Graphics.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="Keyboard.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteSheet.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerAttack.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Weapon.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="GameTimer.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Gauge.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="TextWriter.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerHealthUI.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="LevelController.cpp">
@@ -58,18 +28,33 @@
     <ClCompile Include="TestLevel2.cpp">
       <Filter>Source files\Level</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source files\Actor\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSheet.cpp">
+      <Filter>Source files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Gauge.cpp">
+      <Filter>Source files\Actor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source files\Actor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAttack.cpp">
+      <Filter>Source files\Actor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHealthUI.cpp">
+      <Filter>Source files\Actor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="TextWriter.cpp">
+      <Filter>Source files\Actor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source files\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SpriteSheet.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Keyboard.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="Graphics.h">
@@ -81,28 +66,13 @@
     <ClInclude Include="Game.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="Frame.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="DX_Input.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Weapon.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="GameTimer.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Gauge.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="TextWriter.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="IActor.h">
@@ -114,9 +84,6 @@
     <ClInclude Include="Level.h">
       <Filter>Header files\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerHealthUI.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="LevelController.h">
       <Filter>Header files\Level</Filter>
     </ClInclude>
@@ -125,6 +92,27 @@
     </ClInclude>
     <ClInclude Include="TestLevel2.h">
       <Filter>Header files\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header files\Actor\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Header files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header files\Actor\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHealthUI.h">
+      <Filter>Header files\Actor\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Gauge.h">
+      <Filter>Header files\Actor\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="TextWriter.h">
+      <Filter>Header files\Actor\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header files\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +169,24 @@
     </Filter>
     <Filter Include="Header files\Level">
       <UniqueIdentifier>{3253e04f-9243-4a62-a524-54942edfd02d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Actor">
+      <UniqueIdentifier>{0d68806b-5899-4ae8-ba05-84f373a9fccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Actor">
+      <UniqueIdentifier>{d3ca0127-5b05-492a-b273-dbac312105b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Actor\Enemy">
+      <UniqueIdentifier>{ab2edb38-0f8c-4af2-b0b1-4fe68c42bbfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Actor\Player">
+      <UniqueIdentifier>{b1750750-d6bc-4460-93e2-aa7a2f585d77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Actor\Enemy">
+      <UniqueIdentifier>{050402dc-1e54-4412-9ddf-ff7b0220687a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Actor\Player">
+      <UniqueIdentifier>{3510183f-29ca-4022-bcfe-66603350ad23}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
