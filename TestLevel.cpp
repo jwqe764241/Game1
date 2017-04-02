@@ -73,7 +73,9 @@ void TestLevel::Render()
 void TestLevel::Update(float dt)
 {
 	if (m_RenderEnemy.size() == 0) {
+		SendMessage(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), WM_USER + 1, NULL, NULL);
 		m_bIsEnd = true;
+		return;
 	}
 
 	m_pPlayer->Update(*m_pInput, dt);

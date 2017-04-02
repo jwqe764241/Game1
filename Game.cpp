@@ -103,6 +103,9 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		}
 		break;
 	case WM_USER + 1:
+		levelController.ChangeLevel(new TestLevel2(&input));
+		break;
+	case WM_USER + 2:
 		MessageBox(m_hWnd, "End!", "Yeah!", MB_OK);
 		break;
 	}
@@ -156,13 +159,7 @@ void Game::Looping()
 void Game::Update()
 {
 	m_pTimer.Frame();
-
 	levelController.Update(m_pTimer.GetTime());
-
-	if (levelController.IsEnd()){
-		levelController.ChangeLevel(new TestLevel2(&input));
-	}
-
 }
 
 
