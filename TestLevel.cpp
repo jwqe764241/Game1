@@ -2,8 +2,8 @@
 
 
 
-TestLevel::TestLevel(DX_Input * pInput):
-	 m_bIsInitialized(true),
+TestLevel::TestLevel(DX_Input * pInput)
+	:m_bIsInitialized(true),
 	 m_pInput(pInput),
 	 m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
 {
@@ -12,11 +12,11 @@ TestLevel::TestLevel(DX_Input * pInput):
 		m_SpriteSheet.GetSize().width,
 		Graphics::GetInstance()->GetRenderTarget()->GetSize().height);
 }
-TestLevel::TestLevel(Player * player, DX_Input * pInput):
-	 m_bIsInitialized(true),
-	 m_pPlayer(player),
+TestLevel::TestLevel(DX_Input * pInput, Player * pPlayer)
+	:m_bIsInitialized(true),
+	 m_pPlayer(pPlayer),
 	 m_pInput(pInput),
-	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
+	 m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
 {
 }
 
@@ -34,7 +34,6 @@ void TestLevel::Load()
 	m_RenderEnemy.push_back(Enemy(1000, 500));
 	m_RenderEnemy.push_back(Enemy(2000, 800));
 	m_RenderEnemy.push_back(Enemy(3500, 600));
-
 }
 
 void TestLevel::Unload() 
@@ -46,10 +45,9 @@ void TestLevel::Render()
 	RECT rect; ::GetWindowRect(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), &rect);
 
 	D2D1_SIZE_F windowSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
+	D2D1_SIZE_F levelSize  = m_SpriteSheet.GetSize();
 
-	D2D1_SIZE_F levelSize = m_SpriteSheet.GetSize();
-
-	float blockSize = windowSize.width / 3.f;
+	float blockSize = windowSize.width / 3.0f;
 
 	if (m_pPlayer->GetPoint().x + blockSize > levelSize.width - blockSize) {
 		Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((levelSize.width - blockSize) * -1) + (blockSize * 2), 0));
@@ -62,24 +60,19 @@ void TestLevel::Render()
 	}
 
 	m_SpriteSheet.Draw();
-
 	m_pPlayer->Draw();
 
-	for (Enemy enemy : m_RenderEnemy)
-	{
+	for (Enemy enemy : m_RenderEnemy){
 		enemy.Draw();
 	}
-
 	// Draw UI component after 69 line.
 	Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
-
 	m_playerHealthUI.Draw();
 }
 
 void TestLevel::Update(float dt)
 {
 	m_pPlayer->Update(*m_pInput, dt);
-	
 	m_pPlayer->UpdateCollision(&m_RenderEnemy);
 }
 
