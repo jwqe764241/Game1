@@ -1,6 +1,5 @@
 #include "Game.h"
 
-
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow) 
 {
 	if (SUCCEEDED(CoInitialize(NULL))) {

@@ -1,9 +1,6 @@
 #include "GameTimer.h"
 
 GameTimer::GameTimer(){}
-
-//GameTimer::GameTimer(const GameTimer & other){}
-
 GameTimer::~GameTimer(){}
 
 bool GameTimer::Initialize() {

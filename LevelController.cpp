@@ -1,16 +1,13 @@
 #include "LevelController.h"
 
-
-
 LevelController::LevelController()
 {
 }
-
-
 LevelController::~LevelController()
 {
 	delete m_pCurrentLevel;
 }
+
 
 void LevelController::LoadLevel(Level * level)
 {
@@ -58,13 +55,5 @@ void LevelController::Render()
 	if (m_pCurrentLevel != nullptr)
 	{
 		m_pCurrentLevel->Render();
-	}
-}
-
-void LevelController::OnResize()
-{
-	if (m_pCurrentLevel != nullptr)
-	{
-		m_pCurrentLevel->OnResize();
 	}
 }

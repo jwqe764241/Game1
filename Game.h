@@ -10,13 +10,13 @@
 #include "GameTimer.h"
 #include "TestLevel.h"
 #include "TestLevel2.h"
+#include "MainLevel.h"
 #include "LevelController.h"
 #include "GameDefine.h"
 
 class Game 
 {
-	//Frame Å¬·¡½º ³»¿ë
-
+	//Frame 내용
 private:
 	HWND m_hWnd;
 	HINSTANCE m_hInstance;
@@ -35,7 +35,7 @@ public:
 
 	static LRESULT CALLBACK HandleWndProc(HWND, UINT, WPARAM, LPARAM);
 	LRESULT CALLBACK WndProc(HWND hWnd, UINT uInt, WPARAM wParam, LPARAM lParam);
-	//Frame Å¬·¡½º ³¡
+	//Frame 내용 끝
 
 public:
 	GameTimer m_pTimer;

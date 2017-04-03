@@ -1,18 +1,8 @@
 #pragma once
 #define DIRECTINPUT_VERSION 0x800
 #include <dinput.h>
-
-
-//TODO:나중엔 GameDefine에 위치하여 있을것
-typedef struct _SCREENSIZE {
-	int width;
-	int height;
-} SCREENSIZE, *LPSCREENSIZE;
-
-typedef struct _MOUSEPOINT {
-	int x;
-	int y;
-} MOUSEPOINT, *LPMOUSEPOINT;
+#include "Graphics.h"
+#include "GameDefine.h"
 
 
 class DX_Input
@@ -29,7 +19,7 @@ public:
 public:
 	unsigned char m_KeyboardState[256];
 	DIMOUSESTATE  m_MouseState;
-	MOUSEPOINT m_MousePoint;
+	GameUtils::Type::MOUSEPOINT m_MousePoint;
   
 private:
 	bool ReadKeyboard();
@@ -41,7 +31,7 @@ private:
 	IDirectInputDevice8 * m_pKeyboardDevice;
 	IDirectInputDevice8 * m_pMouseDevice;
 
-	SCREENSIZE m_ScreenSize;
+	GameUtils::Type::SCREENSIZE m_ScreenSize;
 
 	bool m_bIsInitialized;
 };

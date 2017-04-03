@@ -1,65 +1,51 @@
 #include "TestLevel.h"
 
-
-
 TestLevel::TestLevel(DX_Input * pInput):
-	 m_bIsInitialized(true),
-	 m_pInput(pInput),
-	 m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png")),
-	 m_testButton(
-		 L"Image/UI/button_yellow_normal.png",
-		 L"Image/UI/button_yellow_focused.png",
-		 L"Image/UI/button_yellow_pressed.png",
-		 L"클릭하세요.",
-		 D2D1::Point2F(300, 300))
+	m_bIsInitialized(true),
+	m_pInput(pInput),
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
 {
 	m_pPlayer = new Player(
 		100, 100,
 		m_SpriteSheet.GetSize().width,
 		Graphics::GetInstance()->GetRenderTarget()->GetSize().height);
 }
-TestLevel::TestLevel(Player * player, DX_Input * pInput):
-	 m_bIsInitialized(true),
-	 m_pPlayer(player),
-	 m_pInput(pInput),
-	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png")),
-	m_testButton(
-		L"Image/UI/button_yellow_normal.png",
-		L"Image/UI/button_yellow_focused.png",
-		L"Image/UI/button_yellow_clicked.png",
-		L"클릭하세요.",
-		D2D1::Point2F(300, 300))
+TestLevel::TestLevel(DX_Input * pInput, Player * pPlayer):
+	m_bIsInitialized(true),
+	m_pPlayer(pPlayer),
+	m_pInput(pInput),
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
 {
 }
-
 TestLevel::~TestLevel()
 {
 	Unload();
 }
 
+
 void TestLevel::Load() 
 {
 	m_RenderEnemy.push_back(Enemy(400, 100));
 	m_RenderEnemy.push_back(Enemy(1000, 200));
-	m_RenderEnemy.push_back(Enemy(3000, 700));
+	m_RenderEnemy.push_back(Enemy(3000, 600));
 
 	m_RenderEnemy.push_back(Enemy(1000, 500));
-	m_RenderEnemy.push_back(Enemy(2000, 800));
+	m_RenderEnemy.push_back(Enemy(2000, 300));
 	m_RenderEnemy.push_back(Enemy(3500, 600));
-
 }
 
 void TestLevel::Unload() 
 {
+	m_pInput = nullptr;
+	delete m_pPlayer;
 }
 
 void TestLevel::Render() 
 {
 	D2D1_SIZE_F windowSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
+	D2D1_SIZE_F levelSize  = m_SpriteSheet.GetSize();
 
-	D2D1_SIZE_F levelSize = m_SpriteSheet.GetSize();
-
-	float blockSize = windowSize.width / 3.f;
+	float blockSize = windowSize.width / 3.0f;
 
 	if (m_pPlayer->GetPoint().x + blockSize > levelSize.width - blockSize) {
 		Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((levelSize.width - blockSize) * -1) + (blockSize * 2), 0));
@@ -72,55 +58,23 @@ void TestLevel::Render()
 	}
 
 	m_SpriteSheet.Draw();
-
 	m_pPlayer->Draw();
 
-	for (Enemy enemy : m_RenderEnemy)
-	{
+	for (Enemy enemy : m_RenderEnemy){
 		enemy.Draw();
 	}
-
 	// Draw UI component after 69 line.
 	Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
-
 	m_pPlayer->m_playerHealthUI.Draw();
-
-	m_testButton.Draw();
 }
 
 void TestLevel::Update(float dt, HWND hwnd)
 {
-	UpdateUI(hwnd);
+	if (m_RenderEnemy.size() == 0) {
+		SendMessage(hwnd, GameUtils::Constant::Level::LEVEL_LEVEL2, NULL, NULL);
+		return;
+	}
+
 	m_pPlayer->Update(*m_pInput, dt);
-	
 	m_pPlayer->UpdateCollision(&m_RenderEnemy);
-}
-
-void TestLevel::OnResize()
-{
-	m_pPlayer->m_levelSize.height = Graphics::GetInstance()->GetRenderTarget()->GetSize().height;
-}
-
-void TestLevel::UpdateUI(HWND hwnd)
-{
-	POINT point;
-	GetCursorPos(&point);
-	ScreenToClient(hwnd, &point);
-
-	if (point.x > m_testButton.m_offset.x &&
-		point.x < m_testButton.m_offset.x + m_testButton.GetSize().width &&
-		point.y > m_testButton.m_offset.y &&
-		point.y < m_testButton.m_offset.y + m_testButton.GetSize().height) {
-		m_testButton.OnFocus();
-		if (m_pInput->m_MouseState.rgbButtons[0]) {
-			m_testButton.OnLeftMouseClick();
-		}
-		else {
-			m_testButton.OnLeftMouseRelease();
-		}
-	}
-	else {
-		m_testButton.OnLeftMouseRelease();
-		m_testButton.OnFocusOut();
-	}
 }

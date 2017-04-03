@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "resource.h"
 
-Game::Game(HINSTANCE hInstance, char * wndClassName) :
+Game::Game(HINSTANCE hInstance, char * wndClassName):
 	 m_hInstance(hInstance),
 	 m_lpcWndClassName(wndClassName)
 {
@@ -12,7 +12,6 @@ Game::Game(HINSTANCE hInstance, char * wndClassName) :
 Game::~Game()
 {
 }
-
 
 HRESULT Game::InitializeFrame(int nCmdShow, char * frameTitle)
 {
@@ -57,8 +56,6 @@ HRESULT Game::InitializeFrame(int nCmdShow, char * frameTitle)
 	ShowWindow(m_hWnd, SW_MAXIMIZE);
 	UpdateWindow(m_hWnd);
 
-	if (!input.Initialize(m_hInstance, m_hWnd, rect.right - rect.left, rect.bottom - rect.top)) { return S_FALSE; }
-
 	return S_OK;
 }
 
@@ -95,12 +92,46 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 	case WM_QUIT:
 		PostQuitMessage(0);
 		break;
+
 	case WM_SIZE:
 		if (Graphics::GetInstance() != nullptr) {
 			RECT rect;	GetWindowRect(m_hWnd, &rect);
 			Graphics::GetInstance()->OnResize((rect.right - rect.left), (rect.bottom - rect.top));
-			levelController.OnResize();
+			//levelController.OnResize();
 		}
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_MAIN:
+		levelController.ChangeLevel(new MainLevel(&input));
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_LEVEL1:
+		levelController.ChangeLevel(new TestLevel(&input));
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_LEVEL2:
+		levelController.ChangeLevel(new TestLevel2(&input));
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_RANK:
+		MessageBox(m_hWnd, "Rank", "Yeah", MB_OK);
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_HOW:
+		MessageBox(m_hWnd, "How", "Yeah", MB_OK);
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_INFO:
+		MessageBox(m_hWnd, "Info", "Yeah", MB_OK);
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_CREDIT:
+		MessageBox(m_hWnd, "Credit", "Yeah", MB_OK);
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_END:
+		MessageBox(m_hWnd, "End!!", "End!@", MB_OK);
+		levelController.ChangeLevel(new MainLevel(&input));
 		break;
 	}
 
@@ -115,8 +146,10 @@ HRESULT Game::Start(int nCmdShow, char * frameTitle)
 	if (FAILED(InitializeFrame(nCmdShow, frameTitle)))				  { return S_FALSE; }
 	if (FAILED(Graphics::GetInstance()->initialize(GetHWND())))					  { return S_FALSE; }
 
-	levelController.LoadLevel(new TestLevel(&input));
+	RECT rect; ::GetClientRect(GetHWND(), &rect);
+	if (!input.Initialize(m_hInstance, m_hWnd, rect.right, rect.bottom)) { return S_FALSE; }
 
+	levelController.LoadLevel(new MainLevel(&input));
 	m_pTimer.Initialize();
 
 	return S_OK;
@@ -137,12 +170,12 @@ void Game::Looping()
 				bIsRunning = false;
 				break;
 			}
-			
 			{
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
 		}
+
 		input.ReadInput();
 		Update();
 		Render();
@@ -153,7 +186,6 @@ void Game::Looping()
 void Game::Update()
 {
 	m_pTimer.Frame();
-
 	levelController.Update(m_pTimer.GetTime(), m_hWnd);
 }
 
@@ -165,17 +197,14 @@ void Game::Render()
 		levelController.CreateLevelDeviceResources();
 	}
 
-	RECT rect;
-	GetClientRect(m_hWnd, &rect);
+	RECT rect; ::GetClientRect(m_hWnd, &rect);
 
 	Graphics::GetInstance()->BeginDraw();
 
-	Graphics::GetInstance()->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
-  
+	//Graphics::GetInstance()->ClearScreen(D2D1::ColorF(0, 0, 1.0f));
 	levelController.Render();
   
-  HRESULT hr = Graphics::GetInstance()->EndDraw();
-	if (hr == D2DERR_RECREATE_TARGET)
+	if (Graphics::GetInstance()->EndDraw() == D2DERR_RECREATE_TARGET)
 	{
 		Graphics::GetInstance()->ReleaseDeviceResource();
 		levelController.ReleaseLevelDeviceResources();

@@ -1,74 +1,81 @@
 #include "TestLevel2.h"
 
-
-
-TestLevel2::TestLevel2():
-	 m_bIsInitialized(true),
-	 m_lpszFilePath(L"Level_Background2.jpg")
+TestLevel2::TestLevel2(DX_Input * pInput):
+	m_bIsInitialized(true),
+	m_pInput(pInput),
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
 {
+	m_pPlayer = new Player(
+		100, 100,
+		m_SpriteSheet.GetSize().width,
+		Graphics::GetInstance()->GetRenderTarget()->GetSize().height);
 }
-
-
+TestLevel2::TestLevel2(DX_Input * pInput, Player * pPlayer):
+	m_bIsInitialized(true),
+	m_pInput(pInput),
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
+{
+	//나중에 체력 같은거 옮길 수 있게 하든가 걍 하든가
+	m_pPlayer = new Player(
+		100, 100,
+		m_SpriteSheet.GetSize().width,
+		Graphics::GetInstance()->GetRenderTarget()->GetSize().height);
+}
 TestLevel2::~TestLevel2()
 {
+	Unload();
 }
+
 
 void TestLevel2::Load()
 {
-	assert(m_bIsInitialized == true);
-
-	Graphics::GetInstance()->GetImagingFactory()->CreateDecoderFromFilename(
-		m_lpszFilePath,
-		NULL,
-		GENERIC_READ,
-		WICDecodeMetadataCacheOnDemand,
-		&m_pDecoder
-	);
-
-	m_pDecoder->GetFrame(0, &m_pFrameDecode);
-
-	Graphics::GetInstance()->GetImagingFactory()->CreateFormatConverter(&m_pConvertedBitmap);
-
-	m_pConvertedBitmap->Initialize(
-		m_pFrameDecode,
-		GUID_WICPixelFormat32bppPBGRA,
-		WICBitmapDitherTypeNone,
-		NULL,
-		0.f,
-		WICBitmapPaletteTypeCustom
-	);
-
-	m_renderProperties = D2D1::RenderTargetProperties();
-	Graphics::GetInstance()->GetD2DFactory()->GetDesktopDpi(&m_renderProperties.dpiX, &m_renderProperties.dpiY);
-	Graphics::GetInstance()->GetRenderTarget()->CreateBitmapFromWicBitmap(m_pConvertedBitmap, NULL, &m_pBitmap);
+	m_RenderEnemy.push_back(Enemy(600, 500));
+	m_RenderEnemy.push_back(Enemy(1200, 400));
+	m_RenderEnemy.push_back(Enemy(1500, 400));
+	m_RenderEnemy.push_back(Enemy(3000, 500));
 }
 
 void TestLevel2::Unload()
 {
-	GameUtils::SafeRelease(&m_pDecoder);
-	GameUtils::SafeRelease(&m_pFrameDecode);
-	GameUtils::SafeRelease(&m_pConvertedBitmap);
-	GameUtils::SafeRelease(&m_pBitmap);
 }
 
 void TestLevel2::Render()
 {
-	assert(m_bIsInitialized == true);
+	RECT rect; ::GetWindowRect(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), &rect);
 
-	//RECT rect; GetWindowRect(m_pGraphics->GetRenderTaget()->GetHwnd(), &rect);
+	D2D1_SIZE_F windowSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
+	D2D1_SIZE_F levelSize = m_SpriteSheet.GetSize();
 
-	D2D1_SIZE_F size = Graphics::GetInstance()->GetRenderTarget()->GetSize();
-	D2D1_RECT_F rect = {0 ,0, size.width, size.height};
+	float blockSize = windowSize.width / 3.0f;
 
-	Graphics::GetInstance()->GetRenderTarget()->DrawBitmap(m_pBitmap, rect, 1.0, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, rect);
+	if (m_pPlayer->GetPoint().x + blockSize > levelSize.width - blockSize) {
+		Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((levelSize.width - blockSize) * -1) + (blockSize * 2), 0));
+	}
+	else if (m_pPlayer->GetPoint().x > blockSize) {
+		Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(((m_pPlayer->GetPoint().x) * -1) + blockSize, 0));
+	}
+	else if (m_pPlayer->GetPoint().x < blockSize) {
+		Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Translation(0, 0));
+	}
+
+	m_SpriteSheet.Draw();
+	m_pPlayer->Draw();
+
+	for (Enemy enemy : m_RenderEnemy) {
+		enemy.Draw();
+	}
+
+	Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
+	m_playerHealthUI.Draw();
 }
 
 void TestLevel2::Update(float dt, HWND hwnd)
 {
+	if (m_RenderEnemy.size() == 0) {
+		SendMessage(hwnd, GameUtils::Constant::Level::LEVEL_END, NULL, NULL);
+		return;
+	}
 
-}
-
-void TestLevel2::UpdateUI(HWND hwnd)
-{
-
+	m_pPlayer->Update(*m_pInput, dt);
+	m_pPlayer->UpdateCollision(&m_RenderEnemy);
 }

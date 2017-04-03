@@ -1,15 +1,14 @@
-#include "DX_Input.h"
 #pragma comment(lib, "dinput8")
 #pragma comment(lib, "dxguid.lib")
 
+#include "DX_Input.h"
 #include "GameDefine.h"
 
-
-DX_Input::DX_Input()
-	:m_pDirectInput(NULL),
-	 m_pKeyboardDevice(NULL),
-	 m_pMouseDevice(NULL),
-	 m_bIsInitialized(false)
+DX_Input::DX_Input():
+	m_pDirectInput(NULL),
+	m_pKeyboardDevice(NULL),
+	m_pMouseDevice(NULL),
+	m_bIsInitialized(false)
 {
 }
 DX_Input::~DX_Input()
@@ -19,9 +18,9 @@ DX_Input::~DX_Input()
 
 bool DX_Input::Initialize(HINSTANCE hInstance, HWND hWnd, int screenWidth, int screenHeight)
 {
-	m_ScreenSize.width = screenWidth;
+	m_ScreenSize.width  = screenWidth;
 	m_ScreenSize.height = screenHeight;
-
+	
 	m_MousePoint.x = 0;
 	m_MousePoint.y = 0;
 

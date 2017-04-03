@@ -1,6 +1,6 @@
 #include "PlayerHealthUI.h"
 
-PlayerHealthUI::PlayerHealthUI() : 
+PlayerHealthUI::PlayerHealthUI(): 
 	m_healthGauge(5, 0, 5, D2D1::Point2F(20, 40), D2D1::SizeF(200, 20), L"Image/HealthBar.png"),
 	m_healthTextWriter(
 		L"Gabriola",
@@ -16,11 +16,11 @@ PlayerHealthUI::PlayerHealthUI() :
 {
 	CreateDeviceResources();
 }
-
 PlayerHealthUI::~PlayerHealthUI()
 {
 	ReleaseDeviceResources();
 }
+
 
 void PlayerHealthUI::CreateDeviceResources()
 {

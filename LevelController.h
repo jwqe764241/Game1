@@ -19,8 +19,5 @@ public:
 
 	void Update(float dt, HWND hwnd);
 	void Render();
-
-	void OnResize();
-
 };
 

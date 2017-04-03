@@ -1,6 +1,6 @@
 #include "Button.h"
 
-Button::Button(wchar_t * normal, wchar_t * focus, wchar_t * click, wchar_t * labelText, D2D1_POINT_2F offset) :
+Button::Button(wchar_t * normal, wchar_t * focus, wchar_t * click, wchar_t * labelText, D2D1_POINT_2F offset):
 	m_normalSpriteSheet(normal), m_focusedSpriteSheet(focus), m_clickedSpriteSheet(click), m_buttonLabelText(labelText),
 	m_offset(offset), m_pressed(false), m_focused(false),
 	m_buttonLabelLayout(
@@ -13,10 +13,10 @@ Button::Button(wchar_t * normal, wchar_t * focus, wchar_t * click, wchar_t * lab
 {
 	SetSize(m_normalSpriteSheet.GetSize().width, m_normalSpriteSheet.GetSize().height);
 }
-
 Button::~Button()
 {
 }
+
 
 void Button::CreateDeviceResources()
 {

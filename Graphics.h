@@ -34,7 +34,7 @@ public:
 	HRESULT initialize(HWND targetHWND);
 
 	HRESULT CreateDeviceResource(HWND hWnd);
-	void ReleaseDeviceResource();
+	void    ReleaseDeviceResource();
 
 	void BeginDraw() {
 		assert(m_bIsInitialized == true);
@@ -50,8 +50,8 @@ public:
 	void OnResize(UINT width, UINT height);
 
 	ID2D1HwndRenderTarget * GetRenderTarget() { return m_pRenderTarget; }
-	IWICImagingFactory* GetImagingFactory()  { return m_pIWICFactory; }
-	ID2D1Factory* GetD2DFactory()			 { return m_pDirect2DFactory; }
-	IDWriteFactory* GetDWriteFactory()		 { return m_pDWriteFactory; }
+	IWICImagingFactory* GetImagingFactory()   { return m_pIWICFactory; }
+	ID2D1Factory* GetD2DFactory()			  { return m_pDirect2DFactory; }
+	IDWriteFactory* GetDWriteFactory()		  { return m_pDWriteFactory; }
 };
 
