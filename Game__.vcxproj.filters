@@ -58,6 +58,12 @@
     <ClCompile Include="Weapon.cpp">
       <Filter>Source\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="HowLevel.cpp">
+      <Filter>Source\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoLevel.cpp">
+      <Filter>Source\Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -127,6 +133,12 @@
     <ClInclude Include="TextWriter.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="HowLevel.h">
+      <Filter>Header\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoLevel.h">
+      <Filter>Header\Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
@@ -176,6 +188,12 @@
       <Filter>Images</Filter>
     </Image>
     <Image Include="Image\Enemy_Basic1.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Image\HowToPlay.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Image\GameInfo.png">
       <Filter>Images</Filter>
     </Image>
   </ItemGroup>

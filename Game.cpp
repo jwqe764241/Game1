@@ -41,7 +41,7 @@ HRESULT Game::InitializeFrame(int nCmdShow, char * frameTitle)
 		NULL,
 		m_lpcWndClassName,
 		frameTitle,
-		WS_OVERLAPPEDWINDOW,
+		WS_EX_TOPMOST | WS_POPUP,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
 		rect.right - rect.left,
@@ -118,11 +118,11 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		break;
 
 	case GameUtils::Constant::Level::LEVEL_HOW:
-		MessageBox(m_hWnd, "How", "Yeah", MB_OK);
+		levelController.ChangeLevel(new HowLevel(&input));
 		break;
 
 	case GameUtils::Constant::Level::LEVEL_INFO:
-		MessageBox(m_hWnd, "Info", "Yeah", MB_OK);
+		levelController.ChangeLevel(new InfoLevel(&input));
 		break;
 
 	case GameUtils::Constant::Level::LEVEL_CREDIT:
@@ -130,7 +130,6 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		break;
 
 	case GameUtils::Constant::Level::LEVEL_END:
-		MessageBox(m_hWnd, "End!!", "End!@", MB_OK);
 		levelController.ChangeLevel(new MainLevel(&input));
 		break;
 	}

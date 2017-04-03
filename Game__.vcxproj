@@ -153,6 +153,8 @@
     <ClCompile Include="Gauge.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HowLevel.cpp" />
+    <ClCompile Include="InfoLevel.cpp" />
     <ClCompile Include="LevelController.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainLevel.cpp" />
@@ -173,8 +175,10 @@
     <ClInclude Include="GameDefine.h" />
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="Gauge.h" />
+    <ClInclude Include="HowLevel.h" />
     <ClInclude Include="IDelegate.h" />
     <ClInclude Include="IDrawable.h" />
+    <ClInclude Include="InfoLevel.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Game.h" />
@@ -199,7 +203,9 @@
     <Image Include="Image\Arrow.png" />
     <Image Include="Image\Button.png" />
     <Image Include="Image\Enemy_Basic1.png" />
+    <Image Include="Image\GameInfo.png" />
     <Image Include="Image\HealthBar.png" />
+    <Image Include="Image\HowToPlay.png" />
     <Image Include="Image\LevelTile.png" />
     <Image Include="Image\Level_BackTile.png" />
     <Image Include="Image\Level_Backtile2.png" />

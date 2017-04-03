@@ -11,6 +11,8 @@
 #include "TestLevel.h"
 #include "TestLevel2.h"
 #include "MainLevel.h"
+#include "HowLevel.h"
+#include "InfoLevel.h"
 #include "LevelController.h"
 #include "GameDefine.h"
 
