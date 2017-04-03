@@ -92,6 +92,7 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 	case WM_QUIT:
 		PostQuitMessage(0);
 		break;
+
 	case WM_SIZE:
 		if (Graphics::GetInstance() != nullptr) {
 			RECT rect;	GetWindowRect(m_hWnd, &rect);
@@ -99,15 +100,38 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			//levelController.OnResize();
 		}
 		break;
-	case WM_USER + 1:
+
+	case GameUtils::Constant::Level::LEVEL_MAIN:
+		levelController.ChangeLevel(new MainLevel(&input));
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_LEVEL1:
 		levelController.ChangeLevel(new TestLevel(&input));
 		break;
-	case WM_USER + 2:
+
+	case GameUtils::Constant::Level::LEVEL_LEVEL2:
 		levelController.ChangeLevel(new TestLevel2(&input));
 		break;
-	case WM_USER + 3:
+
+	case GameUtils::Constant::Level::LEVEL_RANK:
+		MessageBox(m_hWnd, "Rank", "Yeah", MB_OK);
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_HOW:
+		MessageBox(m_hWnd, "How", "Yeah", MB_OK);
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_INFO:
+		MessageBox(m_hWnd, "Info", "Yeah", MB_OK);
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_CREDIT:
+		MessageBox(m_hWnd, "Credit", "Yeah", MB_OK);
+		break;
+
+	case GameUtils::Constant::Level::LEVEL_END:
 		MessageBox(m_hWnd, "End!!", "End!@", MB_OK);
-		PostQuitMessage(0);
+		levelController.ChangeLevel(new MainLevel(&input));
 		break;
 	}
 

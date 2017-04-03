@@ -4,6 +4,7 @@
 #include "DX_Input.h"
 #include "Level.h"
 #include "TestButton.h"
+#include "GameDefine.h"
 
 
 class MainLevel : public Level

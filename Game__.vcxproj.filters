@@ -1,22 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="DX_Input.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="GameTimer.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Gauge.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Graphics.cpp">
@@ -28,25 +19,7 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerAttack.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerHealthUI.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteSheet.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="TestButton.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="TextWriter.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Weapon.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="TestLevel2.cpp">
@@ -58,43 +31,40 @@
     <ClCompile Include="MainLevel.cpp">
       <Filter>Source\Level</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Gauge.cpp">
+      <Filter>Source\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAttack.cpp">
+      <Filter>Source\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHealthUI.cpp">
+      <Filter>Source\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSheet.cpp">
+      <Filter>Source\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="TestButton.cpp">
+      <Filter>Source\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Weapon.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="TextWriter.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="TestButton.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteSheet.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerHealthUI.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="LevelController.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="IDrawable.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="IDelegate.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="IActor.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="Graphics.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Gauge.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="GameTimer.h">
@@ -106,13 +76,7 @@
     <ClInclude Include="Game.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="DX_Input.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">
@@ -126,6 +90,42 @@
     </ClInclude>
     <ClInclude Include="MainLevel.h">
       <Filter>Header\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="IActor.h">
+      <Filter>Header\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IDelegate.h">
+      <Filter>Header\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawable.h">
+      <Filter>Header\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Gauge.h">
+      <Filter>Header\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHealthUI.h">
+      <Filter>Header\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Header\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TestButton.h">
+      <Filter>Header\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TextWriter.h">
+      <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +197,15 @@
     </Filter>
     <Filter Include="Source\Level">
       <UniqueIdentifier>{04a6b18b-3f70-4076-b0ec-4d3126d5b184}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Actor">
+      <UniqueIdentifier>{0fa4a32e-a738-4994-b7f1-1a72f721bde3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Actor">
+      <UniqueIdentifier>{067ee641-4ddf-4fd5-b217-5b6ed0d067c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Interface">
+      <UniqueIdentifier>{10952d27-f031-4906-9f44-6c3d1c06d3ce}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
