@@ -41,4 +41,5 @@ private:
 
 	TextWriter m_buttonLabelLayout;
 	wchar_t* m_buttonLabelText;
+
 };

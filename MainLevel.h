@@ -13,7 +13,7 @@ private:
 	DX_Input*	m_pInput;
 	bool m_bIsInitialized;
 
-	std::vector<Button *> m_RenderEnvir;
+	std::vector<TestButton *> m_RenderEnvir;
 
 public:
 	MainLevel(DX_Input * pInput);
