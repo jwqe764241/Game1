@@ -32,6 +32,7 @@ void Enemy::Draw()
 }
 void Enemy::Update(DX_Input & input, float dt)
 {
+
 }
 
 void Enemy::UpdateFrame()

@@ -16,8 +16,6 @@ private:
 	D2D1_RENDER_TARGET_PROPERTIES m_renderProperties;
 	bool m_bIsInitialized;
 
-	bool m_bIsEnd = false;
-
 	//Render List
 	Player * m_pPlayer;
 	std::vector<Enemy>  m_RenderEnemy;
@@ -32,8 +30,5 @@ public:
 	virtual void Unload() override;
 	virtual void Render() override;
 	virtual void Update(float dt) override;
-
-	virtual void OnResize() override;
-	virtual bool IsEnd()	override;
 };
 

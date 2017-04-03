@@ -13,7 +13,6 @@ Game::~Game()
 {
 }
 
-
 HRESULT Game::InitializeFrame(int nCmdShow, char * frameTitle)
 {
 	WNDCLASSEX wndClass;	ZeroMemory(&wndClass, sizeof(WNDCLASSEX));
@@ -57,8 +56,6 @@ HRESULT Game::InitializeFrame(int nCmdShow, char * frameTitle)
 	ShowWindow(m_hWnd, SW_MAXIMIZE);
 	UpdateWindow(m_hWnd);
 
-	if (!input.Initialize(m_hInstance, m_hWnd, rect.right - rect.left, rect.bottom - rect.top)) { return S_FALSE; }
-
 	return S_OK;
 }
 
@@ -99,14 +96,18 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		if (Graphics::GetInstance() != nullptr) {
 			RECT rect;	GetWindowRect(m_hWnd, &rect);
 			Graphics::GetInstance()->OnResize((rect.right - rect.left), (rect.bottom - rect.top));
-			levelController.OnResize();
+			//levelController.OnResize();
 		}
 		break;
 	case WM_USER + 1:
-		levelController.ChangeLevel(new TestLevel2(&input));
+		levelController.ChangeLevel(new TestLevel(&input));
 		break;
 	case WM_USER + 2:
-		MessageBox(m_hWnd, "End!", "Yeah!", MB_OK);
+		levelController.ChangeLevel(new TestLevel2(&input));
+		break;
+	case WM_USER + 3:
+		MessageBox(m_hWnd, "End!!", "End!@", MB_OK);
+		PostQuitMessage(0);
 		break;
 	}
 
@@ -121,8 +122,10 @@ HRESULT Game::Start(int nCmdShow, char * frameTitle)
 	if (FAILED(InitializeFrame(nCmdShow, frameTitle)))				  { return S_FALSE; }
 	if (FAILED(Graphics::GetInstance()->initialize(GetHWND())))					  { return S_FALSE; }
 
-	levelController.LoadLevel(new TestLevel(&input));
+	RECT rect; ::GetClientRect(GetHWND(), &rect);
+	if (!input.Initialize(m_hInstance, m_hWnd, rect.right, rect.bottom)) { return S_FALSE; }
 
+	levelController.LoadLevel(new MainLevel(&input));
 	m_pTimer.Initialize();
 
 	return S_OK;
@@ -143,12 +146,12 @@ void Game::Looping()
 				bIsRunning = false;
 				break;
 			}
-			
 			{
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
 		}
+
 		input.ReadInput();
 		Update();
 		Render();

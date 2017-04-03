@@ -24,6 +24,16 @@ namespace GameUtils{
 
 	namespace Type {
 		typedef char State;
+
+		typedef struct _SCREENSIZE {
+			int width;
+			int height;
+		} SCREENSIZE, *LPSCREENSIZE;
+
+		typedef struct _MOUSEPOINT {
+			int x;
+			int y;
+		} MOUSEPOINT, *LPMOUSEPOINT;
 	}
 
 	namespace Constant 

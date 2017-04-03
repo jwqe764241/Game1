@@ -61,15 +61,10 @@ void LevelController::Render()
 	}
 }
 
-void LevelController::OnResize()
-{
-	if (m_pCurrentLevel != nullptr)
-	{
-		m_pCurrentLevel->OnResize();
-	}
-}
-
-bool LevelController::IsEnd()
-{
-	return m_pCurrentLevel->IsEnd();
-}
+//void LevelController::OnResize()
+//{
+//	if (m_pCurrentLevel != nullptr)
+//	{
+//		m_pCurrentLevel->OnResize();
+//	}
+//}

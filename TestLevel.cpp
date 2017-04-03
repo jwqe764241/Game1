@@ -29,15 +29,17 @@ void TestLevel::Load()
 {
 	m_RenderEnemy.push_back(Enemy(400, 100));
 	m_RenderEnemy.push_back(Enemy(1000, 200));
-	m_RenderEnemy.push_back(Enemy(3000, 700));
+	m_RenderEnemy.push_back(Enemy(3000, 600));
 
 	m_RenderEnemy.push_back(Enemy(1000, 500));
-	m_RenderEnemy.push_back(Enemy(2000, 800));
+	m_RenderEnemy.push_back(Enemy(2000, 300));
 	m_RenderEnemy.push_back(Enemy(3500, 600));
 }
 
 void TestLevel::Unload() 
 {
+	m_pInput = nullptr;
+	delete m_pPlayer;
 }
 
 void TestLevel::Render() 
@@ -73,21 +75,10 @@ void TestLevel::Render()
 void TestLevel::Update(float dt)
 {
 	if (m_RenderEnemy.size() == 0) {
-		SendMessage(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), WM_USER + 1, NULL, NULL);
-		m_bIsEnd = true;
+		SendMessage(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), WM_USER + 2, NULL, NULL);
 		return;
 	}
 
 	m_pPlayer->Update(*m_pInput, dt);
 	m_pPlayer->UpdateCollision(&m_RenderEnemy);
-}
-
-void TestLevel::OnResize()
-{
-	m_pPlayer->m_levelSize.height = Graphics::GetInstance()->GetRenderTarget()->GetSize().height;
-}
-
-bool TestLevel::IsEnd()
-{
-	return m_bIsEnd;
 }

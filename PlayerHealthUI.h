@@ -10,7 +10,7 @@ public:
 	PlayerHealthUI();
 	~PlayerHealthUI();
 
-	virtual void CreateDeviceResources() override;
+	virtual void CreateDeviceResources()  override;
 	virtual void ReleaseDeviceResources() override;
 
 	virtual void Draw() override;
