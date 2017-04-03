@@ -23,6 +23,11 @@ void Gauge::SubValue(int value)
 	m_value = m_value - value < m_min ? m_min : m_value - value;
 }
 
+void Gauge::SetValue(int value)
+{
+	m_value = value;
+}
+
 void Gauge::CreateDeviceResources()
 {
 	m_pSpriteSheet = new SpriteSheet(m_fileName);

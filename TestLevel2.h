@@ -19,9 +19,11 @@ public:
 	TestLevel2();
 	~TestLevel2();
 
-	void Load()   override;
-	void Unload() override;
-	void Render() override;
-	void Update(float dt) override;
+	virtual void Load()   override;
+	virtual void Unload() override;
+	virtual void Render() override;
+	virtual void Update(float dt, HWND hwnd) override;
+
+	virtual void UpdateUI(HWND hwnd) override;
 };
 

@@ -58,6 +58,9 @@
     <ClCompile Include="PlayerHealthUI.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="TestButton.cpp">
+      <Filter>Source files\Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestLevel.h">
@@ -126,6 +129,12 @@
     <ClInclude Include="PlayerHealthUI.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="TestButton.h">
+      <Filter>Header files\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="IDelegate.h">
+      <Filter>Header files\Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
@@ -156,6 +165,18 @@
     <Image Include="Image\Enemy_Basic1.png">
       <Filter>Resources\Images</Filter>
     </Image>
+    <Image Include="Image\HealthBar.png">
+      <Filter>Resources\Images\UI</Filter>
+    </Image>
+    <Image Include="Image\UI\button_yellow_focused.png">
+      <Filter>Resources\Images\UI</Filter>
+    </Image>
+    <Image Include="Image\UI\button_yellow_normal.png">
+      <Filter>Resources\Images\UI</Filter>
+    </Image>
+    <Image Include="Image\UI\button_yellow_pressed.png">
+      <Filter>Resources\Images\UI</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="__1.txt" />
@@ -175,6 +196,15 @@
     </Filter>
     <Filter Include="Header files\Interface">
       <UniqueIdentifier>{2ac89a7d-6fe3-45a3-97c6-77e4d7ca5f4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Images\UI">
+      <UniqueIdentifier>{668d3d55-f1ff-4bbc-8466-11a409a6a285}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Test">
+      <UniqueIdentifier>{872e667a-c1a7-43d4-b374-620f20ca8064}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Test">
+      <UniqueIdentifier>{8285edd8-1062-47a1-a537-c4f161f97512}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -11,10 +11,11 @@ public:
 
 	void AddValue(int value);
 	void SubValue(int value);
+	void SetValue(int value);
 
-	virtual void CreateDeviceResources();
-	virtual void ReleaseDeviceResources();
-	virtual void Draw();
+	virtual void CreateDeviceResources() override;
+	virtual void ReleaseDeviceResources() override;
+	virtual void Draw() override;
 
 public:
 	int m_max, m_min;
