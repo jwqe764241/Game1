@@ -17,7 +17,7 @@ public:
 	void CreateLevelDeviceResources();
 	void ReleaseLevelDeviceResources();
 
-	void Update(float dt);
+	void Update(float dt, HWND hwnd);
 	void Render();
 };
 

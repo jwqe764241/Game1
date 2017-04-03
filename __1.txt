@@ -10,3 +10,25 @@ if (rect1.x < rect2.x + rect2.width &&
    rect1.height + rect1.y > rect2.y) {
     //Ãæµ¹ÇÔ
 }
+
+
+POINT point;
+	GetCursorPos(&point);
+	ScreenToClient(hwnd, &point);
+
+	if (point.x > m_testButton.m_offset.x &&
+		point.x < m_testButton.m_offset.x + m_testButton.GetSize().width &&
+		point.y > m_testButton.m_offset.y &&
+		point.y < m_testButton.m_offset.y + m_testButton.GetSize().height) {
+		m_testButton.OnFocus();
+		if (m_pInput->m_MouseState.rgbButtons[0]) {
+			m_testButton.OnLeftMouseClick();
+		}
+		else {
+			m_testButton.OnLeftMouseRelease();
+		}
+	}
+	else {
+		m_testButton.OnLeftMouseRelease();
+		m_testButton.OnFocusOut();
+	}

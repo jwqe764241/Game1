@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "IActor.h"
-#include "PlayerHealthUI.h"
+#include "TestButton.h"
 
 class TestLevel : public Level
 {
@@ -29,6 +29,6 @@ public:
 	virtual void Load()   override;
 	virtual void Unload() override;
 	virtual void Render() override;
-	virtual void Update(float dt) override;
+	virtual void Update(float dt, HWND hwnd) override;
 };
 

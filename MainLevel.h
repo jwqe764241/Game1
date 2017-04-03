@@ -3,7 +3,7 @@
 #include <vector>
 #include "DX_Input.h"
 #include "Level.h"
-#include "Button.h"
+#include "TestButton.h"
 
 
 class MainLevel : public Level
@@ -22,6 +22,6 @@ public:
 	virtual void Load()   override;
 	virtual void Unload() override;
 	virtual void Render() override;
-	virtual void Update(float dt) override;
+	virtual void Update(float dt, HWND hWnd) override;
 };
 

@@ -16,9 +16,20 @@ MainLevel::~MainLevel()
 
 void MainLevel::Load()
 {
-	m_RenderEnvir.push_back(new Button(1000.f, 100.f));
-	m_RenderEnvir.push_back(new Button(1000.f, 300.f));
-	m_RenderEnvir.push_back(new Button(1000.f, 500.f));
+	m_RenderEnvir.push_back(new TestButton(
+		L"sadsd", L"sad", L"asdas", L"vbx",
+		D2D1_POINT_2F{1000.f, 100.f}
+	));
+
+	m_RenderEnvir.push_back(new TestButton(
+		L"sadsd", L"sad", L"asdas", L"vbx",
+		D2D1_POINT_2F{ 1000.f, 300.f }
+	));
+
+	m_RenderEnvir.push_back(new TestButton(
+		L"sadsd", L"sad", L"asdas", L"vbx",
+		D2D1_POINT_2F{ 1000.f, 500.f }
+	));
 }
 
 void MainLevel::Unload()
@@ -31,19 +42,16 @@ void MainLevel::Render()
 	m_SpriteSheet.Draw();
 
 	for (Button* button : m_RenderEnvir){
-		button->Render();
+		button->Draw();
 	}
 }
 
-void MainLevel::Update(float dt)
+void MainLevel::Update(float dt, HWND hWnd)
 {
 	if (m_pInput->m_MouseState.rgbButtons[0]) {
 		POINT point;  GetCursorPos(&point);
 		for (Button* button : m_RenderEnvir) {
-			if (button->IsOnMouse(point.x, point.y)) {
-				SendMessage(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), WM_USER + 1, NULL, NULL);
-				return;
-			}
+
 		}
 	}
 }

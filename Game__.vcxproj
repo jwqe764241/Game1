@@ -160,6 +160,7 @@
     <ClCompile Include="PlayerAttack.cpp" />
     <ClCompile Include="PlayerHealthUI.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
+    <ClCompile Include="TestButton.cpp" />
     <ClCompile Include="TestLevel.cpp" />
     <ClCompile Include="TextWriter.cpp" />
     <ClCompile Include="Weapon.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="GameDefine.h" />
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="Gauge.h" />
+    <ClInclude Include="IDelegate.h" />
     <ClInclude Include="IDrawable.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Graphics.h" />
@@ -183,6 +185,7 @@
     <ClInclude Include="PlayerHealthUI.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SpriteSheet.h" />
+    <ClInclude Include="TestButton.h" />
     <ClInclude Include="TestLevel.h" />
     <ClInclude Include="TextWriter.h" />
     <ClInclude Include="Weapon.h" />
@@ -196,6 +199,7 @@
     <Image Include="Image\Arrow.png" />
     <Image Include="Image\Button.png" />
     <Image Include="Image\Enemy_Basic1.png" />
+    <Image Include="Image\HealthBar.png" />
     <Image Include="Image\LevelTile.png" />
     <Image Include="Image\Level_BackTile.png" />
     <Image Include="Image\Level_Backtile2.png" />
@@ -204,6 +208,9 @@
     <Image Include="Image\MainMenu.png" />
     <Image Include="Image\Player.png" />
     <Image Include="Image\Sprite.png" />
+    <Image Include="Image\UI\button_yellow_focused.png" />
+    <Image Include="Image\UI\button_yellow_normal.png" />
+    <Image Include="Image\UI\button_yellow_pressed.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="__1.txt" />

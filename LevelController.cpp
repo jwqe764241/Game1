@@ -45,11 +45,11 @@ void LevelController::ChangeLevel(Level * level)
 	}
 }
 
-void LevelController::Update(float dt)
+void LevelController::Update(float dt, HWND hwnd)
 {
 	if (m_pCurrentLevel != nullptr)
 	{
-		m_pCurrentLevel->Update(dt);
+		m_pCurrentLevel->Update(dt, hwnd);
 	}
 }
 

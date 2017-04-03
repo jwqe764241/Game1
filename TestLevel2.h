@@ -31,6 +31,6 @@ public:
 	virtual void Load()   override;
 	virtual void Unload() override;
 	virtual void Render() override;
-	virtual void Update(float dt) override;
+	virtual void Update(float dt, HWND hwnd) override;
 };
 

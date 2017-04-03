@@ -5,12 +5,17 @@
 #include "SpriteSheet.h"
 #include "Weapon.h"
 #include "Enemy.h"
+#include "PlayerHealthUI.h"
 #include "GameDefine.h"
 
 class Player : public IActor
 {
 public:
 	D2D1_SIZE_F m_levelSize;
+
+	// player Health gui.
+	// this is drawn in level class.
+	PlayerHealthUI m_playerHealthUI;
 
 private:
 	D2D1_POINT_2F m_ObjectPoint;

@@ -45,3 +45,18 @@ void PlayerHealthUI::Draw()
 	wos << m_healthGauge.m_value << "/" << m_healthGauge.m_max;
 	m_healthTextWriter.Draw(wos.str().c_str());
 }
+
+void PlayerHealthUI::AddValue(int value)
+{
+	m_healthGauge.AddValue(value);
+}
+
+void PlayerHealthUI::SubValue(int value)
+{
+	m_healthGauge.SubValue(value);
+}
+
+void PlayerHealthUI::SetValue(int value)
+{
+	m_healthGauge.SetValue(value);
+}

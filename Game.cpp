@@ -162,7 +162,7 @@ void Game::Looping()
 void Game::Update()
 {
 	m_pTimer.Frame();
-	levelController.Update(m_pTimer.GetTime());
+	levelController.Update(m_pTimer.GetTime(), m_hWnd);
 }
 
 

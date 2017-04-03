@@ -1,7 +1,6 @@
 #include "TestLevel.h"
 
 
-
 TestLevel::TestLevel(DX_Input * pInput)
 	:m_bIsInitialized(true),
 	 m_pInput(pInput),
@@ -44,8 +43,6 @@ void TestLevel::Unload()
 
 void TestLevel::Render() 
 {
-	RECT rect; ::GetWindowRect(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), &rect);
-
 	D2D1_SIZE_F windowSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
 	D2D1_SIZE_F levelSize  = m_SpriteSheet.GetSize();
 
@@ -69,10 +66,10 @@ void TestLevel::Render()
 	}
 	// Draw UI component after 69 line.
 	Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
-	m_playerHealthUI.Draw();
+	m_pPlayer->m_playerHealthUI.Draw();
 }
 
-void TestLevel::Update(float dt)
+void TestLevel::Update(float dt, HWND hwnd)
 {
 	if (m_RenderEnemy.size() == 0) {
 		SendMessage(Graphics::GetInstance()->GetRenderTarget()->GetHwnd(), WM_USER + 2, NULL, NULL);

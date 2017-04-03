@@ -1,124 +1,131 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="DX_Input.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameTimer.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Source files</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="LevelController.cpp">
-      <Filter>Source files\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="TestLevel.cpp">
-      <Filter>Source files\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="TestLevel2.cpp">
-      <Filter>Source files\Level</Filter>
+    <ClCompile Include="DX_Input.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Source files\Actor\Enemy</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteSheet.cpp">
-      <Filter>Source files\Actor</Filter>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTimer.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Gauge.cpp">
-      <Filter>Source files\Actor\Player</Filter>
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source files\Actor\Player</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="PlayerAttack.cpp">
-      <Filter>Source files\Actor\Player</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="PlayerHealthUI.cpp">
-      <Filter>Source files\Actor\Player</Filter>
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSheet.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TestButton.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="TextWriter.cpp">
-      <Filter>Source files\Actor\Player</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
-      <Filter>Source files\Actor</Filter>
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TestLevel2.cpp">
+      <Filter>Source\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="TestLevel.cpp">
+      <Filter>Source\Level</Filter>
     </ClCompile>
     <ClCompile Include="MainLevel.cpp">
-      <Filter>Source files\Level</Filter>
+      <Filter>Source\Level</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameDefine.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="DX_Input.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameTimer.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="IActor.h">
-      <Filter>Header files\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="IDrawable.h">
-      <Filter>Header files\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Header files\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelController.h">
-      <Filter>Header files\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="TestLevel.h">
-      <Filter>Header files\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="TestLevel2.h">
-      <Filter>Header files\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header files\Actor\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteSheet.h">
-      <Filter>Header files\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header files\Actor\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerHealthUI.h">
-      <Filter>Header files\Actor\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Gauge.h">
-      <Filter>Header files\Actor\Player</Filter>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Weapon.h">
+      <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="TextWriter.h">
-      <Filter>Header files\Actor\Player</Filter>
+      <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Header files\Actor</Filter>
+    <ClInclude Include="TestButton.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHealthUI.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelController.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawable.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="IDelegate.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="IActor.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Gauge.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTimer.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDefine.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="DX_Input.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="TestLevel.h">
+      <Filter>Header\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="TestLevel2.h">
+      <Filter>Header\Level</Filter>
     </ClInclude>
     <ClInclude Include="MainLevel.h">
-      <Filter>Header files\Level</Filter>
+      <Filter>Header\Level</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -126,82 +133,70 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico" />
-    <Image Include="Image\Sprite.png">
-      <Filter>Resources\Images</Filter>
+    <Image Include="Image\UI\button_yellow_focused.png">
+      <Filter>Images</Filter>
     </Image>
-    <Image Include="Image\Level_BackTile.png">
-      <Filter>Resources\Images</Filter>
+    <Image Include="Image\UI\button_yellow_normal.png">
+      <Filter>Images</Filter>
     </Image>
-    <Image Include="Image\Level_Backtile2.png">
-      <Filter>Resources\Images</Filter>
-    </Image>
-    <Image Include="Image\Level_Backtile3.png">
-      <Filter>Resources\Images</Filter>
+    <Image Include="Image\UI\button_yellow_pressed.png">
+      <Filter>Images</Filter>
     </Image>
     <Image Include="Image\Level_Backtile4.png">
-      <Filter>Resources\Images</Filter>
+      <Filter>Images</Filter>
     </Image>
-    <Image Include="Image\Arrow.png">
-      <Filter>Resources\Images</Filter>
+    <Image Include="Image\Level_Backtile3.png">
+      <Filter>Images</Filter>
     </Image>
-    <Image Include="Image\LevelTile.png">
-      <Filter>Resources\Images</Filter>
+    <Image Include="Image\Level_Backtile2.png">
+      <Filter>Images</Filter>
     </Image>
-    <Image Include="Image\Enemy_Basic1.png">
-      <Filter>Resources\Images</Filter>
+    <Image Include="Image\Level_BackTile.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Image\HealthBar.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Image\Sprite.png">
+      <Filter>Images</Filter>
     </Image>
     <Image Include="Image\Player.png">
-      <Filter>Resources\Images</Filter>
+      <Filter>Images</Filter>
     </Image>
     <Image Include="Image\MainMenu.png">
-      <Filter>Resources\Images</Filter>
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Image\LevelTile.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Image\Arrow.png">
+      <Filter>Images</Filter>
     </Image>
     <Image Include="Image\Button.png">
-      <Filter>Resources\Images</Filter>
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Image\Enemy_Basic1.png">
+      <Filter>Images</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="__1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Header files">
-      <UniqueIdentifier>{ae9c3711-b269-4c30-8999-3b0b66e87d8f}</UniqueIdentifier>
+    <Filter Include="Source">
+      <UniqueIdentifier>{bef7405a-3d9f-45af-8249-019fcc60b0a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source files">
-      <UniqueIdentifier>{12202581-63ae-419f-bc8d-147213f9d438}</UniqueIdentifier>
+    <Filter Include="Header">
+      <UniqueIdentifier>{130b2cce-7446-4af8-ab06-72f7c1748f95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources">
-      <UniqueIdentifier>{3955ff18-659d-4968-9a6f-ec8bde57fcb5}</UniqueIdentifier>
+    <Filter Include="Images">
+      <UniqueIdentifier>{b935bd8f-f5c1-4633-94c7-0e8a9e71f5c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources\Images">
-      <UniqueIdentifier>{3597a776-9b25-4418-8cb9-ac29c3f2890a}</UniqueIdentifier>
+    <Filter Include="Header\Level">
+      <UniqueIdentifier>{3a872288-b91d-4310-8372-b950de7339d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header files\Interface">
-      <UniqueIdentifier>{2ac89a7d-6fe3-45a3-97c6-77e4d7ca5f4c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Level">
-      <UniqueIdentifier>{05c6c453-f770-4aee-b21f-c570bbbcbb9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Level">
-      <UniqueIdentifier>{3253e04f-9243-4a62-a524-54942edfd02d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Actor">
-      <UniqueIdentifier>{0d68806b-5899-4ae8-ba05-84f373a9fccc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Actor">
-      <UniqueIdentifier>{d3ca0127-5b05-492a-b273-dbac312105b1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Actor\Enemy">
-      <UniqueIdentifier>{ab2edb38-0f8c-4af2-b0b1-4fe68c42bbfa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Actor\Player">
-      <UniqueIdentifier>{b1750750-d6bc-4460-93e2-aa7a2f585d77}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Actor\Enemy">
-      <UniqueIdentifier>{050402dc-1e54-4412-9ddf-ff7b0220687a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Actor\Player">
-      <UniqueIdentifier>{3510183f-29ca-4022-bcfe-66603350ad23}</UniqueIdentifier>
+    <Filter Include="Source\Level">
+      <UniqueIdentifier>{04a6b18b-3f70-4076-b0ec-4d3126d5b184}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
