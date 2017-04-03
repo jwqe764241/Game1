@@ -40,7 +40,7 @@ void Player::Update(DX_Input & input, float dt)
 
 	int moveDirectionCount = 0;
 	float x = 0.f, y = 0.f;
-	float speed = 3.f;
+	float speed = 6.f;
 
 	if (input.m_KeyboardState[DIK_S]) {
 		moveDirectionCount = 1;
@@ -103,7 +103,7 @@ void Player::UpdateWeapon(std::vector<Weapon>& pWeapon)
 		i++;
 	}
 	for (Weapon& weapon : pWeapon) {
-		weapon.Shoot(10.f);
+		weapon.Shoot(30.f);
 	}
 }
 

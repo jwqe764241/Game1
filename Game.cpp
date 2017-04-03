@@ -32,8 +32,6 @@ HRESULT Game::InitializeFrame(int nCmdShow, char * frameTitle)
 	RegisterClassEx(&wndClass);
 
 	RECT rect = {0, 0, 800, 600};
-	
-	//::GetWindowRect(GetDesktopWindow(), &rect);
 
 	AdjustWindowRectEx(&rect, WS_OVERLAPPEDWINDOW, false, WS_EX_OVERLAPPEDWINDOW);
 
@@ -54,7 +52,7 @@ HRESULT Game::InitializeFrame(int nCmdShow, char * frameTitle)
 
 	SetWindowLongPtr(m_hWnd, 0, reinterpret_cast<LONG_PTR>(this));
 
-	ShowWindow(m_hWnd, nCmdShow);
+	ShowWindow(m_hWnd, SW_MAXIMIZE);
 	UpdateWindow(m_hWnd);
 
 	if (!input.Initialize(m_hInstance, m_hWnd, rect.right - rect.left, rect.bottom - rect.top)) { return S_FALSE; }
@@ -155,7 +153,7 @@ void Game::Update()
 {
 	m_pTimer.Frame();
 
-	levelController.Update(m_pTimer.GetTime());
+	levelController.Update(m_pTimer.GetTime(), m_hWnd);
 }
 
 

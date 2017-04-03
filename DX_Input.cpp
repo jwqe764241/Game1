@@ -102,14 +102,14 @@ bool DX_Input::ReadMouse()
 
 void DX_Input::UpdateInput()
 {
-	m_MousePoint.x = m_MouseState.lX;
-	m_MousePoint.y = m_MouseState.lY;
+	m_MousePoint.x += m_MouseState.lX;
+	m_MousePoint.y += m_MouseState.lY;
 
 	if (m_MousePoint.x < 0) { m_MousePoint.x = 0; }
 	if (m_MousePoint.y < 0) { m_MousePoint.y = 0; }
 
-	if (m_MousePoint.x < m_ScreenSize.width)  { m_MousePoint.x = m_ScreenSize.width; }
-	if (m_MousePoint.y < m_ScreenSize.height) { m_MousePoint.y = m_ScreenSize.height; }
+	if (m_MousePoint.x > m_ScreenSize.width)  { m_MousePoint.x = m_ScreenSize.width; }
+	if (m_MousePoint.y > m_ScreenSize.height) { m_MousePoint.y = m_ScreenSize.height; }
 }
 
 
