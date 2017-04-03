@@ -57,8 +57,6 @@ void TestLevel::Render()
 {
 	D2D1_SIZE_F windowSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
 
-	D2D1_SIZE_F windowSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
-
 	D2D1_SIZE_F levelSize = m_SpriteSheet.GetSize();
 
 	float blockSize = windowSize.width / 3.f;
@@ -105,19 +103,9 @@ void TestLevel::OnResize()
 
 void TestLevel::UpdateUI(HWND hwnd)
 {
-	/*int x = m_pInput->m_MousePoint.x;
-	int y = m_pInput->m_MousePoint.y;*/
-
 	POINT point;
 	GetCursorPos(&point);
 	ScreenToClient(hwnd, &point);
-
-	/*std::vector<TestButton> buttons;
-	buttons.push_back(m_testButton);
-
-	for (TestButton button : buttons) {
-		
-	}*/
 
 	if (point.x > m_testButton.m_offset.x &&
 		point.x < m_testButton.m_offset.x + m_testButton.GetSize().width &&
