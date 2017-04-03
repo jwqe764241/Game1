@@ -18,8 +18,8 @@ void Player::Attack()
 {
 	if (m_isArrowFired) {
 		D2D1_POINT_2F offset = D2D1::Point2F(
-			m_ObjectPoint.x + m_pArrowSpriteSheet->m_spriteWidth,
-			m_ObjectPoint.y);
+			m_ObjectPoint.x + m_pArrowSpriteSheet->m_spriteWidth + 400,
+			m_ObjectPoint.y + 150);
 		m_arrowList.push_back(Weapon(m_pArrowSpriteSheet, offset, 700));
 		m_isArrowFired = false;
 	}
