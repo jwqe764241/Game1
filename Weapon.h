@@ -16,10 +16,10 @@ public:
 
 public:
 	bool m_isDestroyed;
-	int weaponDamage = 10;
+	int  weaponDamage = 10;
 
 private:
-	SpriteSheet* m_pSpriteSheet;
+	SpriteSheet*  m_pSpriteSheet;
 	D2D1_POINT_2F m_offset;
 	float m_xOffset;
 	float m_range;

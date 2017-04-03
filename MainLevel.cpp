@@ -1,12 +1,11 @@
 #include "MainLevel.h"
 
-MainLevel::MainLevel(DX_Input * pInput)
-	:m_bIsInitialized(true),
-	 m_pInput(pInput),
-	 m_SpriteSheet(L"Image/MainMenu.png")
+MainLevel::MainLevel(DX_Input * pInput):
+	m_bIsInitialized(true),
+	m_pInput(pInput),
+	m_SpriteSheet(L"Image/MainMenu.png")
 {
 }
-
 MainLevel::~MainLevel()
 {
 	Unload();

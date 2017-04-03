@@ -6,21 +6,18 @@ Enemy::Enemy():
 	 m_iHealth(100)
 {
 }
-
 Enemy::Enemy(D2D1_POINT_2F point):
 	 m_ObjectPoint(point),
 	 m_pSpriteSheet(new SpriteSheet(L"Images/Enemy_Basic1.png")),
 	 m_iHealth(100)
 {
 }
-
 Enemy::Enemy(float x, float y):
 	 m_ObjectPoint(D2D1_POINT_2F{x, y}),
 	 m_pSpriteSheet(new SpriteSheet(L"Image/Enemy_Basic1.png")),
 	 m_iHealth(100)
 {
 }
-
 Enemy::~Enemy()
 {
 }
@@ -32,12 +29,12 @@ void Enemy::Draw()
 }
 void Enemy::Update(DX_Input & input, float dt)
 {
-
 }
 
 void Enemy::UpdateFrame()
 {
 }
+
 void Enemy::SetFrame(UINT frame)
 {
 }

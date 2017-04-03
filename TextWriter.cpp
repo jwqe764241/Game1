@@ -2,7 +2,7 @@
 
 TextWriter::TextWriter(const wchar_t * fontName, float fontSize,
 	D2D1::ColorF color, D2D1_RECT_F layout,
-	DWRITE_TEXT_ALIGNMENT textAlign, DWRITE_PARAGRAPH_ALIGNMENT paragraphAlign) : 
+	DWRITE_TEXT_ALIGNMENT textAlign, DWRITE_PARAGRAPH_ALIGNMENT paragraphAlign): 
 	m_fontName(fontName), m_fontSize(fontSize), m_fontColor(color), m_layout(layout),
 	m_textAlign(textAlign), m_paragraphAlign(paragraphAlign)
 {

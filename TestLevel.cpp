@@ -1,28 +1,27 @@
 #include "TestLevel.h"
 
-
-TestLevel::TestLevel(DX_Input * pInput)
-	:m_bIsInitialized(true),
-	 m_pInput(pInput),
-	 m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
+TestLevel::TestLevel(DX_Input * pInput):
+	m_bIsInitialized(true),
+	m_pInput(pInput),
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
 {
 	m_pPlayer = new Player(
 		100, 100,
 		m_SpriteSheet.GetSize().width,
 		Graphics::GetInstance()->GetRenderTarget()->GetSize().height);
 }
-TestLevel::TestLevel(DX_Input * pInput, Player * pPlayer)
-	:m_bIsInitialized(true),
-	 m_pPlayer(pPlayer),
-	 m_pInput(pInput),
-	 m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
+TestLevel::TestLevel(DX_Input * pInput, Player * pPlayer):
+	m_bIsInitialized(true),
+	m_pPlayer(pPlayer),
+	m_pInput(pInput),
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
 {
 }
-
 TestLevel::~TestLevel()
 {
 	Unload();
 }
+
 
 void TestLevel::Load() 
 {

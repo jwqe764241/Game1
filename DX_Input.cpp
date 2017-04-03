@@ -1,15 +1,14 @@
-#include "DX_Input.h"
 #pragma comment(lib, "dinput8")
 #pragma comment(lib, "dxguid.lib")
 
+#include "DX_Input.h"
 #include "GameDefine.h"
 
-
-DX_Input::DX_Input()
-	:m_pDirectInput(NULL),
-	 m_pKeyboardDevice(NULL),
-	 m_pMouseDevice(NULL),
-	 m_bIsInitialized(false)
+DX_Input::DX_Input():
+	m_pDirectInput(NULL),
+	m_pKeyboardDevice(NULL),
+	m_pMouseDevice(NULL),
+	m_bIsInitialized(false)
 {
 }
 DX_Input::~DX_Input()

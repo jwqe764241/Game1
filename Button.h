@@ -11,12 +11,12 @@ public:
 	Button(wchar_t* normal, wchar_t* focus, wchar_t* click, wchar_t* labelText, D2D1_POINT_2F offset);
 	~Button();
 
-	virtual void CreateDeviceResources() override;
+	virtual void CreateDeviceResources()  override;
 	virtual void ReleaseDeviceResources() override;
 
 	virtual void Draw() override;
 
-	void SetSize(float width, float height);
+	void        SetSize(float width, float height);
 	D2D1_SIZE_F GetSize();
 
 protected:
@@ -40,6 +40,6 @@ private:
 	bool m_focused;
 
 	TextWriter m_buttonLabelLayout;
-	wchar_t* m_buttonLabelText;
+	wchar_t*   m_buttonLabelText;
 
 };

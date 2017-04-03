@@ -11,8 +11,8 @@ class MainLevel : public Level
 {
 private:
 	SpriteSheet m_SpriteSheet;
-	DX_Input*	m_pInput;
-	bool m_bIsInitialized;
+	DX_Input*   m_pInput;
+	bool        m_bIsInitialized;
 
 	std::vector<TestButton *> m_RenderEnvir;
 

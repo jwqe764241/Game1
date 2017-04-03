@@ -1,21 +1,19 @@
 #include "TestLevel2.h"
 
-
-
-TestLevel2::TestLevel2(DX_Input * pInput)
-	:m_bIsInitialized(true),
-	 m_pInput(pInput),
-	 m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
+TestLevel2::TestLevel2(DX_Input * pInput):
+	m_bIsInitialized(true),
+	m_pInput(pInput),
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
 {
 	m_pPlayer = new Player(
 		100, 100,
 		m_SpriteSheet.GetSize().width,
 		Graphics::GetInstance()->GetRenderTarget()->GetSize().height);
 }
-TestLevel2::TestLevel2(DX_Input * pInput, Player * pPlayer)
-	:m_bIsInitialized(true),
-	 m_pInput(pInput),
-	 m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
+TestLevel2::TestLevel2(DX_Input * pInput, Player * pPlayer):
+	m_bIsInitialized(true),
+	m_pInput(pInput),
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
 {
 	//나중에 체력 같은거 옮길 수 있게 하든가 걍 하든가
 	m_pPlayer = new Player(
@@ -23,11 +21,11 @@ TestLevel2::TestLevel2(DX_Input * pInput, Player * pPlayer)
 		m_SpriteSheet.GetSize().width,
 		Graphics::GetInstance()->GetRenderTarget()->GetSize().height);
 }
-
 TestLevel2::~TestLevel2()
 {
 	Unload();
 }
+
 
 void TestLevel2::Load()
 {

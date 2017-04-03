@@ -1,32 +1,34 @@
 #include "Player.h"
 
-Player::Player()
-	: m_frame(0), m_isArrowFired(false),
-	m_arrowCoolDown(15.f), m_ObjectPoint(D2D1::Point2F())
+Player::Player():
+	m_frame(0),
+	m_isArrowFired(false),
+	m_arrowCoolDown(15.f),
+	m_ObjectPoint(D2D1::Point2F())
 {
 	m_levelSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
 	m_pSpriteSheet = new SpriteSheet(L"Image/Sprite.png", 64, 64);
 	m_pArrowSpriteSheet = new SpriteSheet(L"Image/Arrow.png", 64, 64);
 }
-
-Player::Player(D2D1_POINT_2F point, D2D1_SIZE_F levelSize) : Player()
+Player::Player(D2D1_POINT_2F point, D2D1_SIZE_F levelSize): 
+	Player()
 {
 	m_ObjectPoint = point;
 	m_levelSize = levelSize;
 }
-
-Player::Player(float x, float y, float levelWidth, float levelHeight) : Player()
+Player::Player(float x, float y, float levelWidth, float levelHeight): 
+	Player()
 {
 	m_ObjectPoint.x = x;
 	m_ObjectPoint.y = y;
 	m_levelSize.width = levelWidth;
 	m_levelSize.height = levelHeight;
 }
-
 Player::~Player()
 {
 	delete m_pSpriteSheet;
 }
+
 
 void Player::Draw() 
 {

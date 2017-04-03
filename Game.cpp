@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "resource.h"
 
-Game::Game(HINSTANCE hInstance, char * wndClassName) :
+Game::Game(HINSTANCE hInstance, char * wndClassName):
 	 m_hInstance(hInstance),
 	 m_lpcWndClassName(wndClassName)
 {

@@ -1,17 +1,17 @@
 #include "Gauge.h"
 #include "GameDefine.h"
 
-Gauge::Gauge(int max, int min, int value, D2D1_POINT_2F offset, D2D1_SIZE_F size, wchar_t* fileName) :
+Gauge::Gauge(int max, int min, int value, D2D1_POINT_2F offset, D2D1_SIZE_F size, wchar_t* fileName):
 	m_max(max), m_min(min), m_value(value), m_offset(offset), m_size(size), m_fileName(fileName),
 	m_pSpriteSheet(NULL), m_pGaugeRectangleGeometry(NULL)
 {
 	CreateDeviceResources();
 }
-
 Gauge::~Gauge()
 {
 	ReleaseDeviceResources();
 }
+
 
 void Gauge::AddValue(int value)
 {

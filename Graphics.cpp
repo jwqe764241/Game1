@@ -12,10 +12,10 @@ Graphics* Graphics::GetInstance()
 	return m_pInstance;
 }
 
-Graphics::Graphics()
-	:m_pDirect2DFactory(NULL), m_pIWICFactory(NULL), m_pDWriteFactory(NULL),
-	 m_pRenderTarget(NULL),
-	 m_bIsInitialized(false)
+Graphics::Graphics():
+	m_pDirect2DFactory(NULL), m_pIWICFactory(NULL), m_pDWriteFactory(NULL),
+	m_pRenderTarget(NULL),
+	m_bIsInitialized(false)
 {
 }
 
