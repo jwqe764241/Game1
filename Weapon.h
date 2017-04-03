@@ -16,6 +16,7 @@ public:
 
 public:
 	bool m_isDestroyed;
+	int weaponDamage = 10;
 
 private:
 	SpriteSheet* m_pSpriteSheet;

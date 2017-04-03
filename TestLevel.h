@@ -18,7 +18,7 @@ private:
 
 	bool m_bIsInitialized;
 
-	//·»´õ ¸®½ºÆ®
+	//Render List
 	Player * m_pPlayer;
 	std::vector<Enemy> m_RenderEnemy;
 	std::vector<IActor> m_RenderEnvir;

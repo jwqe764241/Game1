@@ -41,7 +41,12 @@ void TestLevel::Load()
 {
 	m_RenderEnemy.push_back(Enemy(400, 100));
 	m_RenderEnemy.push_back(Enemy(1000, 200));
-	m_RenderEnemy.push_back(Enemy(3000, 200));
+	m_RenderEnemy.push_back(Enemy(3000, 700));
+
+	m_RenderEnemy.push_back(Enemy(1000, 500));
+	m_RenderEnemy.push_back(Enemy(2000, 800));
+	m_RenderEnemy.push_back(Enemy(3500, 600));
+
 }
 
 void TestLevel::Unload() 
@@ -50,6 +55,8 @@ void TestLevel::Unload()
 
 void TestLevel::Render() 
 {
+	D2D1_SIZE_F windowSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
+
 	D2D1_SIZE_F windowSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
 
 	D2D1_SIZE_F levelSize = m_SpriteSheet.GetSize();
@@ -88,7 +95,7 @@ void TestLevel::Update(float dt, HWND hwnd)
 	UpdateUI(hwnd);
 	m_pPlayer->Update(*m_pInput, dt);
 	
-	m_pPlayer->UpdateCollision(m_RenderEnemy);
+	m_pPlayer->UpdateCollision(&m_RenderEnemy);
 }
 
 void TestLevel::OnResize()

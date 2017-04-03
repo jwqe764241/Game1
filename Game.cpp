@@ -32,6 +32,8 @@ HRESULT Game::InitializeFrame(int nCmdShow, char * frameTitle)
 	RegisterClassEx(&wndClass);
 
 	RECT rect = {0, 0, 800, 600};
+	
+	::GetWindowRect(GetDesktopWindow(), &rect);
 
 	AdjustWindowRectEx(&rect, WS_OVERLAPPEDWINDOW, false, WS_EX_OVERLAPPEDWINDOW);
 
@@ -100,7 +102,6 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			levelController.OnResize();
 		}
 		break;
-
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);

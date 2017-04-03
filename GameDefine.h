@@ -20,11 +20,18 @@ namespace GameUtils{
 
 	namespace Debug 
 	{
-		void myassert(bool, ...);
+	}
+
+	namespace Type {
+		typedef char State;
 	}
 
 	namespace Constant 
 	{
+		namespace Enemy {
+			const GameUtils::Type::State STATE_DIED  = 1;
+			const GameUtils::Type::State STATE_ALiVE = 2;
+		}
 	}
 
 }
