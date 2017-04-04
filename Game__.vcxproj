@@ -149,6 +149,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="DX_Input.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="GameOverLevel.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="Gauge.cpp" />
     <ClCompile Include="Graphics.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="DX_Input.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameDefine.h" />
+    <ClInclude Include="GameOverLevel.h" />
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="Gauge.h" />
     <ClInclude Include="HowLevel.h" />

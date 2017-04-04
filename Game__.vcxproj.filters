@@ -64,6 +64,9 @@
     <ClCompile Include="InfoLevel.cpp">
       <Filter>Source\Level</Filter>
     </ClCompile>
+    <ClCompile Include="GameOverLevel.cpp">
+      <Filter>Source\Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -137,6 +140,9 @@
       <Filter>Header\Level</Filter>
     </ClInclude>
     <ClInclude Include="InfoLevel.h">
+      <Filter>Header\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverLevel.h">
       <Filter>Header\Level</Filter>
     </ClInclude>
   </ItemGroup>

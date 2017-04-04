@@ -9,7 +9,7 @@ class Enemy : public IActor
 	
 private:
 	D2D1_POINT_2F m_ObjectPoint;
-	SpriteSheet	m_SpriteSheet;
+	SpriteSheet*  m_pSpriteSheet;
 
 	UINT m_frame;
 

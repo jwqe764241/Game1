@@ -54,6 +54,7 @@ namespace GameUtils{
 			const int BUTTON_HOW    = 2;
 			const int BUTTON_INFO   = 3;
 			const int BUTTON_CREDIT = 4;
+			const int BUTTON_MAIN	= 5;
 		}
 
 		namespace Level {
@@ -65,6 +66,7 @@ namespace GameUtils{
 			const int LEVEL_INFO    = WM_USER + 6;
 			const int LEVEL_CREDIT  = WM_USER + 7;
 			const int LEVEL_END     = WM_USER + 8;
+			const int LEVEL_GAMEOVER= WM_USER + 9;
 		}
 
 	}

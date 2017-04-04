@@ -13,6 +13,7 @@
 #include "MainLevel.h"
 #include "HowLevel.h"
 #include "InfoLevel.h"
+#include "GameOverLevel.h"
 #include "LevelController.h"
 #include "GameDefine.h"
 
