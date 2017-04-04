@@ -29,6 +29,8 @@ void Enemy::Draw()
 }
 void Enemy::Update(DX_Input & input, float dt)
 {
+	float speed = 1.f;
+	m_ObjectPoint.x -= speed * dt;
 }
 
 void Enemy::UpdateFrame()

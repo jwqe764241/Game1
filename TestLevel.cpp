@@ -82,6 +82,10 @@ void TestLevel::Update(float dt, HWND hwnd)
 	}
 
 	m_pPlayer->Update(*m_pInput, dt);
+	for (Enemy& enemy : m_RenderEnemy) {
+		enemy.Update(*m_pInput, dt);
+	}
+
 	m_pPlayer->UpdateCollision(&m_RenderEnemy);
 	m_pPlayer->UpdateDamage(&m_RenderEnemy);
 }
