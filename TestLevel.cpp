@@ -77,7 +77,6 @@ void TestLevel::Update(float dt, HWND hwnd)
 	}
 
 	if (!m_pPlayer->IsAlive()) {
-		MessageBoxA(NULL, "You've Died!!", "Message", MB_OK);
 		SendMessage(hwnd, GameUtils::Constant::Level::LEVEL_GAMEOVER, NULL, NULL);
 		return;
 	}

@@ -135,6 +135,7 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 
 	case GameUtils::Constant::Level::LEVEL_GAMEOVER:
 		levelController.ChangeLevel(new GameOverLevel(&input));
+		break;
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);
@@ -182,7 +183,6 @@ void Game::Looping()
 		Update();
 		Render();
 	}
-
 }
 
 void Game::Update()
