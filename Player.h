@@ -30,6 +30,12 @@ private:
 	float m_arrowCurCoolDown;
 	bool  m_isArrowFired;
 
+	// health
+	int m_health;
+	float m_damageCoolDown;
+	float m_curDamageCoolDown;
+	bool m_isAlive;
+
 public:
 	Player();
 	Player(D2D1_POINT_2F point, D2D1_SIZE_F levelSize);
@@ -43,11 +49,13 @@ public:
 
 	//Update Data with collision
 	void UpdateCollision(std::vector<Enemy> * refList);
+	void UpdateDamage(std::vector<Enemy> * refList);
 
 	D2D1_POINT_2F GetPoint() { return m_ObjectPoint; }
 	D2D1_RECT_F   GetRect() override;
 
-	void OnDamage();
+	bool IsAlive();
+
 private:
 	// Animation Frame.
 	void UpdateFrame();
@@ -59,5 +67,8 @@ private:
 	void GetAttackKey(DX_Input & input, float dt);
 	void Attack();
 
+	// When get damage & died.
+	GameUtils::Type::State OnDamage(int damage);
+	void OnDied();
 };
 

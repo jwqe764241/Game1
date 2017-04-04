@@ -43,6 +43,11 @@ namespace GameUtils{
 			const GameUtils::Type::State STATE_ALiVE = 2;
 		}
 
+		namespace Player {
+			const GameUtils::Type::State STATE_DIED = 1;
+			const GameUtils::Type::State STATE_ALiVE = 2;
+		}
+
 		namespace Button {
 			const int BUTTON_START  = 0;
 			const int BUTTON_RANK   = 1;

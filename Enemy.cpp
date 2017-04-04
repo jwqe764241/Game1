@@ -2,19 +2,19 @@
 
 Enemy::Enemy():
 	 m_ObjectPoint(D2D1_POINT_2F{0, 0}),
-	 m_pSpriteSheet(new SpriteSheet(L"Images/Enemy_Basic1.png")),
+	 m_SpriteSheet(SpriteSheet(L"Images/Enemy_Basic1.png")),
 	 m_iHealth(100)
 {
 }
 Enemy::Enemy(D2D1_POINT_2F point):
 	 m_ObjectPoint(point),
-	 m_pSpriteSheet(new SpriteSheet(L"Images/Enemy_Basic1.png")),
+	 m_SpriteSheet(SpriteSheet(L"Images/Enemy_Basic1.png")),
 	 m_iHealth(100)
 {
 }
 Enemy::Enemy(float x, float y):
 	 m_ObjectPoint(D2D1_POINT_2F{x, y}),
-	 m_pSpriteSheet(new SpriteSheet(L"Image/Enemy_Basic1.png")),
+	 m_SpriteSheet(SpriteSheet(L"Image/Enemy_Basic1.png")),
 	 m_iHealth(100)
 {
 }
@@ -25,7 +25,7 @@ Enemy::~Enemy()
 
 void Enemy::Draw()
 {
-	m_pSpriteSheet->Draw(0, m_ObjectPoint.x, m_ObjectPoint.y);
+	m_SpriteSheet.Draw(0, m_ObjectPoint.x, m_ObjectPoint.y);
 }
 void Enemy::Update(DX_Input & input, float dt)
 {
@@ -52,8 +52,8 @@ bool Enemy::ClampPosition()
 		m_ObjectPoint.y = 0;
 		isValid |= true;
 	}
-	if (m_ObjectPoint.y > height - m_pSpriteSheet->m_spriteHeight) {
-		m_ObjectPoint.y = height - m_pSpriteSheet->m_spriteHeight;
+	if (m_ObjectPoint.y > height - m_SpriteSheet.m_spriteHeight) {
+		m_ObjectPoint.y = height - m_SpriteSheet.m_spriteHeight;
 		isValid |= true;
 	}
 
@@ -62,7 +62,7 @@ bool Enemy::ClampPosition()
 
 D2D1_RECT_F Enemy::GetRect()
 {
-	D2D1_SIZE_F objectSize = m_pSpriteSheet->GetSize();
+	D2D1_SIZE_F objectSize = m_SpriteSheet.GetSize();
 
 	return D2D1_RECT_F{ m_ObjectPoint.x, m_ObjectPoint.y,
 		m_ObjectPoint.x + objectSize.width, m_ObjectPoint.y + objectSize.height };
