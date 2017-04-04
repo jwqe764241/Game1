@@ -43,12 +43,18 @@ namespace GameUtils{
 			const GameUtils::Type::State STATE_ALiVE = 2;
 		}
 
+		namespace Player {
+			const GameUtils::Type::State STATE_DIED = 1;
+			const GameUtils::Type::State STATE_ALiVE = 2;
+		}
+
 		namespace Button {
 			const int BUTTON_START  = 0;
 			const int BUTTON_RANK   = 1;
 			const int BUTTON_HOW    = 2;
 			const int BUTTON_INFO   = 3;
 			const int BUTTON_CREDIT = 4;
+			const int BUTTON_MAIN	= 5;
 		}
 
 		namespace Level {
@@ -60,6 +66,7 @@ namespace GameUtils{
 			const int LEVEL_INFO    = WM_USER + 6;
 			const int LEVEL_CREDIT  = WM_USER + 7;
 			const int LEVEL_END     = WM_USER + 8;
+			const int LEVEL_GAMEOVER= WM_USER + 9;
 		}
 
 	}

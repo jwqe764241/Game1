@@ -66,7 +66,7 @@ void TestLevel2::Render()
 	}
 
 	Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
-	m_playerHealthUI.Draw();
+	m_pPlayer->m_playerHealthUI.Draw();
 }
 
 void TestLevel2::Update(float dt, HWND hwnd)
@@ -76,6 +76,13 @@ void TestLevel2::Update(float dt, HWND hwnd)
 		return;
 	}
 
+	if (!m_pPlayer->IsAlive()) {
+		MessageBoxA(NULL, "You've Died!!", "Message", MB_OK);
+		SendMessage(hwnd, GameUtils::Constant::Level::LEVEL_GAMEOVER, NULL, NULL);
+		return;
+	}
+
 	m_pPlayer->Update(*m_pInput, dt);
 	m_pPlayer->UpdateCollision(&m_RenderEnemy);
+	m_pPlayer->UpdateDamage(&m_RenderEnemy);
 }

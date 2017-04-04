@@ -132,6 +132,9 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 	case GameUtils::Constant::Level::LEVEL_END:
 		levelController.ChangeLevel(new MainLevel(&input));
 		break;
+
+	case GameUtils::Constant::Level::LEVEL_GAMEOVER:
+		levelController.ChangeLevel(new GameOverLevel(&input));
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);

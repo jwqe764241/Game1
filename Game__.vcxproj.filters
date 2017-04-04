@@ -64,6 +64,9 @@
     <ClCompile Include="InfoLevel.cpp">
       <Filter>Source\Level</Filter>
     </ClCompile>
+    <ClCompile Include="GameOverLevel.cpp">
+      <Filter>Source\Level</Filter>
+    </ClCompile>
     <ClCompile Include="CreditLevel.cpp">
       <Filter>Source\Level</Filter>
     </ClCompile>
@@ -140,6 +143,9 @@
       <Filter>Header\Level</Filter>
     </ClInclude>
     <ClInclude Include="InfoLevel.h">
+      <Filter>Header\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverLevel.h">
       <Filter>Header\Level</Filter>
     </ClInclude>
     <ClInclude Include="CreditLevel.h">

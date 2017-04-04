@@ -1,8 +1,9 @@
 #include "Player.h"
 
 Player::Player():
-	m_frame(0),
-	m_isArrowFired(false),
+	m_frame(0), m_health(5),
+	m_damageCoolDown(50.f), m_curDamageCoolDown(0),
+	m_isArrowFired(false), m_isAlive(true),
 	m_arrowCoolDown(15.f),
 	m_ObjectPoint(D2D1::Point2F())
 {
@@ -93,6 +94,11 @@ void Player::Update(DX_Input & input, float dt)
 	}
 
 	SetFrame(moveDirectionCount * 190 + 1);
+
+	// TODO: Timer 싱글턴으로 바꾸기
+	if (m_curDamageCoolDown > 0) {
+		m_curDamageCoolDown -= dt;
+	}
 }
 
 void Player::UpdateWeapon(std::vector<Weapon>& pWeapon)
@@ -156,4 +162,33 @@ D2D1_RECT_F Player::GetRect()
 
 	return D2D1_RECT_F{ m_ObjectPoint.x, m_ObjectPoint.y, 
 			m_ObjectPoint.x + objectSize.width, m_ObjectPoint.y + objectSize.height };
+}
+
+bool Player::IsAlive()
+{
+	return m_isAlive;
+}
+
+GameUtils::Type::State Player::OnDamage(int damage)
+{
+	if (m_curDamageCoolDown > 0) {
+		return 0;
+	}
+
+	m_curDamageCoolDown = m_damageCoolDown;
+
+	if (0 >= m_health - damage) {
+		m_playerHealthUI.SubValue(damage);
+		return GameUtils::Constant::Player::STATE_DIED;
+	}
+	else {
+		m_health -= damage;
+		m_playerHealthUI.SubValue(damage);
+		return GameUtils::Constant::Player::STATE_ALiVE;
+	}
+}
+
+void Player::OnDied()
+{
+	m_isAlive = false;
 }

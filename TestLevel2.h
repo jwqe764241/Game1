@@ -15,7 +15,6 @@ class TestLevel2 : public Level
 private:
 	SpriteSheet		m_SpriteSheet;
 	DX_Input*		m_pInput;
-	PlayerHealthUI	m_playerHealthUI;
 	D2D1_RENDER_TARGET_PROPERTIES m_renderProperties;
 	bool m_bIsInitialized;
 

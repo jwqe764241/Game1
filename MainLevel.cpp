@@ -17,31 +17,31 @@ void MainLevel::Load()
 	m_RenderEnvir.push_back(new TestButton(
 		L"Image/UI/button_yellow_normal.png", L"Image/UI/button_yellow_focused.png", L"Image/UI/button_yellow_pressed.png", L"게임시작",
 		D2D1_POINT_2F{1000.f, 10.f},
-		0
+		GameUtils::Constant::Button::BUTTON_START
 	));
 
 	m_RenderEnvir.push_back(new TestButton(
 		L"Image/UI/button_yellow_normal.png", L"Image/UI/button_yellow_focused.png", L"Image/UI/button_yellow_pressed.png", L"랭킹보기",
 		D2D1_POINT_2F{ 1000.f, 160.f },
-		1
+		GameUtils::Constant::Button::BUTTON_RANK
 	));
 
 	m_RenderEnvir.push_back(new TestButton(
 		L"Image/UI/button_yellow_normal.png", L"Image/UI/button_yellow_focused.png", L"Image/UI/button_yellow_pressed.png", L"게임방법",
 		D2D1_POINT_2F{ 1000.f, 310.f },
-		2
+		GameUtils::Constant::Button::BUTTON_HOW
 	));
 
 	m_RenderEnvir.push_back(new TestButton(
 		L"Image/UI/button_yellow_normal.png", L"Image/UI/button_yellow_focused.png", L"Image/UI/button_yellow_pressed.png", L"게임소개",
 		D2D1_POINT_2F{ 1000.f, 460.f },
-		3
+		GameUtils::Constant::Button::BUTTON_INFO
 	));
 
 	m_RenderEnvir.push_back(new TestButton(
 		L"Image/UI/button_yellow_normal.png", L"Image/UI/button_yellow_focused.png", L"Image/UI/button_yellow_pressed.png", L"제작자",
 		D2D1_POINT_2F{ 1000.f, 610.f },
-		4
+		GameUtils::Constant::Button::BUTTON_CREDIT
 	));
 }
 
