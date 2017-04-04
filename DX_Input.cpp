@@ -76,7 +76,7 @@ bool DX_Input::ReadInput()
 bool DX_Input::ReadKeyboard()
 {
 	HRESULT hr;
-	hr = m_pKeyboardDevice->GetDeviceState(sizeof(m_KeyboardState), static_cast<LPVOID>(m_KeyboardState));
+	hr = m_pKeyboardDevice->GetDeviceState(sizeof(m_KeyboardState), reinterpret_cast<LPVOID>(m_KeyboardState));
 
 	if (FAILED(hr)) {
 		if ((hr == DIERR_INPUTLOST) || (hr == DIERR_NOTACQUIRED)) { m_pKeyboardDevice->Acquire(); }
