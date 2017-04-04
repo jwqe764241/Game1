@@ -8,7 +8,7 @@ Player::Player():
 	m_ObjectPoint(D2D1::Point2F())
 {
 	m_levelSize = Graphics::GetInstance()->GetRenderTarget()->GetSize();
-	m_pSpriteSheet = new SpriteSheet(L"Image/Sprite.png", 64, 64);
+	m_pSpriteSheet = new SpriteSheet(L"Image/Player.png");
 	m_pArrowSpriteSheet = new SpriteSheet(L"Image/Arrow.png", 64, 64);
 }
 Player::Player(D2D1_POINT_2F point, D2D1_SIZE_F levelSize): 
@@ -117,13 +117,17 @@ void Player::UpdateWeapon(std::vector<Weapon>& pWeapon)
 
 void Player::UpdateFrame()
 {
+	/*
 	m_frame++;
 	if (m_frame > 0 && m_frame % 190 == 0) { m_frame -= 190; }
+	*/
 }
 
 void Player::SetFrame(UINT frame)
 {
+	/*
 	if (m_frame/190 != frame/190) { m_frame = frame; }
+	*/
 }
 
 bool Player::ClampPosition()

@@ -14,6 +14,7 @@
 #include "HowLevel.h"
 #include "InfoLevel.h"
 #include "GameOverLevel.h"
+#include "CreditLevel.h"
 #include "LevelController.h"
 #include "GameDefine.h"
 

@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CreditLevel.cpp" />
     <ClCompile Include="DX_Input.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameOverLevel.cpp" />
@@ -171,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CreditLevel.h" />
     <ClInclude Include="DX_Input.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameDefine.h" />
@@ -204,6 +206,7 @@
     <Image Include="icon1.ico" />
     <Image Include="Image\Arrow.png" />
     <Image Include="Image\Button.png" />
+    <Image Include="Image\Credit.png" />
     <Image Include="Image\Enemy_Basic1.png" />
     <Image Include="Image\GameInfo.png" />
     <Image Include="Image\HealthBar.png" />

@@ -3,7 +3,7 @@
 TestLevel::TestLevel(DX_Input * pInput):
 	m_bIsInitialized(true),
 	m_pInput(pInput),
-	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile1.png"))
 {
 	m_pPlayer = new Player(
 		100, 100,
@@ -14,7 +14,7 @@ TestLevel::TestLevel(DX_Input * pInput, Player * pPlayer):
 	m_bIsInitialized(true),
 	m_pPlayer(pPlayer),
 	m_pInput(pInput),
-	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile1.png"))
 {
 }
 TestLevel::~TestLevel()
@@ -60,9 +60,10 @@ void TestLevel::Render()
 	m_SpriteSheet.Draw();
 	m_pPlayer->Draw();
 
-	for (Enemy enemy : m_RenderEnemy){
+	for (Enemy enemy : m_RenderEnemy) {
 		enemy.Draw();
 	}
+
 	// Draw UI component after 69 line.
 	Graphics::GetInstance()->GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
 	m_pPlayer->m_playerHealthUI.Draw();

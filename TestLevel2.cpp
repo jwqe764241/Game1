@@ -3,7 +3,7 @@
 TestLevel2::TestLevel2(DX_Input * pInput):
 	m_bIsInitialized(true),
 	m_pInput(pInput),
-	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile2.png"))
 {
 	m_pPlayer = new Player(
 		100, 100,
@@ -13,7 +13,7 @@ TestLevel2::TestLevel2(DX_Input * pInput):
 TestLevel2::TestLevel2(DX_Input * pInput, Player * pPlayer):
 	m_bIsInitialized(true),
 	m_pInput(pInput),
-	m_SpriteSheet(SpriteSheet(L"Image/LevelTile.png"))
+	m_SpriteSheet(SpriteSheet(L"Image/LevelTile2.png"))
 {
 	//나중에 체력 같은거 옮길 수 있게 하든가 걍 하든가
 	m_pPlayer = new Player(

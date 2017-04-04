@@ -126,7 +126,7 @@ LRESULT CALLBACK Game::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		break;
 
 	case GameUtils::Constant::Level::LEVEL_CREDIT:
-		MessageBox(m_hWnd, "Credit", "Yeah", MB_OK);
+		levelController.ChangeLevel(new CreditLevel(&input));
 		break;
 
 	case GameUtils::Constant::Level::LEVEL_END:
