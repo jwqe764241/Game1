@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\Sources\Actors\Gauge.h">
+      <Filter>Source\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Actors\SpriteSheet.h">
+      <Filter>Source\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Actors\TestButton.h">
+      <Filter>Source\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Actors\Weapon.h">
+      <Filter>Source\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Actors\Enemy.h">
+      <Filter>Source\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Interfaces\IDelegate.h">
+      <Filter>Source\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Interfaces\IDrawable.h">
+      <Filter>Source\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Interfaces\IActor.h">
+      <Filter>Source\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Levels\LevelController.h">
+      <Filter>Source\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Levels\MainLevel.h">
+      <Filter>Source\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Levels\TestLevel.h">
+      <Filter>Source\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Levels\TestLevel2.h">
+      <Filter>Source\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Levels\CreditLevel.h">
+      <Filter>Source\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Levels\GameOverLevel.h">
+      <Filter>Source\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Levels\HowLevel.h">
+      <Filter>Source\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Levels\InfoLevel.h">
+      <Filter>Source\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Levels\Level.h">
+      <Filter>Source\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Players\PlayerHealthUI.h">
+      <Filter>Source\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Players\Player.h">
+      <Filter>Source\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\UI\Button.h">
+      <Filter>Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\DX_Input.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Frame.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Game.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\GameDefine.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\GameTimer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Graphics.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Keyboard.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\TextWriter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Resources\resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\icon1.ico" />
+    <Image Include="..\Sources\Image\UI\button_yellow_focused.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\UI\button_yellow_normal.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\UI\button_yellow_pressed.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\Level_Backtile3.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\Level_Backtile4.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\LevelTile1.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\LevelTile2.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\MainMenu.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\Player.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\Sprite.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\Arrow.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\Button.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\Credit.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\Enemy_Basic1.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\GameInfo.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\HealthBar.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\HowToPlay.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\Level_BackTile1.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="..\Sources\Image\Level_Backtile2.png">
+      <Filter>Images</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{bef7405a-3d9f-45af-8249-019fcc60b0a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Images">
+      <UniqueIdentifier>{b935bd8f-f5c1-4633-94c7-0e8a9e71f5c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Actors">
+      <UniqueIdentifier>{5986121f-412e-427c-802c-7ef70cef3cdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Interfaces">
+      <UniqueIdentifier>{640d7e92-7e03-45b4-8885-7774f9f63a6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Levels">
+      <UniqueIdentifier>{5f027644-8c90-4b0d-89c5-0b922fc1fb91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Players">
+      <UniqueIdentifier>{71a6e8bc-acfb-4b31-a9d3-be1f706ae134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\UI">
+      <UniqueIdentifier>{b7dde459-3acb-4241-986a-a4b777cad2d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Sources\Actors\SpriteSheet.cpp">
+      <Filter>Source\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Actors\TestButton.cpp">
+      <Filter>Source\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Actors\Weapon.cpp">
+      <Filter>Source\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Actors\Enemy.cpp">
+      <Filter>Source\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Actors\Gauge.cpp">
+      <Filter>Source\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Levels\LevelController.cpp">
+      <Filter>Source\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Levels\MainLevel.cpp">
+      <Filter>Source\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Levels\TestLevel.cpp">
+      <Filter>Source\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Levels\TestLevel2.cpp">
+      <Filter>Source\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Levels\CreditLevel.cpp">
+      <Filter>Source\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Levels\GameOverLevel.cpp">
+      <Filter>Source\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Levels\HowLevel.cpp">
+      <Filter>Source\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Levels\InfoLevel.cpp">
+      <Filter>Source\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Players\PlayerAttack.cpp">
+      <Filter>Source\Players</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Players\PlayerHealthUI.cpp">
+      <Filter>Source\Players</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Players\Player.cpp">
+      <Filter>Source\Players</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\UI\Button.cpp">
+      <Filter>Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\DX_Input.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Frame.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Game.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\GameTimer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Graphics.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Keyboard.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\TextWriter.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Resources\Resource.rc" />
+  </ItemGroup>
+</Project>
