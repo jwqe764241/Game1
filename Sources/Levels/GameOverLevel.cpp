@@ -31,7 +31,7 @@ GameOverLevel::~GameOverLevel()
 void GameOverLevel::Load()
 {
 	m_buttonList.push_back(new TestButton(
-		L"Image/UI/button_yellow_normal.png", L"Image/UI/button_yellow_focused.png", L"Image/UI/button_yellow_pressed.png",
+		L"../Image/UI/button_yellow_normal.png", L"Image/UI/button_yellow_focused.png", L"Image/UI/button_yellow_pressed.png",
 		L"다시하기",
 		D2D1::Point2F(
 			Graphics::GetInstance()->GetRenderTarget()->GetSize().width / 8,
@@ -40,7 +40,7 @@ void GameOverLevel::Load()
 		GameUtils::Constant::Button::BUTTON_START
 	));
 	m_buttonList.push_back(new TestButton(
-		L"Image/UI/button_yellow_normal.png", L"Image/UI/button_yellow_focused.png", L"Image/UI/button_yellow_pressed.png",
+		L"../Image/UI/button_yellow_normal.png", L"Image/UI/button_yellow_focused.png", L"Image/UI/button_yellow_pressed.png",
 		L"처음으로",
 		D2D1::Point2F(
 			Graphics::GetInstance()->GetRenderTarget()->GetSize().width / 8 * 5,

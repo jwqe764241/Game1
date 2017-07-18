@@ -12,7 +12,7 @@ CreditLevel::~CreditLevel()
 void CreditLevel::Load()
 {
 	m_pBackButton = new TestButton(
-		L"Image/UI/button_yellow_normal.png", L"Image/UI/button_yellow_focused.png", L"Image/UI/button_yellow_pressed.png", L"뒤로",
+		L"../Image/UI/button_yellow_normal.png", L"Image/UI/button_yellow_focused.png", L"Image/UI/button_yellow_pressed.png", L"뒤로",
 		D2D1_POINT_2F{ 50, 600 },
 		NULL
 	);
